@@ -5,10 +5,10 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/../Yahtzee2" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/../Yahtzee" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/../Yahtzee2" />
+            <option value="$PROJECT_DIR$/../Yahtzee" />
           </set>
         </option>
       </GradleProjectSettings>
