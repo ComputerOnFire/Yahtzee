@@ -1,4 +1,11 @@
 # Default ignored files
+*.dll
+*.class
+*.jar
+*.bin
+*.lock
+.gradle
 /shelf/
 /out/
+/build/
 /workspace.xml
