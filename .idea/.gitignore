@@ -1,12 +1,14 @@
-# Default ignored files
+# ignored files
 *.dll
 *.class
 *.jar
 *.bin
 *.lock
+*.iml
 .gradle
 /shelf/
 /out/
 /build/
-/workspace.xml
+/.idea/workspace.xml
+/.idea/libraries
 !/gradle/wrapper/gradle-wrapper.jar
