@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <GridPane fx:controller="com.github.computeronfire.Yahtzee.UIController"
-          stylesheets="/UI.css"
+          stylesheets="UI.css"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
 
     <Button text="Say 'Hello World'" onAction="#sayHelloWorld"/>
