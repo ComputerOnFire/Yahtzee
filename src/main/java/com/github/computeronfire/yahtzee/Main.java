@@ -1,4 +1,4 @@
-package com.github.computeronfire.Yahtzee;
+package com.github.computeronfire.yahtzee;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

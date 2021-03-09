@@ -14,10 +14,10 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
-mainClassName = "com.github.computeronfire.Yahtzee.Main"
+mainClassName = "com.github.computeronfire.yahtzee.Main"
 
 jlink {
     launcher{
-        name = "Yahtzee"
+        name = "yahtzee"
     }
 }

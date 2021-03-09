@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="com.github.computeronfire.Yahtzee.UIController"
+<GridPane fx:controller="com.github.computeronfire.yahtzee.UIController"
           stylesheets="UI.css"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
 

@@ -1,4 +1,4 @@
-package com.github.computeronfire.Yahtzee;
+package com.github.computeronfire.yahtzee;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
