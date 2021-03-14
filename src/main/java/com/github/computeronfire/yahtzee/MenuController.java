@@ -15,7 +15,7 @@ public class MenuController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/yahtzeeGame.fxml"));
 
         Parent parent  = fxmlLoader.load();
-        GameController controller = fxmlLoader.getController();
+        //GameController controller = fxmlLoader.getController();
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(parent, 300, 275);
         primaryStage.setScene(scene);
