@@ -14,10 +14,10 @@ public class MenuController {
     public void startGame(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/yahtzeeGame.fxml"));
 
-        Parent parent  = fxmlLoader.load();
+        Parent parent = fxmlLoader.load();
         //GameController controller = fxmlLoader.getController();
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(parent, 300, 275);
+        Scene scene = new Scene(parent, 1000, 1000);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
