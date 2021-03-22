@@ -17,7 +17,7 @@ public class MenuController {
         Parent parent = fxmlLoader.load();
         //GameController controller = fxmlLoader.getController();
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(parent, 1000, 1000);
+        Scene scene = new Scene(parent, 1000, 750);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
