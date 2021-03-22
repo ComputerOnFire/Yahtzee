@@ -1,3 +1,7 @@
+/**
+ * Controls the Main Menu, contains function for construction of game board scene
+ * Requirement: UI
+ */
 package com.github.computeronfire.yahtzee;
 
 import javafx.event.ActionEvent;
