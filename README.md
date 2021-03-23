@@ -7,10 +7,12 @@ To run the program with gradle, make sure your IntelliJ configuration looks like
 ![](https://i.imgur.com/M1SPfKj.png) 
 
 
-### Building without IntelliJ:
+### Building and running without IntelliJ:
 
 If you would like to compile without IntelliJ, the command
 ```
 gradlew run
 ```
-can be run from the terminal to build and launch the application.
+can be executed in the project folder to build and launch the application.
+
+The command `gradlew` can also be used on its own to build the program without running it.
