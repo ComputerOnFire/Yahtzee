@@ -6,6 +6,8 @@ Implementation of the board game Yahtzee in Java and JavaFX
 To run the program with gradle, make sure your IntelliJ configuration looks like this. The important thing being the 'run' inside the tasks field.
 ![](https://i.imgur.com/M1SPfKj.png) 
 
+Executing gradle on Yahtzee without `run` will simply build the project without launching it.
+
 
 ### How to build without IntelliJ:
 
