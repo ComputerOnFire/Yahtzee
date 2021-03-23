@@ -7,7 +7,7 @@ To run the program with gradle, make sure your IntelliJ configuration looks like
 ![](https://i.imgur.com/M1SPfKj.png) 
 
 
-### Building and running without IntelliJ:
+### How to build without IntelliJ:
 
 If you would like to compile without IntelliJ, the command
 ```
