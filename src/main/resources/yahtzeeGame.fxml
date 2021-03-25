@@ -90,18 +90,6 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" onAction="#holdDie">
-                     <graphic>
-                        <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@die6.png" />
-                           </image>
-                           <effect>
-                              <Glow />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </ToggleButton>
                </children>
             </HBox>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
