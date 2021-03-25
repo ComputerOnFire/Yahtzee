@@ -101,6 +101,10 @@ public class GameController {
         p2t17.setText("test");
     }
 
+    /**
+     * Returns to the Start Menu when the "Main Menu" button is pressed.
+     * Will end the current game. This may be changed to prompt the user to save the game.
+     */
     public void exitToMenu(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/yahtzeeMenu.fxml"));
 
