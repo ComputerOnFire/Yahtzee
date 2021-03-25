@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class GameController {
     public Label helloWorld;
-    public Label p1name; //Player 1 name
+    public Label p1name; /** Player 1 name */
     public Label p1t1;
     public Label p1t2;
     public Label p1t3;
@@ -24,7 +24,7 @@ public class GameController {
     public Label p1t5;
     public Label p1t6;
     public Label p1t7;
-    public Label p1t8; //Player 1 scores
+    public Label p1t8;  /** Player 1 scores */
     public Label p1t9;
     public Label p1t10;
     public Label p1t11;
@@ -34,7 +34,7 @@ public class GameController {
     public Label p1t15;
     public Label p1t16;
     public Label p1t17;
-    public Label p2name; //Player 2 name
+    public Label p2name; /** Player 2 name */
     public Label p2t1;
     public Label p2t2;
     public Label p2t3;
@@ -42,7 +42,7 @@ public class GameController {
     public Label p2t5;
     public Label p2t6;
     public Label p2t7;
-    public Label p2t8; //Player 2 scores
+    public Label p2t8;  /** Player 2 scores */
     public Label p2t9;
     public Label p2t10;
     public Label p2t11;
@@ -53,8 +53,11 @@ public class GameController {
     public Label p2t16;
     public Label p2t17;
 
-    public Die[] dice = new Die[5];//initiate an array of 5 dice
-                                   //represents each die on the board
+    /**
+     * Initiate an array of 5 dice.
+     * Represents each die on the board.
+     */
+    public Die[] dice = new Die[5];
 
     public void sayHelloWorld(ActionEvent actionEvent) {
         helloWorld.setText("This is Yahztee!");
