@@ -17,7 +17,7 @@
                          <Label fx:id="helloWorld" />
                   <VBox>
                      <children>
-                         <Button onAction="#sayHelloWorld" prefHeight="33.0" prefWidth="45.0" text="Test" />
+                         <Button onAction="#testDisplayScores" prefHeight="33.0" prefWidth="45.0" text="Test" />
                      </children>
                   </VBox>
 
@@ -157,41 +157,41 @@
             <Label alignment="CENTER_RIGHT" text="LowerTotal" GridPane.rowIndex="16" />
             <Label alignment="CENTER_RIGHT" text="GrandTotal" GridPane.rowIndex="17" />
             <Label fx:id="p1name" styleClass="score" GridPane.columnIndex="1" />
-            <Label fx:id="p1t1" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="p1t2" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="p1t3" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label fx:id="p1t4" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label fx:id="p1t5" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label fx:id="p1t6" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label fx:id="p1t7" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Label fx:id="p1t8" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Label fx:id="p1t9" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Label fx:id="p1t10" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <Label fx:id="p1t11" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-            <Label fx:id="p1t12" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <Label fx:id="p1t13" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-            <Label fx:id="p1t14" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-            <Label fx:id="p1t15" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="15" />
-            <Label fx:id="p1t16" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="16" />
-            <Label fx:id="p1t17" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+            <Label fx:id="p1ones" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="p1twos" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="p1threes" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="p1fours" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="p1fives" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="p1sixes" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label fx:id="p1upperTotal" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="p1bonus" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label fx:id="p1threeOfAKind" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label fx:id="p1fourOfAKind" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Label fx:id="p1fullHouse" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Label fx:id="p1smallStraight" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <Label fx:id="p1largeStraight" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+            <Label fx:id="p1yahtzee" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+            <Label fx:id="p1chance" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+            <Label fx:id="p1lowerTotal" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+            <Label fx:id="p1grandTotal" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="17" />
             <Label fx:id="p2name" styleClass="score" GridPane.columnIndex="2" />
-            <Label fx:id="p2t1" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label fx:id="p2t2" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label fx:id="p2t3" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label fx:id="p2t4" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label fx:id="p2t5" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Label fx:id="p2t6" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Label fx:id="p2t7" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <Label fx:id="p2t8" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-            <Label fx:id="p2t9" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-            <Label fx:id="p2t10" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="10" />
-            <Label fx:id="p2t11" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="11" />
-            <Label fx:id="p2t12" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="12" />
-            <Label fx:id="p2t13" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="13" />
-            <Label fx:id="p2t14" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="14" />
-            <Label fx:id="p2t15" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="15" />
-            <Label fx:id="p2t16" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="16" />
-            <Label fx:id="p2t17" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="17" />
+            <Label fx:id="p2ones" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="p2twos" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label fx:id="p2threes" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label fx:id="p2fours" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label fx:id="p2fives" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label fx:id="p2sixes" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label fx:id="p2upperTotal" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label fx:id="p2bonus" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Label fx:id="p2threeOfAKind" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+            <Label fx:id="p2fourOfAKind" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+            <Label fx:id="p2fullHouse" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+            <Label fx:id="p2smallStraight" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+            <Label fx:id="p2largeStraight" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+            <Label fx:id="p2yahtzee" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+            <Label fx:id="p2chance" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="15" />
+            <Label fx:id="p2lowerTotal" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="16" />
+            <Label fx:id="p2grandTotal" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="17" />
          </children>
       </GridPane>
    </items>

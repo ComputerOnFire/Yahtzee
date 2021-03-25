@@ -17,41 +17,41 @@ import java.io.IOException;
 public class GameController {
     public Label helloWorld;
     public Label p1name; /** Player 1 name */
-    public Label p1t1;
-    public Label p1t2;
-    public Label p1t3;
-    public Label p1t4;
-    public Label p1t5;
-    public Label p1t6;
-    public Label p1t7;
-    public Label p1t8;  /** Player 1 scores */
-    public Label p1t9;
-    public Label p1t10;
-    public Label p1t11;
-    public Label p1t12;
-    public Label p1t13;
-    public Label p1t14;
-    public Label p1t15;
-    public Label p1t16;
-    public Label p1t17;
+    public Label p1ones;
+    public Label p1twos;
+    public Label p1threes;
+    public Label p1fours;
+    public Label p1fives;
+    public Label p1sixes;
+    public Label p1upperTotal;
+    public Label p1bonus;  /** Player 1 scores */
+    public Label p1threeOfAKind;
+    public Label p1fourOfAKind;
+    public Label p1fullHouse;
+    public Label p1smallStraight;
+    public Label p1largeStraight;
+    public Label p1yahtzee;
+    public Label p1chance;
+    public Label p1lowerTotal;
+    public Label p1grandTotal;
     public Label p2name; /** Player 2 name */
-    public Label p2t1;
-    public Label p2t2;
-    public Label p2t3;
-    public Label p2t4;
-    public Label p2t5;
-    public Label p2t6;
-    public Label p2t7;
-    public Label p2t8;  /** Player 2 scores */
-    public Label p2t9;
-    public Label p2t10;
-    public Label p2t11;
-    public Label p2t12;
-    public Label p2t13;
-    public Label p2t14;
-    public Label p2t15;
-    public Label p2t16;
-    public Label p2t17;
+    public Label p2ones;
+    public Label p2twos;
+    public Label p2threes;
+    public Label p2fours;
+    public Label p2fives;
+    public Label p2sixes;
+    public Label p2upperTotal;
+    public Label p2bonus;  /** Player 2 scores */
+    public Label p2threeOfAKind;
+    public Label p2fourOfAKind;
+    public Label p2fullHouse;
+    public Label p2smallStraight;
+    public Label p2largeStraight;
+    public Label p2yahtzee;
+    public Label p2chance;
+    public Label p2lowerTotal;
+    public Label p2grandTotal;
 
     /**
      * Initiate an array of 5 dice.
@@ -59,46 +59,46 @@ public class GameController {
      */
     public Die[] dice = new Die[5];
 
-    public void sayHelloWorld(ActionEvent actionEvent) {
+    public void testDisplayScores(ActionEvent actionEvent) {
         helloWorld.setText("This is Yahztee!");
 
         p1name.setText("Player 1");
-        p1t1.setText("test");
-        p1t2.setText("test");
-        p1t3.setText("test");
-        p1t4.setText("test");
-        p1t5.setText("test");
-        p1t6.setText("test");
-        p1t7.setText("test");
-        p1t8.setText("test");
-        p1t9.setText("test");
-        p1t10.setText("test");
-        p1t11.setText("test");
-        p1t12.setText("test");
-        p1t13.setText("test");
-        p1t14.setText("test");
-        p1t15.setText("test");
-        p1t16.setText("test");
-        p1t17.setText("test");
+        p1ones.setText("test");
+        p1twos.setText("test");
+        p1threes.setText("test");
+        p1fours.setText("test");
+        p1fives.setText("test");
+        p1sixes.setText("test");
+        p1upperTotal.setText("test");
+        p1bonus.setText("test");
+        p1threeOfAKind.setText("test");
+        p1fourOfAKind.setText("test");
+        p1fullHouse.setText("test");
+        p1smallStraight.setText("test");
+        p1largeStraight.setText("test");
+        p1yahtzee.setText("test");
+        p1chance.setText("test");
+        p1lowerTotal.setText("test");
+        p1grandTotal.setText("test");
 
         p2name.setText("Player 2");
-        p2t1.setText("test");
-        p2t2.setText("test");
-        p2t3.setText("test");
-        p2t4.setText("test");
-        p2t5.setText("test");
-        p2t6.setText("test");
-        p2t7.setText("test");
-        p2t8.setText("test");
-        p2t9.setText("test");
-        p2t10.setText("test");
-        p2t11.setText("test");
-        p2t12.setText("test");
-        p2t13.setText("test");
-        p2t14.setText("test");
-        p2t15.setText("test");
-        p2t16.setText("test");
-        p2t17.setText("test");
+        p2ones.setText("test");
+        p2twos.setText("test");
+        p2threes.setText("test");
+        p2fours.setText("test");
+        p2fives.setText("test");
+        p2sixes.setText("test");
+        p2upperTotal.setText("test");
+        p2bonus.setText("test");
+        p2threeOfAKind.setText("test");
+        p2fourOfAKind.setText("test");
+        p2fullHouse.setText("test");
+        p2smallStraight.setText("test");
+        p2largeStraight.setText("test");
+        p2yahtzee.setText("test");
+        p2chance.setText("test");
+        p2lowerTotal.setText("test");
+        p2grandTotal.setText("test");
     }
 
     /**
