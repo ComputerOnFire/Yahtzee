@@ -10,4 +10,9 @@ package com.github.computeronfire.yahtzee;
  */
 
 public class Game {
+    private int[] dice;
+
+    public Game (int[] dice){
+        this.dice = dice;
+    }
 }
