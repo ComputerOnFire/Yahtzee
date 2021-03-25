@@ -59,6 +59,10 @@ public class GameController {
      */
     public Die[] dice = new Die[5];
 
+    /**
+     * Tests score labels on the board.
+     * Temporary. Tests will be moved to the test folder and be made more formal.
+     */
     public void testDisplayScores(ActionEvent actionEvent) {
         testBox.setText("This is Yahztee!");
 
