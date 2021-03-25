@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GameController {
-    public Label helloWorld;
+    public Label testBox;
     public Label p1name; /** Player 1 name */
     public Label p1ones;
     public Label p1twos;
@@ -60,7 +60,7 @@ public class GameController {
     public Die[] dice = new Die[5];
 
     public void testDisplayScores(ActionEvent actionEvent) {
-        helloWorld.setText("This is Yahztee!");
+        testBox.setText("This is Yahztee!");
 
         p1name.setText("Player 1");
         p1ones.setText("test");
