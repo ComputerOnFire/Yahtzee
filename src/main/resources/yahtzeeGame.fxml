@@ -1,16 +1,198 @@
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Yahtzee Game Board UI xml, contains dice playing board and scoreboard
+   Requirements: UI
+-->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="com.github.computeronfire.yahtzee.GameController"
-          stylesheets="/UI.css"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<SplitPane dividerPositions="0.5" stylesheets="@UI.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.computeronfire.yahtzee.GameController">
+   <items>
+      <VBox spacing="10.0">
+         <children>
+            <ToolBar>
+               <items>
+                         <Label fx:id="testBox" />
+                  <VBox>
+                     <children>
+                         <Button onAction="#testDisplayScores" prefHeight="33.0" prefWidth="45.0" text="Test" />
+                     </children>
+                  </VBox>
 
-    <Button text="Main Menu" onAction="#exitToMenu"
-            GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-    <Button text="Test" onAction="#sayHelloWorld"
-            GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-
-
-    <Label GridPane.rowIndex="1" GridPane.columnIndex="0" fx:id="helloWorld"/>
-</GridPane>
+                         <Button onAction="#exitToMenu" prefHeight="35.0" prefWidth="85.0" text="Main Menu" />
+               </items>
+            </ToolBar>
+            <HBox prefHeight="51.0" prefWidth="319.0">
+               <children>
+                  <ToggleButton mnemonicParsing="false" onAction="#holdDie">
+                     <graphic>
+                        <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@die1.png" />
+                           </image>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" onAction="#holdDie">
+                     <graphic>
+                        <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@die2.png" />
+                           </image>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" onAction="#holdDie">
+                     <graphic>
+                        <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@die3.png" />
+                           </image>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </ToggleButton>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <ToggleButton mnemonicParsing="false" onAction="#holdDie">
+                     <graphic>
+                        <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@die4.png" />
+                           </image>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" onAction="#holdDie">
+                     <graphic>
+                        <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@die5.png" />
+                           </image>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" onAction="#holdDie">
+                     <graphic>
+                        <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@die6.png" />
+                           </image>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </ToggleButton>
+               </children>
+            </HBox>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="59.0" layoutY="75.0" onAction="#rollDice" prefHeight="51.0" prefWidth="53.0" text="Roll" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <GridPane hgap="15.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER_RIGHT" text="Name" />
+            <Label alignment="CENTER_RIGHT" text="Ones" GridPane.rowIndex="1" />
+            <Label alignment="CENTER_RIGHT" text="Twos" GridPane.rowIndex="2" />
+            <Label alignment="CENTER_RIGHT" text="Threes" GridPane.rowIndex="3" />
+            <Label alignment="CENTER_RIGHT" text="Fours" GridPane.rowIndex="4" />
+            <Label alignment="CENTER_RIGHT" text="Fives" GridPane.rowIndex="5" />
+            <Label alignment="CENTER_RIGHT" text="Sixes" GridPane.rowIndex="6" />
+            <Label alignment="CENTER_RIGHT" text="UpperTotal" GridPane.rowIndex="7" />
+            <Label alignment="CENTER_RIGHT" text="Bonus" GridPane.rowIndex="8" />
+            <Label alignment="CENTER_RIGHT" text="ThreeOfAKind" GridPane.rowIndex="9" />
+            <Label alignment="CENTER_RIGHT" text="FourOfAKind" GridPane.rowIndex="10" />
+            <Label alignment="CENTER_RIGHT" text="FullHouse" GridPane.rowIndex="11" />
+            <Label alignment="CENTER_RIGHT" text="SmallStaight" GridPane.rowIndex="12" />
+            <Label alignment="CENTER_RIGHT" text="LargeStraight" GridPane.rowIndex="13" />
+            <Label alignment="CENTER_RIGHT" text="Yahtzee!" GridPane.rowIndex="14" />
+            <Label alignment="CENTER_RIGHT" text="Chance" GridPane.rowIndex="15" />
+            <Label alignment="CENTER_RIGHT" text="LowerTotal" GridPane.rowIndex="16" />
+            <Label alignment="CENTER_RIGHT" text="GrandTotal" GridPane.rowIndex="17" />
+            <Label fx:id="p1name" styleClass="score" GridPane.columnIndex="1" />
+            <Label fx:id="p1ones" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="p1twos" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="p1threes" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="p1fours" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="p1fives" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="p1sixes" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label fx:id="p1upperTotal" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="p1bonus" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label fx:id="p1threeOfAKind" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label fx:id="p1fourOfAKind" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Label fx:id="p1fullHouse" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Label fx:id="p1smallStraight" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <Label fx:id="p1largeStraight" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+            <Label fx:id="p1yahtzee" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+            <Label fx:id="p1chance" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+            <Label fx:id="p1lowerTotal" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+            <Label fx:id="p1grandTotal" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+            <Label fx:id="p2name" styleClass="score" GridPane.columnIndex="2" />
+            <Label fx:id="p2ones" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="p2twos" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label fx:id="p2threes" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label fx:id="p2fours" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label fx:id="p2fives" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label fx:id="p2sixes" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label fx:id="p2upperTotal" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label fx:id="p2bonus" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Label fx:id="p2threeOfAKind" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+            <Label fx:id="p2fourOfAKind" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+            <Label fx:id="p2fullHouse" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+            <Label fx:id="p2smallStraight" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+            <Label fx:id="p2largeStraight" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+            <Label fx:id="p2yahtzee" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+            <Label fx:id="p2chance" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="15" />
+            <Label fx:id="p2lowerTotal" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="16" />
+            <Label fx:id="p2grandTotal" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="17" />
+         </children>
+      </GridPane>
+   </items>
+</SplitPane>

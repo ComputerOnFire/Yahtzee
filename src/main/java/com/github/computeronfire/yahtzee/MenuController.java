@@ -1,3 +1,7 @@
+/**
+ * Controls the Main Menu, contains function for construction of game board scene
+ * Requirement: UI
+ */
 package com.github.computeronfire.yahtzee;
 
 import javafx.event.ActionEvent;
@@ -14,10 +18,10 @@ public class MenuController {
     public void startGame(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/yahtzeeGame.fxml"));
 
-        Parent parent  = fxmlLoader.load();
+        Parent parent = fxmlLoader.load();
         //GameController controller = fxmlLoader.getController();
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(parent, 300, 275);
+        Scene scene = new Scene(parent, 1000, 750);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
