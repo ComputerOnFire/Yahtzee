@@ -135,7 +135,18 @@ public class GameController {
     public void rollDice(ActionEvent actionEvent) {
         for (int i = 0; i < dice.length; i++){
             dice[i].rollDie();
-
+            switch(i){
+                case 0:
+                    setDieImage(die1, dice[i].face);
+                case 1:
+                    setDieImage(die2, dice[i].face);
+                case 2:
+                    setDieImage(die3, dice[i].face);
+                case 3:
+                    setDieImage(die4, dice[i].face);
+                case 4:
+                    setDieImage(die5, dice[i].face);
+            }
         }
     }
     public void setDieImage(ToggleButton die, int dieFace){
