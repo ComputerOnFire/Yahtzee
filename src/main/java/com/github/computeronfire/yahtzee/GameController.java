@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -58,6 +59,11 @@ public class GameController {
      * Represents each die on the board.
      */
     public Die[] dice = new Die[5];
+    public ToggleButton die1;
+    public ToggleButton die2;
+    public ToggleButton die3;
+    public ToggleButton die4;
+    public ToggleButton die5;
 
     /**
      * Tests score labels on the board.
@@ -125,6 +131,9 @@ public class GameController {
     }
 
     public void rollDice(ActionEvent actionEvent) {
+        for (int i = 0; i < dice.length; i++){
+            dice[i].rollDie();
 
+        }
     }
 }
