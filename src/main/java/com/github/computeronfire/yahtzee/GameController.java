@@ -165,6 +165,9 @@ public class GameController {
         }
     }
     public void setDieImage(ToggleButton die, int dieFace){
+        if(die.isDisabled()){
+            die.setDisable(false);
+        }
         ImageView iview;
         Image face;
         switch(dieFace){

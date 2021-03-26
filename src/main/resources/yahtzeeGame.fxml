@@ -30,7 +30,7 @@
             </ToolBar>
             <HBox prefHeight="51.0" prefWidth="319.0" spacing="10.0">
                <children>
-                  <ToggleButton fx:id = "die1" mnemonicParsing="false" onAction="#holdDie">
+                  <ToggleButton disable="true" fx:id="die1" mnemonicParsing="false" onAction="#holdDie">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -42,7 +42,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id = "die2" mnemonicParsing="false" onAction="#holdDie">
+                  <ToggleButton disable="true" fx:id="die2" mnemonicParsing="false" onAction="#holdDie">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -54,7 +54,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id = "die3" mnemonicParsing="false" onAction="#holdDie">
+                  <ToggleButton disable="true" fx:id="die3" mnemonicParsing="false" onAction="#holdDie">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -70,7 +70,7 @@
             </HBox>
             <HBox spacing="10.0">
                <children>
-                  <ToggleButton fx:id = "die4" mnemonicParsing="false" onAction="#holdDie">
+                  <ToggleButton disable="true" fx:id="die4" mnemonicParsing="false" onAction="#holdDie">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -82,7 +82,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id = "die5" mnemonicParsing="false" onAction="#holdDie">
+                  <ToggleButton disable="true"  fx:id="die5" mnemonicParsing="false" onAction="#holdDie">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
