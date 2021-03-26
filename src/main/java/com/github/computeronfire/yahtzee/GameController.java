@@ -62,6 +62,7 @@ public class GameController {
      */
 
     private Dice dice = new Dice();
+
     public ToggleButton die1;
     public ToggleButton die2;
     public ToggleButton die3;
