@@ -136,19 +136,30 @@ public class GameController {
     }
 
     public void rollDice(ActionEvent actionEvent) {
-        for (int i = 0; i < dice.diceArray.length - 1; i++){
-            dice.diceArray[i].rollDie();
-            switch(i){
-                case 0:
-                    setDieImage(die1, dice.diceArray[i].face);
-                case 1:
-                    setDieImage(die2, dice.diceArray[i].face);
-                case 2:
-                    setDieImage(die3, dice.diceArray[i].face);
-                case 3:
-                    setDieImage(die4, dice.diceArray[i].face);
-                case 4:
-                    setDieImage(die5, dice.diceArray[i].face);
+        for (int i = 0; i < dice.diceArray.length; i++){
+            if(!dice.diceArray[i].held){
+                dice.diceArray[i].rollDie();
+                switch(i){
+                    case 0:
+                        setDieImage(die1, dice.diceArray[i].face);
+                        break;
+                    case 1:
+                        setDieImage(die2, dice.diceArray[i].face);
+                        break;
+                    case 2:
+                        setDieImage(die3, dice.diceArray[i].face);
+                        break;
+                    case 3:
+                        setDieImage(die4, dice.diceArray[i].face);
+                        break;
+                    case 4:
+                        setDieImage(die5, dice.diceArray[i].face);
+                        break;
+                    default:
+                        /** should never happen */
+                        setDieImage(null, dice.diceArray[i].face);
+                        break;
+                }
             }
         }
     }
