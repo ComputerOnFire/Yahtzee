@@ -130,7 +130,9 @@ public class GameController {
     }
 
     public void holdDie(ActionEvent actionEvent) {
-
+        ToggleButton dieButton = (ToggleButton) actionEvent.getSource();
+        int id = Integer.parseInt(dieButton.getId().substring("die".length())) - 1;
+        dice.diceArray[id].hold((!dice.diceArray[id].held));
     }
 
     public void rollDice(ActionEvent actionEvent) {
@@ -172,7 +174,8 @@ public class GameController {
             case 6:
                 face = new Image("/die6.png");
                 break;
-            default: /** should never happen */
+            default:
+                /** should never happen */
                 face = null;
                 break;
         }
