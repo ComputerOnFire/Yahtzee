@@ -57,10 +57,11 @@ public class GameController {
     public Label p2grandTotal;
 
     /**
-     * Initiate an array of 5 dice.
-     * Represents each die on the board.
+     * Initiate the array of 5 dice.
+     * Constructed using the Dice class
      */
-    public Die[] dice = new Die[5];
+
+    private Dice dice = new Dice();
     public ToggleButton die1;
     public ToggleButton die2;
     public ToggleButton die3;
