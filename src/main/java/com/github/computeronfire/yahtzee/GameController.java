@@ -134,19 +134,19 @@ public class GameController {
     }
 
     public void rollDice(ActionEvent actionEvent) {
-        for (int i = 0; i < dice.length; i++){
-            dice[i].rollDie();
+        for (int i = 0; i < dice.diceArray.length - 1; i++){
+            dice.diceArray[i].rollDie();
             switch(i){
                 case 0:
-                    setDieImage(die1, dice[i].face);
+                    setDieImage(die1, dice.diceArray[i].face);
                 case 1:
-                    setDieImage(die2, dice[i].face);
+                    setDieImage(die2, dice.diceArray[i].face);
                 case 2:
-                    setDieImage(die3, dice[i].face);
+                    setDieImage(die3, dice.diceArray[i].face);
                 case 3:
-                    setDieImage(die4, dice[i].face);
+                    setDieImage(die4, dice.diceArray[i].face);
                 case 4:
-                    setDieImage(die5, dice[i].face);
+                    setDieImage(die5, dice.diceArray[i].face);
             }
         }
     }
@@ -177,6 +177,10 @@ public class GameController {
                 break;
         }
         iview = new ImageView(face);
+        iview.setFitHeight(40.0);
+        iview.setFitWidth(40.0);
+        iview.setPreserveRatio(true);
+        iview.setPickOnBounds(true);
         die.setGraphic(iview);
     }
 }
