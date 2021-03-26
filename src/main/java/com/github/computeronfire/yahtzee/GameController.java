@@ -11,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -135,5 +137,34 @@ public class GameController {
             dice[i].rollDie();
 
         }
+    }
+    public void setDieImage(ToggleButton die, int dieFace){
+        ImageView iview;
+        Image face;
+        switch(dieFace){
+            case 1:
+                face = new Image("/die1.png");
+                break;
+            case 2:
+                face = new Image("/die2.png");
+                break;
+            case 3:
+                face = new Image("/die3.png");
+                break;
+            case 4:
+                face = new Image("/die4.png");
+                break;
+            case 5:
+                face = new Image("/die5.png");
+                break;
+            case 6:
+                face = new Image("/die6.png");
+                break;
+            default: /** should never happen */
+                face = null;
+                break;
+        }
+        iview = new ImageView(face);
+        die.setGraphic(iview);
     }
 }
