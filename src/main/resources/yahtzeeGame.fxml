@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
    Yahtzee Game Board UI xml, contains dice playing board and scoreboard
    Requirements: UI
 -->
+
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -24,7 +27,7 @@
                          <Button onAction="#exitToMenu" prefHeight="35.0" prefWidth="85.0" text="Main Menu" />
                </items>
             </ToolBar>
-            <HBox prefHeight="51.0" prefWidth="319.0">
+            <HBox prefHeight="51.0" prefWidth="319.0" spacing="10.0">
                <children>
                   <ToggleButton mnemonicParsing="false" onAction="#holdDie">
                      <graphic>
@@ -64,7 +67,7 @@
                   </ToggleButton>
                </children>
             </HBox>
-            <HBox>
+            <HBox spacing="10.0">
                <children>
                   <ToggleButton mnemonicParsing="false" onAction="#holdDie">
                      <graphic>
@@ -91,6 +94,9 @@
                      </graphic>
                   </ToggleButton>
                </children>
+               <padding>
+                  <Insets left="32.5" />
+               </padding>
             </HBox>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
