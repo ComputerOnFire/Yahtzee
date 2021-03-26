@@ -31,7 +31,7 @@
                <children>
                   <ToggleButton fx:id = "die1" mnemonicParsing="false" onAction="#holdDie">
                      <graphic>
-                        <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@die1.png" />
                            </image>
@@ -43,7 +43,7 @@
                   </ToggleButton>
                   <ToggleButton fx:id = "die2" mnemonicParsing="false" onAction="#holdDie">
                      <graphic>
-                        <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@die2.png" />
                            </image>
@@ -55,7 +55,7 @@
                   </ToggleButton>
                   <ToggleButton fx:id = "die3" mnemonicParsing="false" onAction="#holdDie">
                      <graphic>
-                        <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@die3.png" />
                            </image>
@@ -71,7 +71,7 @@
                <children>
                   <ToggleButton fx:id = "die4" mnemonicParsing="false" onAction="#holdDie">
                      <graphic>
-                        <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@die4.png" />
                            </image>
@@ -83,7 +83,7 @@
                   </ToggleButton>
                   <ToggleButton fx:id = "die5" mnemonicParsing="false" onAction="#holdDie">
                      <graphic>
-                        <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@die5.png" />
                            </image>
