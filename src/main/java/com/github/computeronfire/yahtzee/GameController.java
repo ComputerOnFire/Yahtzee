@@ -130,13 +130,13 @@ public class GameController {
         primaryStage.show();
     }
 
-    public void holdDie(ActionEvent actionEvent) {
+    private void holdDie(ActionEvent actionEvent) {
         ToggleButton dieButton = (ToggleButton) actionEvent.getSource();
         int id = Integer.parseInt(dieButton.getId().substring("die".length())) - 1;
         dice.diceArray[id].hold((!dice.diceArray[id].held));
     }
 
-    public void rollDice(ActionEvent actionEvent) {
+    private void rollDice(ActionEvent actionEvent) { //TODO: move hold logic to Dice class?
         for (int i = 0; i < dice.diceArray.length; i++){
             if(!dice.diceArray[i].held){
                 dice.diceArray[i].rollDie();
@@ -164,7 +164,7 @@ public class GameController {
             }
         }
     }
-    public void setDieImage(ToggleButton die, int dieFace){
+    private void setDieImage(ToggleButton die, int dieFace){
         if(die.isDisabled()){
             die.setDisable(false);
         }
