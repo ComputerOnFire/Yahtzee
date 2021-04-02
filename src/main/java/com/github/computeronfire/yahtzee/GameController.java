@@ -121,7 +121,6 @@ public class GameController {
      */
     public void exitToMenu(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/yahtzeeMenu.fxml"));
-
         Parent parent  = fxmlLoader.load();
         //MenuController controller = fxmlLoader.getController();
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
