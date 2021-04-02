@@ -200,4 +200,10 @@ public class GameController {
         iview.setPickOnBounds(true);
         die.setGraphic(iview);
     }
+    private void keepScore(){//TODO: when score is clicked, keep said score
+
+    }
+    private void enableScore(){//TODO: highlight which scores are valid and available for keeping
+
+    }
 }
