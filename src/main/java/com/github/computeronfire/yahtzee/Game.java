@@ -72,8 +72,60 @@ public class Game {
             return die;
         }
     }
+
     public int[] scoreCard(){
-        int[] scores = new int[8];
+        int[] scores = new int[18];
+        for (int i = 1; i < scores.length; ++i){
+            if(i <= 6){ //singles for 1-6
+                scores[i-1] = faceSum(i);
+            }
+            else{
+                switch(i){//get rest of the scores
+                    case 7:
+                        //Sum
+                        break;
+                    case 8:
+                        //Bonus
+                        break;
+                    case 9:
+                        //Upper Total
+                        break;
+                    case 10:
+                        //Three of a Kind
+                        break;
+                    case 11:
+                        //Four of a Kind
+                        break;
+                    case 12:
+                        //Small Straight
+                        break;
+                    case 13:
+                        //Large Straight
+                        break;
+                    case 14:
+                        //Yahtzee!
+                        break;
+                    case 15:
+                        //Chance (total of all 5, no conditions)
+                        break;
+                    case 16:
+                        //Yahtzee Bonus (check count only)
+                        break;
+                    case 17:
+                        //Yahtzee Bonus (score)
+                        break;
+                    case 18:
+                        //Lower Total
+                        break;
+                    case 19:
+                        //Grand Total
+                        break;
+                    default:
+                        //should never happen
+                        break;
+                }
+            }
+        }
         return scores;
     }
 }
