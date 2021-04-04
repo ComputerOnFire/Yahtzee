@@ -1,6 +1,5 @@
 package com.github.computeronfire.yahtzee;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,12 +43,12 @@ public class Game {
     private Map<Integer, Integer> repetition() {//calculates how many times each die repeats
         Map<Integer, Integer> repetitions = new HashMap<Integer, Integer>;
         for (int die : dice){
-            Integer repitition = repetitions.get(die);
-            if(repitition == null){
+            Integer repetition = repetitions.get(die);
+            if(repetition == null){
                 repetitions.put(die, 1);
             }
             else{
-                repetitions.put(die, repitition + 1);
+                repetitions.put(die, repetition + 1);
             }
         }
         return repetitions;
