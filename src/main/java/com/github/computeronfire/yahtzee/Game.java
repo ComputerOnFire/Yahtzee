@@ -54,7 +54,7 @@ public class Game {
         return repetitions;
     }
 
-    private int bestCombo(int threshold){//returns the highest value repeating die, given the minimum threshold. Returns 0 if no repeating dice meet the minimum threshold
+    private int bestRepetition(int threshold){//returns the highest value repeating die, given the minimum threshold. Returns 0 if no repeating dice meet the minimum threshold
         Map<Integer, Integer> frequency = repetition();
         int mostFrequent = 0;
         for(Map.Entry<Integer, Integer> die : frequency.entrySet()) {
