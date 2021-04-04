@@ -40,7 +40,7 @@ public class Game {
         return x;
     }
 
-    private Map<Integer, Integer> repetition() {//calculates how many times each die repeats
+    private Map<Integer, Integer> repetition() {//constructs a map for how many times each die repeats
         Map<Integer, Integer> repetitions = new HashMap<Integer, Integer>;
         for (int die : dice){
             Integer repetition = repetitions.get(die);
@@ -54,24 +54,14 @@ public class Game {
         return repetitions;
     }
 
-    private int mostFrequentDie(int[] dice){//returns value of the most frequently repeating die TODO: will be re-written with repititon map
-        Arrays.sort(dice);
-        int current = 1;
-        int maximum = 1;
-        int mostFrequent = dice[0];
-        int last = dice[0];
-
-        for (int i = 0; i < dice.length - 1; i++){
-            if (dice[0] == last){
-                current++;
-            }
-            else{
-                if (current > maximum){
-                    mostFrequent = dice[i];
-                    maximum = current;
+    private int bestCombo(int threshold){//returns the highest value repeating die, given the minimum threshold. Returns 0 if no repeating dice meet the minimum threshold
+        Map<Integer, Integer> frequency = repetition();
+        int mostFrequent = 0;
+        for(Map.Entry<Integer, Integer> die : frequency.entrySet()) {
+            if (die.getValue() >= threshold){
+                if (mostFrequent == 0 || die.getKey() > mostFrequent){
+                    mostFrequent = die.getKey();
                 }
-                last = dice[i+1];
-                current = 1;
             }
         }
         return mostFrequent;
