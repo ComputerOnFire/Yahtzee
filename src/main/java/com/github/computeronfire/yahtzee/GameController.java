@@ -5,6 +5,7 @@
 package com.github.computeronfire.yahtzee;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -119,7 +120,9 @@ public class GameController {
      * Returns to the Start Menu when the "Main Menu" button is pressed.
      * Will end the current game. This may be changed to prompt the user to save the game.
      */
-    public void exitToMenu(ActionEvent actionEvent) throws IOException {
+
+    @FXML
+    private void exitToMenu(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/yahtzeeMenu.fxml"));
         Parent parent  = fxmlLoader.load();
         //MenuController controller = fxmlLoader.getController();
@@ -129,12 +132,14 @@ public class GameController {
         primaryStage.show();
     }
 
+    @FXML
     private void holdDie(ActionEvent actionEvent) {
         ToggleButton dieButton = (ToggleButton) actionEvent.getSource();
         int id = Integer.parseInt(dieButton.getId().substring("die".length())) - 1;
         dice.diceArray[id].hold((!dice.diceArray[id].held));
     }
 
+    @FXML
     private void rollDice(ActionEvent actionEvent) { //TODO: move hold logic to Dice class?
         for (int i = 0; i < dice.diceArray.length; i++){
             if(!dice.diceArray[i].held){
@@ -163,6 +168,7 @@ public class GameController {
             }
         }
     }
+
     private void setDieImage(ToggleButton die, int dieFace){
         if(die.isDisabled()){
             die.setDisable(false);
