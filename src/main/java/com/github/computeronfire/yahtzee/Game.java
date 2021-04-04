@@ -36,8 +36,8 @@ public class Game {
         return sum;
     }
 
-    private Map<Integer, Integer> repetition() {//constructs a map for how many times each die repeats
-        Map<Integer, Integer> repetitions = new HashMap<Integer, Integer>;
+    private Map<Integer, Integer> repetition() {//constructs a Key, Value Map for how many times each die repeats
+        Map<Integer, Integer> repetitions = new HashMap<Integer, Integer>();
         for (int die : dice){
             Integer repetition = repetitions.get(die);
             if(repetition == null){
