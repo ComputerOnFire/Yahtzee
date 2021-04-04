@@ -144,33 +144,33 @@ public class GameController {
     private void holdDie(ActionEvent actionEvent) {
         ToggleButton dieButton = (ToggleButton) actionEvent.getSource();
         int id = Integer.parseInt(dieButton.getId().substring("die".length())) - 1;
-        dice.diceArray[id].hold((!dice.diceArray[id].held));
+        dice.diceArray[id].hold((!dice.diceArray[id].isHeld()));
     }
 
     @FXML
     private void rollDice(ActionEvent actionEvent) { //TODO: move hold logic to Dice class?
         for (int i = 0; i < dice.diceArray.length; i++){
-            if(!dice.diceArray[i].held){
+            if(!dice.diceArray[i].isHeld()){
                 dice.diceArray[i].rollDie();
                 switch(i){
                     case 0:
-                        setDieImage(die1, dice.diceArray[i].face);
+                        setDieImage(die1, dice.diceArray[i].getFace());
                         break;
                     case 1:
-                        setDieImage(die2, dice.diceArray[i].face);
+                        setDieImage(die2, dice.diceArray[i].getFace());
                         break;
                     case 2:
-                        setDieImage(die3, dice.diceArray[i].face);
+                        setDieImage(die3, dice.diceArray[i].getFace());
                         break;
                     case 3:
-                        setDieImage(die4, dice.diceArray[i].face);
+                        setDieImage(die4, dice.diceArray[i].getFace());
                         break;
                     case 4:
-                        setDieImage(die5, dice.diceArray[i].face);
+                        setDieImage(die5, dice.diceArray[i].getFace());
                         break;
                     default:
                         /** should never happen */
-                        setDieImage(null, dice.diceArray[i].face);
+                        setDieImage(null, dice.diceArray[i].getFace());
                         break;
                 }
             }
