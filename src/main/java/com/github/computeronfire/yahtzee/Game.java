@@ -36,10 +36,6 @@ public class Game {
         return sum;
     }
 
-    private int xOfAKind(int x){ //returns the sum of a X of a kind combination of dice, (3 of a kind, 4 of a kind) TODO: implement xOfAKind
-        return x;
-    }
-
     private Map<Integer, Integer> repetition() {//constructs a map for how many times each die repeats
         Map<Integer, Integer> repetitions = new HashMap<Integer, Integer>;
         for (int die : dice){
@@ -65,5 +61,15 @@ public class Game {
             }
         }
         return mostFrequent;
+    }
+
+    private int xOfAKind(int x){ //returns the sum of a X of a kind combination of dice, (3 of a kind, 4 of a kind) TODO: implement xOfAKind
+        int die = bestRepetition(x);
+        if(die != 0){
+            return die * x;
+        }
+        else{
+            return die;
+        }
     }
 }
