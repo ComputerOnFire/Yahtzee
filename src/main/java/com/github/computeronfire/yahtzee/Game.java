@@ -41,18 +41,18 @@ public class Game {
         return x;
     }
 
-    private Map<Integer, Integer> repitition() {//calculates how many times each die repeats
-        Map<Integer, Integer> repititions = new HashMap<Integer, Integer>;
+    private Map<Integer, Integer> repetition() {//calculates how many times each die repeats
+        Map<Integer, Integer> repetitions = new HashMap<Integer, Integer>;
         for (int die : dice){
-            Integer repitition = repititions.get(die);
+            Integer repitition = repetitions.get(die);
             if(repitition == null){
-                repititions.put(die, 1);
+                repetitions.put(die, 1);
             }
             else{
-                repititions.put(die, repitition + 1);
+                repetitions.put(die, repitition + 1);
             }
         }
-        return repititions;
+        return repetitions;
     }
 
     private int mostFrequentDie(int[] dice){//returns value of the most frequently repeating die TODO: will be re-written with repititon map
