@@ -72,4 +72,8 @@ public class Game {
             return die;
         }
     }
+    public int[] scoreCard(){
+        int[] scores = new int[8];
+        return scores;
+    }
 }
