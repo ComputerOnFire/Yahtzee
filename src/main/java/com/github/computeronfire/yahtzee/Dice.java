@@ -7,7 +7,7 @@ public class Dice {
      */
     public Die[] diceArray = new Die[5];
     public Dice() {
-        for (int i = 0; i < diceArray.length; i++) {
+        for (int i = 0; i < diceArray.length; ++i) {
             diceArray[i] = new Die();
         }
     }
