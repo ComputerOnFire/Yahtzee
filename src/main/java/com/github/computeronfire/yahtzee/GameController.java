@@ -28,17 +28,21 @@ public class GameController {
     public Label p1fours;
     public Label p1fives;
     public Label p1sixes;
-    public Label p1upperTotal;
-    public Label p1bonus;  /** Player 1 scores */
+    public Label p1sum;
+    public Label p1bonus;
+    public Label p1upperTotal; /** Player 1 scores */
     public Label p1threeOfAKind;
     public Label p1fourOfAKind;
     public Label p1fullHouse;
     public Label p1smallStraight;
     public Label p1largeStraight;
     public Label p1yahtzee;
+    public Label p1yahtzeeBoxes;
+    public Label p1yahtzeeBonus;
     public Label p1chance;
     public Label p1lowerTotal;
     public Label p1grandTotal;
+
     public Label p2name; /** Player 2 name */
     public Label p2ones;
     public Label p2twos;
@@ -46,14 +50,17 @@ public class GameController {
     public Label p2fours;
     public Label p2fives;
     public Label p2sixes;
-    public Label p2upperTotal;
-    public Label p2bonus;  /** Player 2 scores */
+    public Label p2sum;
+    public Label p2bonus;
+    public Label p2upperTotal; /** Player 2 scores */
     public Label p2threeOfAKind;
     public Label p2fourOfAKind;
     public Label p2fullHouse;
     public Label p2smallStraight;
     public Label p2largeStraight;
     public Label p2yahtzee;
+    public Label p2yahtzeeBoxes;
+    public Label p2yahtzeeBonus;
     public Label p2chance;
     public Label p2lowerTotal;
     public Label p2grandTotal;
@@ -92,8 +99,9 @@ public class GameController {
         p1fours.setText("test");
         p1fives.setText("test");
         p1sixes.setText("test");
-        p1upperTotal.setText("test");
+        p1sum.setText("test");
         p1bonus.setText("test");
+        p1upperTotal.setText("test");
         p1threeOfAKind.setText("test");
         p1fourOfAKind.setText("test");
         p1fullHouse.setText("test");
@@ -101,6 +109,8 @@ public class GameController {
         p1largeStraight.setText("test");
         p1yahtzee.setText("test");
         p1chance.setText("test");
+        p1yahtzeeBoxes.setText("test");
+        p1yahtzeeBonus.setText("test");
         p1lowerTotal.setText("test");
         p1grandTotal.setText("test");
 
@@ -111,8 +121,9 @@ public class GameController {
         p2fours.setText("test");
         p2fives.setText("test");
         p2sixes.setText("test");
-        p2upperTotal.setText("test");
+        p2sum.setText("test");
         p2bonus.setText("test");
+        p2upperTotal.setText("test");
         p2threeOfAKind.setText("test");
         p2fourOfAKind.setText("test");
         p2fullHouse.setText("test");
@@ -120,6 +131,8 @@ public class GameController {
         p2largeStraight.setText("test");
         p2yahtzee.setText("test");
         p2chance.setText("test");
+        p2yahtzeeBoxes.setText("test");
+        p2yahtzeeBonus.setText("test");
         p2lowerTotal.setText("test");
         p2grandTotal.setText("test");
     }

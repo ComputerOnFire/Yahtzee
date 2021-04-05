@@ -140,17 +140,21 @@
             <Label alignment="CENTER_RIGHT" text="Fours" GridPane.rowIndex="4" />
             <Label alignment="CENTER_RIGHT" text="Fives" GridPane.rowIndex="5" />
             <Label alignment="CENTER_RIGHT" text="Sixes" GridPane.rowIndex="6" />
-            <Label alignment="CENTER_RIGHT" text="UpperTotal" GridPane.rowIndex="7" />
+            <Label alignment="CENTER_RIGHT" text="Sum" GridPane.rowIndex="7" />
             <Label alignment="CENTER_RIGHT" text="Bonus" GridPane.rowIndex="8" />
-            <Label alignment="CENTER_RIGHT" text="ThreeOfAKind" GridPane.rowIndex="9" />
-            <Label alignment="CENTER_RIGHT" text="FourOfAKind" GridPane.rowIndex="10" />
-            <Label alignment="CENTER_RIGHT" text="FullHouse" GridPane.rowIndex="11" />
-            <Label alignment="CENTER_RIGHT" text="SmallStaight" GridPane.rowIndex="12" />
-            <Label alignment="CENTER_RIGHT" text="LargeStraight" GridPane.rowIndex="13" />
-            <Label alignment="CENTER_RIGHT" text="Yahtzee!" GridPane.rowIndex="14" />
-            <Label alignment="CENTER_RIGHT" text="Chance" GridPane.rowIndex="15" />
-            <Label alignment="CENTER_RIGHT" text="LowerTotal" GridPane.rowIndex="16" />
-            <Label alignment="CENTER_RIGHT" text="GrandTotal" GridPane.rowIndex="17" />
+            <Label alignment="CENTER_RIGHT" text="UpperTotal" GridPane.rowIndex="9" />
+            <Label alignment="CENTER_RIGHT" text="ThreeOfAKind" GridPane.rowIndex="10" />
+            <Label alignment="CENTER_RIGHT" text="FourOfAKind" GridPane.rowIndex="11" />
+            <Label alignment="CENTER_RIGHT" text="FullHouse" GridPane.rowIndex="12" />
+            <Label alignment="CENTER_RIGHT" text="SmallStaight" GridPane.rowIndex="13" />
+            <Label alignment="CENTER_RIGHT" text="LargeStraight" GridPane.rowIndex="14" />
+            <Label alignment="CENTER_RIGHT" text="Yahtzee!" GridPane.rowIndex="15" />
+            <Label alignment="CENTER_RIGHT" text="Chance" GridPane.rowIndex="16" />
+            <Label alignment="CENTER_RIGHT" text="Yahtzee! Bonuses" GridPane.rowIndex="17" />
+            <Label alignment="CENTER_RIGHT" text="Yahtzee! Bonus" GridPane.rowIndex="18" />
+            <Label alignment="CENTER_RIGHT" text="LowerTotal" GridPane.rowIndex="19" />
+            <Label alignment="CENTER_RIGHT" text="GrandTotal" GridPane.rowIndex="20" />
+
             <Label fx:id="p1name" styleClass="score" GridPane.columnIndex="1" />
             <Label fx:id="p1ones" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="p1twos" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -158,17 +162,21 @@
             <Label fx:id="p1fours" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label fx:id="p1fives" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label fx:id="p1sixes" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label fx:id="p1upperTotal" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="p1sum" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Label fx:id="p1bonus" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Label fx:id="p1threeOfAKind" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Label fx:id="p1fourOfAKind" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <Label fx:id="p1fullHouse" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-            <Label fx:id="p1smallStraight" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <Label fx:id="p1largeStraight" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-            <Label fx:id="p1yahtzee" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-            <Label fx:id="p1chance" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="15" />
-            <Label fx:id="p1lowerTotal" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="16" />
-            <Label fx:id="p1grandTotal" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+            <Label fx:id="p1upperTotal" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label fx:id="p1threeOfAKind" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Label fx:id="p1fourOfAKind" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Label fx:id="p1fullHouse" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <Label fx:id="p1smallStraight" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+            <Label fx:id="p1largeStraight" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+            <Label fx:id="p1yahtzee" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+            <Label fx:id="p1chance" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+            <Label fx:id="p1yahtzeeBoxes" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+            <Label fx:id="p1yahtzeeBonus" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+            <Label fx:id="p1lowerTotal" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="19" />
+            <Label fx:id="p1grandTotal" styleClass="score" GridPane.columnIndex="1" GridPane.rowIndex="20" />
+
             <Label fx:id="p2name" styleClass="score" GridPane.columnIndex="2" />
             <Label fx:id="p2ones" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label fx:id="p2twos" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="2" />
@@ -176,17 +184,20 @@
             <Label fx:id="p2fours" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Label fx:id="p2fives" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <Label fx:id="p2sixes" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Label fx:id="p2upperTotal" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label fx:id="p2sum" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="7" />
             <Label fx:id="p2bonus" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-            <Label fx:id="p2threeOfAKind" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-            <Label fx:id="p2fourOfAKind" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="10" />
-            <Label fx:id="p2fullHouse" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="11" />
-            <Label fx:id="p2smallStraight" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="12" />
-            <Label fx:id="p2largeStraight" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="13" />
-            <Label fx:id="p2yahtzee" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="14" />
-            <Label fx:id="p2chance" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="15" />
-            <Label fx:id="p2lowerTotal" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="16" />
-            <Label fx:id="p2grandTotal" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="17" />
+            <Label fx:id="p2upperTotal" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+            <Label fx:id="p2threeOfAKind" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+            <Label fx:id="p2fourOfAKind" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+            <Label fx:id="p2fullHouse" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+            <Label fx:id="p2smallStraight" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+            <Label fx:id="p2largeStraight" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+            <Label fx:id="p2yahtzee" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="15" />
+            <Label fx:id="p2chance" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="16" />
+            <Label fx:id="p2yahtzeeBoxes" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="17" />
+            <Label fx:id="p2yahtzeeBonus" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="18" />
+            <Label fx:id="p2lowerTotal" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="19" />
+            <Label fx:id="p2grandTotal" styleClass="score" GridPane.columnIndex="2" GridPane.rowIndex="20" />
          </children>
       </GridPane>
    </items>
