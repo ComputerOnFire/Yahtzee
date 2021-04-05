@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GameController {
-    //TODO: make these private, annotate with @FXML
+    //TODO: make these private, annotate with @FXML, rename to camelcase
     public Label testBox;
     public Label p1name; /** Player 1 name */
     public Label p1ones;
