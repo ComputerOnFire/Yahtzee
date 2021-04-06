@@ -9,28 +9,31 @@ import java.util.Map;
  * Requirements: Game Functionality, Tally Scores, Follow Yahtzee Rules
  */
 
-public class Game {
-    private int[] dice;
+public class ScoreCard {
+    private Die[] dice;
+    private int[] scores; //must be size of 20
+
     /**
      * Constructs an array of dice values (int 1-6) that will be used to calculate the scores.
      * */
-    public Game (int[] dice){
+    public ScoreCard(Die[] dice, int[] scores){
         this.dice = dice;
+        this.scores = scores;
     }
 
     private int chance(){ //return sum of all dice
         int sum = 0;
-        for (int face : dice){
-            sum += face;
+        for (Die die : dice){
+            sum += die.getFace();
         }
         return sum;
     }
 
     private int faceSum(int value){//return sum of a all dice with certain face value
         int sum = 0;
-        for (int face : dice){
-            if (face == value){
-                sum += face;
+        for (Die die : dice){
+            if (die.getFace() == value){
+                sum += die.getFace();
             }
         }
         return sum;
@@ -38,13 +41,13 @@ public class Game {
 
     private Map<Integer, Integer> repetition() {//constructs a Key, Value map for how many times each die repeats
         Map<Integer, Integer> repetitions = new HashMap<Integer, Integer>();
-        for (int die : dice){
-            Integer repetition = repetitions.get(die);
+        for (Die die : dice){
+            Integer repetition = repetitions.get(die.getFace());
             if(repetition == null){
-                repetitions.put(die, 1);
+                repetitions.put(die.getFace(), 1);
             }
             else{
-                repetitions.put(die, repetition + 1);
+                repetitions.put(die.getFace(), repetition + 1);
             }
         }
         return repetitions;
@@ -93,8 +96,7 @@ public class Game {
         return 20;
     }
 
-    public int[] scoreCard(){//TODO: decide if switch should be refactored into functions
-        int[] scores = new int[19];
+    public int[] getScores(){//TODO: decide if switch should be refactored into functions
         for (int i = 0; i < scores.length; ++i){
             switch (i) {//get rest of the scores
                 default: //singles scores for die faces 1-6 (case 0-5)
@@ -176,11 +178,7 @@ public class Game {
                     break;
                 case 19:
                     //Grand Total
-                    int grandTotal = 0;
-                    for (int l = 0; l < i; ++l) {
-                        grandTotal += scores[l];
-                    }
-                    scores[i] = grandTotal;
+                    scores[i] = scores[8] + scores[18];
                     break;
             }
         }
