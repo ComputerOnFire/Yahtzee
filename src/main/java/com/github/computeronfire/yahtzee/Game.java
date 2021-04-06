@@ -74,10 +74,10 @@ public class Game {
     }
 
     public int[] scoreCard(){
-        int[] scores = new int[18];
-        for (int i = 1; i < scores.length; ++i){
-            if(i <= 6){ //singles for 1-6
-                scores[i-1] = faceSum(i);
+        int[] scores = new int[19];
+        for (int i = 0; i < scores.length; ++i){
+            if(i <= 5){ //singles for 1-6
+                scores[i] = faceSum(i+1);
             }
             else{
                 switch(i){//get rest of the scores
@@ -103,34 +103,34 @@ public class Game {
                         //Sum + Bonus
                         scores[i] = scores[6] + scores[7];
                         break;
-                    case 10:
+                    case 9:
                         //Three of a Kind
                         break;
-                    case 11:
+                    case 10:
                         //Four of a Kind
                         break;
-                    case 12:
+                    case 11:
                         //Small Straight
                         break;
-                    case 13:
+                    case 12:
                         //Large Straight
                         break;
-                    case 14:
+                    case 13:
                         //Yahtzee!
                         break;
-                    case 15:
+                    case 14:
                         //Chance (total of all 5, no conditions)
                         break;
-                    case 16:
+                    case 15:
                         //Yahtzee Bonus (check count only)
                         break;
-                    case 17:
+                    case 16:
                         //Yahtzee Bonus (score)
                         break;
-                    case 18:
+                    case 17:
                         //Lower Total
                         break;
-                    case 19:
+                    case 18:
                         //Grand Total
                         break;
                     default:
