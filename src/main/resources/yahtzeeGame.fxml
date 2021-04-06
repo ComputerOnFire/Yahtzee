@@ -21,7 +21,7 @@
                          <Label fx:id="testBox" />
                   <VBox>
                      <children>
-                         <Button onAction="#testDisplayScores" prefHeight="33.0" prefWidth="45.0" text="Test" />
+                         <Button onAction="#testScoreFields" prefHeight="33.0" prefWidth="45.0" text="Test" />
                      </children>
                   </VBox>
 

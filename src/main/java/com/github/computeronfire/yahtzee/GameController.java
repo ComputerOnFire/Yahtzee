@@ -71,6 +71,9 @@ public class GameController {
      */
 
     private Dice dice = new Dice();
+    int[] p1Score = new int[20];
+    int[] p2Score = new int[20];
+
 
     @FXML
     private ToggleButton die1;
@@ -89,7 +92,7 @@ public class GameController {
      */
 
     @FXML
-    private void testDisplayScores(ActionEvent actionEvent) {
+    private void testScoreFields(ActionEvent actionEvent) {
         testBox.setText("This is Yahztee!");
 
         p1name.setText("Player 1");
@@ -135,6 +138,56 @@ public class GameController {
         p2yahtzeeBonus.setText("test");
         p2lowerTotal.setText("test");
         p2grandTotal.setText("test");
+
+
+    }
+    @FXML
+    private void updateScores(Die[] dice){ //change dice to player? use player here?
+        ScoreCard score1 = new ScoreCard(dice,p1Score);
+        p1Score = score1.getScores();
+        enableScore(p1Score[0],p1ones);
+        enableScore(p1Score[1],p1twos);
+        enableScore(p1Score[2],p1threes);
+        enableScore(p1Score[3],p1fours);
+        enableScore(p1Score[4],p1fives);
+        enableScore(p1Score[5],p1sixes);
+        enableScore(p1Score[6],p1sum);
+        enableScore(p1Score[7],p1bonus);
+        enableScore(p1Score[8],p1upperTotal);
+        enableScore(p1Score[9],p1threeOfAKind);
+        enableScore(p1Score[10],p1fourOfAKind);
+        enableScore(p1Score[11],p1fullHouse);
+        enableScore(p1Score[12],p1smallStraight);
+        enableScore(p1Score[13],p1largeStraight);
+        enableScore(p1Score[14],p1yahtzee);
+        enableScore(p1Score[15],p1chance);
+        enableScore(p1Score[16],p1yahtzeeBoxes);
+        enableScore(p1Score[17],p1yahtzeeBonus);
+        enableScore(p1Score[18],p1lowerTotal);
+        enableScore(p1Score[19],p1grandTotal);
+
+        ScoreCard score2 = new ScoreCard(dice,p2Score);
+        p2Score = score2.getScores();
+        enableScore(p2Score[0],p2ones);
+        enableScore(p2Score[1],p2twos);
+        enableScore(p2Score[2],p2threes);
+        enableScore(p2Score[3],p2fours);
+        enableScore(p2Score[4],p2fives);
+        enableScore(p2Score[5],p2sixes);
+        enableScore(p2Score[6],p2sum);
+        enableScore(p2Score[7],p2bonus);
+        enableScore(p2Score[8],p2upperTotal);
+        enableScore(p2Score[9],p2threeOfAKind);
+        enableScore(p2Score[10],p2fourOfAKind);
+        enableScore(p2Score[12],p2fullHouse);
+        enableScore(p2Score[12],p2smallStraight);
+        enableScore(p2Score[13],p2largeStraight);
+        enableScore(p2Score[14],p2yahtzee);
+        enableScore(p2Score[15],p2chance);
+        enableScore(p2Score[16],p2yahtzeeBoxes);
+        enableScore(p2Score[17],p2yahtzeeBonus);
+        enableScore(p2Score[18],p2lowerTotal);
+        enableScore(p2Score[19],p2grandTotal);
     }
 
     /**
@@ -188,6 +241,7 @@ public class GameController {
                 }
             }
         }
+        updateScores(dice.diceArray);
     }
 
     private void setDieImage(ToggleButton die, int dieFace){
@@ -230,7 +284,8 @@ public class GameController {
     private void keepScore(){//TODO: when score is clicked, keep said score
 
     }
-    private void enableScore(){//TODO: highlight which scores are valid and available for keeping
-
+    private void enableScore(int score, Label label){//TODO: highlight which scores are valid and available for keeping
+        String text = Integer.toString(score);
+        label.setText(text);
     }
 }
