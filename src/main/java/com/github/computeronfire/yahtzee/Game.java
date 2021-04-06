@@ -81,14 +81,27 @@ public class Game {
             }
             else{
                 switch(i){//get rest of the scores
+                    case 6:
+                        //Sum of all single face scores
+                        scores[i] = sum();
+                        break;
                     case 7:
-                        //Sum
+                        //Bonus score of 35 if sum is over 63
+                        int sum = 0;
+                        for (int j = 0; j < 7; ++j){
+                            sum += scores[i];
+                        }
+                        if (sum >= 63){
+                            scores[i] = 35;
+                        }
+                        else{
+                            scores[i] = 0;
+                        }
                         break;
                     case 8:
-                        //Bonus
-                        break;
-                    case 9:
                         //Upper Total
+                        //Sum + Bonus
+                        scores[i] = scores[6] + scores[7];
                         break;
                     case 10:
                         //Three of a Kind
