@@ -179,7 +179,7 @@ public class GameController {
         enableScore(p2Score[8],p2upperTotal);
         enableScore(p2Score[9],p2threeOfAKind);
         enableScore(p2Score[10],p2fourOfAKind);
-        enableScore(p2Score[12],p2fullHouse);
+        enableScore(p2Score[11],p2fullHouse);
         enableScore(p2Score[12],p2smallStraight);
         enableScore(p2Score[13],p2largeStraight);
         enableScore(p2Score[14],p2yahtzee);
