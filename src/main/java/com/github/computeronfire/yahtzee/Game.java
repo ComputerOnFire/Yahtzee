@@ -136,11 +136,11 @@ public class Game {
                             scores[i] = 0;
                         }
                         //Small Straight
-
+                        scores[i] = smallStraight();
                         break;
                     case 13:
                         //Large Straight
-
+                        scores[i] = largeStraight();
                         break;
                     case 14:
                         //Yahtzee!
