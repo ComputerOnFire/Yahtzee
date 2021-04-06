@@ -50,26 +50,26 @@ public class Game {
         return repetitions;
     }
 
-    private int bestRepetition(int threshold){//returns the highest value repeating die, given the minimum threshold. Returns 0 if no repeating dice meet the minimum threshold
-        Map<Integer, Integer> frequency = repetition();
-        int mostFrequent = 0;
-        for(Map.Entry<Integer, Integer> die : frequency.entrySet()) {
-            if (die.getValue() >= threshold){
-                if (mostFrequent == 0 || die.getKey() > mostFrequent){
-                    mostFrequent = die.getKey();
+    private int bestOfAKind(int x){//returns the highest value repeating die, given the minimum threshold. Returns 0 if no repeating dice meet the minimum threshold x, used in xOfAKind()
+        Map<Integer, Integer> repetition = repetition();
+        int mostFrequentDie = 0;
+        for(Map.Entry<Integer, Integer> die : repetition.entrySet()) {
+            if (die.getValue() >= x){
+                if (mostFrequentDie == 0 || die.getKey() > mostFrequentDie){
+                    mostFrequentDie = die.getKey();
                 }
             }
         }
-        return mostFrequent;
+        return mostFrequentDie;
     }
 
-    private int xOfAKind(int x){ //returns the sum of a X of a kind combination of dice, (3 of a kind, 4 of a kind) TODO: implement xOfAKind
-        int die = bestRepetition(x);
+    private int xOfAKind(int x){ //returns the sum of a X of a kind combination of dice, (3 of a kind, 4 of a kind), returns 0 if no combination of X is available.
+        int die = bestOfAKind(x);
         if(die != 0){
             return die * x;
         }
         else{
-            return die;
+            return 0;
         }
     }
 
