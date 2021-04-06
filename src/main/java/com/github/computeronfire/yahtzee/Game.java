@@ -120,7 +120,7 @@ public class Game {
                         scores[i] = xOfAKind(4);
                         break;
                     case 11:
-                      //Full house
+                        //Full house
                         if(xOfAKind(3) > 0 && xOfAKind(2) > 0){
                             scores[i] = xOfAKind(3) + xOfAKind(2);
                         }
