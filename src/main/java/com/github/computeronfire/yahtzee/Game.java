@@ -18,7 +18,7 @@ public class Game {
         this.dice = dice;
     }
 
-    private int sum(){ //return sum of all dice
+    private int chance(){ //return sum of all dice
         int sum = 0;
         for (int face : dice){
             sum += face;
@@ -83,15 +83,15 @@ public class Game {
                 switch(i){//get rest of the scores
                     case 6:
                         //Sum of all single face scores
-                        scores[i] = sum();
+                        int sum = 0;
+                        for (int j = 0; j < 6; ++j){
+                            sum += scores[j];
+                        }
+                        scores[i] = sum;
                         break;
                     case 7:
                         //Bonus score of 35 if sum is over 63
-                        int sum = 0;
-                        for (int j = 0; j < 7; ++j){
-                            sum += scores[i];
-                        }
-                        if (sum >= 63){
+                        if (scores[6] >= 63){
                             scores[i] = 35;
                         }
                         else{
@@ -134,7 +134,7 @@ public class Game {
                         break;
                     case 15:
                         //Chance (total of all 5, no conditions)
-
+                        scores[i] = chance();
                         break;
                     case 16:
                         //Yahtzee Bonus (check count only)
