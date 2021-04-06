@@ -73,6 +73,14 @@ public class Game {
         }
     }
 
+    private int smallStraight(){//TODO: implement small Straight
+        return 0;
+    }
+
+    private int largeStraight(){//TODO: implement large Straight
+        return 0;
+    }
+
     public int[] scoreCard(){
         int[] scores = new int[19];
         for (int i = 0; i < scores.length; ++i){
