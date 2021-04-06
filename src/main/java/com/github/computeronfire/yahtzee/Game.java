@@ -51,9 +51,9 @@ public class Game {
     }
 
     private int bestOfAKind(int x){//returns the highest value repeating die, given the minimum threshold. Returns 0 if no repeating dice meet the minimum threshold x, used in xOfAKind()
-        Map<Integer, Integer> repetition = repetition();
+        Map<Integer, Integer> repetitions = repetition();
         int mostFrequentDie = 0;
-        for(Map.Entry<Integer, Integer> die : repetition.entrySet()) {
+        for(Map.Entry<Integer, Integer> die : repetitions.entrySet()) {
             if (die.getValue() >= x){
                 if (mostFrequentDie == 0 || die.getKey() > mostFrequentDie){
                     mostFrequentDie = die.getKey();
@@ -105,33 +105,52 @@ public class Game {
                         break;
                     case 9:
                         //Three of a Kind
+                        scores[i] = xOfAKind(3);
                         break;
                     case 10:
                         //Four of a Kind
+                        scores[i] = xOfAKind(4);
                         break;
                     case 11:
-                        //Small Straight
+                      //Full house
                         break;
                     case 12:
-                        //Large Straight
+                        if(xOfAKind(3) > 0 && xOfAKind(2) > 0){
+                            scores[i] = xOfAKind(3) + xOfAKind(2);
+                        }
+                        else{
+                            scores[i] = 0;
+                        }
+                        //Small Straight
+
                         break;
                     case 13:
-                        //Yahtzee!
+                        //Large Straight
+
                         break;
                     case 14:
-                        //Chance (total of all 5, no conditions)
+                        //Yahtzee!
+
                         break;
                     case 15:
-                        //Yahtzee Bonus (check count only)
+                        //Chance (total of all 5, no conditions)
+
                         break;
                     case 16:
-                        //Yahtzee Bonus (score)
+                        //Yahtzee Bonus (check count only)
+
                         break;
                     case 17:
-                        //Lower Total
+                        //Yahtzee Bonus (score)
+
                         break;
                     case 18:
+                        //Lower Total
+
+                        break;
+                    case 19:
                         //Grand Total
+
                         break;
                     default:
                         //should never happen
