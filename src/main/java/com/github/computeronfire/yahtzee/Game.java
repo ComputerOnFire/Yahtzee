@@ -83,8 +83,14 @@ public class Game {
         return 15;
     }
 
-    private int largeStraight(){//TODO: implement large Straight
-        return 0;
+    private int largeStraight(){//TODO: test implementation of large Straight
+        Map<Integer, Integer> repetitions = repetition();
+        for(int die : repetitions.keySet()){
+            if(repetitions.get(die) > 1){
+                return 0;
+            }
+        }
+        return 20;
     }
 
     public int[] scoreCard(){//TODO: decide if switch should be refactored into functions
