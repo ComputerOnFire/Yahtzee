@@ -121,6 +121,12 @@ public class Game {
                         break;
                     case 11:
                       //Full house
+                        if(xOfAKind(3) > 0 && xOfAKind(2) > 0){
+                            scores[i] = xOfAKind(3) + xOfAKind(2);
+                        }
+                        else{
+                            scores[i] = 0;
+                        }
                         break;
                     case 12:
                         if(xOfAKind(3) > 0 && xOfAKind(2) > 0){
