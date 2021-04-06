@@ -73,8 +73,14 @@ public class Game {
         }
     }
 
-    private int smallStraight(){//TODO: implement small Straight
-        return 0;
+    private int smallStraight(){//TODO: test implementation of small Straight
+        Map<Integer, Integer> repetitions = repetition();
+        for(int die : repetitions.keySet()){
+            if(repetitions.get(die) > 2){
+                return 0;
+            }
+        }
+        return 15;
     }
 
     private int largeStraight(){//TODO: implement large Straight
