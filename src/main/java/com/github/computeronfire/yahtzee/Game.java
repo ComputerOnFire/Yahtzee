@@ -129,12 +129,6 @@ public class Game {
                         }
                         break;
                     case 12:
-                        if(xOfAKind(3) > 0 && xOfAKind(2) > 0){
-                            scores[i] = xOfAKind(3) + xOfAKind(2);
-                        }
-                        else{
-                            scores[i] = 0;
-                        }
                         //Small Straight
                         scores[i] = smallStraight();
                         break;
@@ -144,7 +138,12 @@ public class Game {
                         break;
                     case 14:
                         //Yahtzee!
-
+                        if(xOfAKind(5) > 0){
+                            scores[i] = 50;
+                        }
+                        else{
+                            scores[i] = 0;
+                        }
                         break;
                     case 15:
                         //Chance (total of all 5, no conditions)
