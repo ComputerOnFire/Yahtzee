@@ -52,15 +52,15 @@ public class Game {
 
     private int bestOfAKind(int x){//returns the highest value repeating die, given the minimum threshold. Returns 0 if no repeating dice meet the minimum threshold x, used in xOfAKind()
         Map<Integer, Integer> repetitions = repetition();
-        int mostFrequentDie = 0;
+        int bestRepeatingDie = 0;
         for(Map.Entry<Integer, Integer> die : repetitions.entrySet()) {
             if (die.getValue() >= x){
-                if (mostFrequentDie == 0 || die.getKey() > mostFrequentDie){
-                    mostFrequentDie = die.getKey();
+                if (bestRepeatingDie == 0 || die.getKey() > bestRepeatingDie){
+                    bestRepeatingDie = die.getKey();
                 }
             }
         }
-        return mostFrequentDie;
+        return bestRepeatingDie;
     }
 
     private int xOfAKind(int x){ //returns the sum of a X of a kind combination of dice, (3 of a kind, 4 of a kind), returns 0 if no combination of X is available.
