@@ -81,94 +81,95 @@ public class Game {
         return 0;
     }
 
-    public int[] scoreCard(){
+    public int[] scoreCard(){//TODO: decide if switch should be refactored into functions
         int[] scores = new int[19];
         for (int i = 0; i < scores.length; ++i){
-            if(i <= 5){ //singles for 1-6
-                scores[i] = faceSum(i+1);
-            }
-            else{
-                switch(i){//get rest of the scores
-                    case 6:
-                        //Sum of all single face scores
-                        int sum = 0;
-                        for (int j = 0; j < 6; ++j){
-                            sum += scores[j];
-                        }
-                        scores[i] = sum;
-                        break;
-                    case 7:
-                        //Bonus score of 35 if sum is over 63
-                        if (scores[6] >= 63){
-                            scores[i] = 35;
-                        }
-                        else{
-                            scores[i] = 0;
-                        }
-                        break;
-                    case 8:
-                        //Upper Total
-                        //Sum + Bonus
-                        scores[i] = scores[6] + scores[7];
-                        break;
-                    case 9:
-                        //Three of a Kind
-                        scores[i] = xOfAKind(3);
-                        break;
-                    case 10:
-                        //Four of a Kind
-                        scores[i] = xOfAKind(4);
-                        break;
-                    case 11:
-                        //Full house
-                        if(xOfAKind(3) > 0 && xOfAKind(2) > 0){
-                            scores[i] = xOfAKind(3) + xOfAKind(2);
-                        }
-                        else{
-                            scores[i] = 0;
-                        }
-                        break;
-                    case 12:
-                        //Small Straight
-                        scores[i] = smallStraight();
-                        break;
-                    case 13:
-                        //Large Straight
-                        scores[i] = largeStraight();
-                        break;
-                    case 14:
-                        //Yahtzee!
-                        if(xOfAKind(5) > 0){
-                            scores[i] = 50;
-                        }
-                        else{
-                            scores[i] = 0;
-                        }
-                        break;
-                    case 15:
-                        //Chance (total of all 5, no conditions)
-                        scores[i] = chance();
-                        break;
-                    case 16:
-                        //Yahtzee Bonus (check count only)
-
-                        break;
-                    case 17:
-                        //Yahtzee Bonus (score)
-
-                        break;
-                    case 18:
-                        //Lower Total
-
-                        break;
-                    case 19:
-                        //Grand Total
-
-                        break;
-                    default:
-                        //should never happen
-                        break;
-                }
+            switch (i) {//get rest of the scores
+                default: //singles scores for die faces 1-6 (case 0-5)
+                    scores[i] = faceSum(i + 1);
+                    break;
+                case 6:
+                    //Sum of all single face scores
+                    int sum = 0;
+                    for (int j = 0; j < i; ++j) {
+                        sum += scores[j];
+                    }
+                    scores[i] = sum;
+                    break;
+                case 7:
+                    //Bonus score of 35 if sum is over 63
+                    if (scores[6] >= 63) {
+                        scores[i] = 35;
+                    } else {
+                        scores[i] = 0;
+                    }
+                    break;
+                case 8:
+                    //Upper Total
+                    //Sum + Bonus
+                    scores[i] = scores[6] + scores[7];
+                    break;
+                //start of Lower section of scores
+                case 9:
+                    //Three of a Kind
+                    scores[i] = xOfAKind(3);
+                    break;
+                case 10:
+                    //Four of a Kind
+                    scores[i] = xOfAKind(4);
+                    break;
+                case 11:
+                    //Full house
+                    if (xOfAKind(3) > 0 && xOfAKind(2) > 0) {
+                        scores[i] = xOfAKind(3) + xOfAKind(2);
+                    } else {
+                        scores[i] = 0;
+                    }
+                    break;
+                case 12:
+                    //Small Straight
+                    scores[i] = smallStraight();
+                    break;
+                case 13:
+                    //Large Straight
+                    scores[i] = largeStraight();
+                    break;
+                case 14:
+                    //Yahtzee!
+                    if (xOfAKind(5) > 0) {
+                        scores[i] = 50;
+                    } else {
+                        scores[i] = 0;
+                    }
+                    break;
+                case 15:
+                    //Chance (total of all 5, no conditions)
+                    scores[i] = chance();
+                    break;
+                case 16://TODO: decide if yahtzee bonus should be removed
+                    //Yahtzee Bonus (check count only), might remove
+                    scores[i] = 0;
+                    break;
+                case 17:
+                    //Yahtzee Bonus (score), might remove
+                    scores[i] = 50 * scores[16];
+                    break;
+                case 18:
+                    //Lower Total
+                    int lowerTotal = 0;
+                    for (int k = 9; k < i; ++k) {
+                        lowerTotal += scores[k];
+                    }
+                    scores[i] = lowerTotal;
+                    break;
+                case 19:
+                    //Grand Total
+                    int grandTotal = 0;
+                    for (int l = 0; l < i; ++l) {
+                        grandTotal += scores[l];
+                    }
+                    scores[i] = grandTotal;
+                    break;
             }
         }
         return scores;
