@@ -71,8 +71,9 @@ public class GameController {
      */
 
     private Dice dice = new Dice();
-    int[] p1Score = new int[20];
-    int[] p2Score = new int[20];
+    private List<Player> players = new ArrayList<>();
+    Score[] p1Score = new Score[20];
+    Score[] p2Score = new Score[20];
 
 
     @FXML
