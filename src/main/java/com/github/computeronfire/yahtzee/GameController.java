@@ -60,7 +60,7 @@ public class GameController {
 
     @FXML
     public void initializeBoard(){
-        grid.add(new Label("Name"), 0, 0);
+        grid.add(new Label("Player Name"), 0, 0);
         grid.add(new Label("Ones"), 0, 1);
         grid.add(new Label("Twos"), 0, 2);
         grid.add(new Label("Threes"), 0, 3);
