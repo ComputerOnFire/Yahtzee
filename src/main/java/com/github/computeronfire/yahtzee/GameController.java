@@ -287,5 +287,6 @@ public class GameController {
     private void enableScore(int score, Label label){//TODO: highlight which scores are valid and available for keeping
         String text = Integer.toString(score);
         label.setText(text);
+        label.setTextFill(Color.YELLOW);
     }
 }
