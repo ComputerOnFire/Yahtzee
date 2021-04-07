@@ -10,20 +10,29 @@ import java.util.Map;
  */
 
 public class ScoreCard {
-    private Die[] dice;
-    private Score[] scores; //must be size of 20
+    private Dice dice;
+    private Score[] scores = new Score[20]; //must be size of 20
 
-    /**
-     * Constructs an array of dice values (int 1-6) that will be used to calculate the scores.
-     * */
-    public ScoreCard(Die[] dice, Score[] scores){
+    public ScoreCard(){
+        for (int i = 0; i < scores.length; ++i){
+            scores[i] = new Score();
+        }
+        this.dice = new Dice();
+    }
+    public ScoreCard(Dice dice, Score[] scores){
         this.dice = dice;
         this.scores = scores;
+    }
+    public Score[] getScores(){
+        return scores;
+    }
+    public Score getScore(int index){
+        return scores[index];
     }
 
     private int chance(){ //return sum of all dice
         int sum = 0;
-        for (Die die : dice){
+        for (Die die : dice.getDice()){
             sum += die.getFace();
         }
         return sum;
@@ -31,7 +40,7 @@ public class ScoreCard {
 
     private int faceSum(int value){//return sum of a all dice with certain face value
         int sum = 0;
-        for (Die die : dice){
+        for (Die die : dice.getDice()){
             if (die.getFace() == value){
                 sum += die.getFace();
             }
@@ -41,7 +50,7 @@ public class ScoreCard {
 
     private Map<Integer, Integer> repetition() {//constructs a Key, Value map for how many times each die repeats
         Map<Integer, Integer> repetitions = new HashMap<Integer, Integer>();
-        for (Die die : dice){
+        for (Die die : dice.getDice()){
             Integer repetition = repetitions.get(die.getFace());
             if(repetition == null){
                 repetitions.put(die.getFace(), 1);
@@ -96,7 +105,7 @@ public class ScoreCard {
         return 20;
     }
 
-    public Score[] getScores(){//TODO: decide if switch should be refactored into functions
+    public void calculateScores(){//TODO: decide if switch should be refactored into functions
         for (int i = 0; i < scores.length; ++i){
             switch (i) {//get rest of the scores
                 default: //singles scores for die faces 1-6 (case 0-5)
@@ -162,9 +171,10 @@ public class ScoreCard {
                     break;
                 case 16://TODO: decide if yahtzee bonus should be removed
                     //Yahtzee Bonus (check count only), might remove
-                    scores[i].releaseScore();
-                    scores[i].setScore(scores[i].getScore() + 1);
-                    scores[i].retainScore();
+                    //scores[i].markTotalOrBonus();
+                    if(scores[14].getScore() > 0){
+                        scores[i].setScore(scores[i].getScore() + 1);
+                    }
                     break;
                 case 17:
                     //Yahtzee Bonus (score), might remove
@@ -184,6 +194,6 @@ public class ScoreCard {
                     break;
             }
         }
-        return scores;
+        //return scores;
     }
 }

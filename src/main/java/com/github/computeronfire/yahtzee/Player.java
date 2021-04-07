@@ -2,17 +2,18 @@ package com.github.computeronfire.yahtzee;
 
 public class Player {
     private final String name;
-    private Score[] scoreCard = new Score[20];
+    private ScoreCard scoreCard;
     public Player(String name){
         this.name = name;
+        this.scoreCard = new ScoreCard();
     }
     public String getName(){
         return name;
     }
-    public Score[] getScores(){
+    public ScoreCard getScoreCard(){
         return scoreCard;
     }
-    public void selectScore(Score score, int index){
-        scoreCard[index] = score;
+    public void selectScore(int index){
+        scoreCard.getScore(index).retainScore();
     }
 }

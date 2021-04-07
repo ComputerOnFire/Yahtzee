@@ -3,6 +3,7 @@ package com.github.computeronfire.yahtzee;
 public class Score {
     private int value = 0;
     private boolean retained = false;
+    private boolean totalOrBonus = false;
     public void setScore(int value){
         if(!retained){
             this.value = value;
@@ -14,10 +15,10 @@ public class Score {
     public void retainScore(){
         this.retained = true;
     }
-    public void releaseScore(){//only used for updating repeated Yahtzee Bonus scores (checkboxes)
-        this.retained = false;
-    }
     public boolean isRetained(){
         return retained;
+    }
+    public void markTotalOrBonus(){
+        this.totalOrBonus = true;
     }
 }

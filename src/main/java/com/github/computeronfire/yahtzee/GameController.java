@@ -81,7 +81,8 @@ public class GameController {
     private List<Player> players = new ArrayList<>();
     Score[] p1Score = new Score[20];
     Score[] p2Score = new Score[20];
-
+    ScoreCard score1 = new ScoreCard();
+    ScoreCard score2 = new ScoreCard();
 
     @FXML
     private ToggleButton die1;
@@ -101,15 +102,16 @@ public class GameController {
 
     @FXML
     public void initializeBoard(){
+
         for(int col = 1; col < players.size() + 1; ++col){
             Label playerNameLabel = new Label();
             String playerNameText = players.get(col - 1).getName();
-            Score[] playerScoreCard = players.get(col - 1).getScores();
+            ScoreCard playerScoreCard = players.get(col - 1).getScoreCard();
             grid.add(playerNameLabel, col, 0);
             Label nameLabel = new Label();
             playerNameLabel.setText(playerNameText);
 
-            for(int row = 0; row < players.get(col - 1).getScores().length; ++row){
+            for(int row = 0; row < players.get(col - 1).getScoreCard().getScores().length; ++row){
                 Label score = new Label();
                 //score.setText()
                 grid.add(score, col, row);
@@ -168,8 +170,9 @@ public class GameController {
 
     }
     @FXML
-    private void updateScores(Die[] dice){ //change dice to player? use player here?
-        ScoreCard score1 = new ScoreCard(dice,p1Score);
+    private void updateScores(Dice dice){ //change dice to player? use player here?
+        score1 = new ScoreCard(dice, score1.getScores());
+        score1.calculateScores();
         p1Score = score1.getScores();
         enableScore(p1Score[0],p1ones);
         enableScore(p1Score[1],p1twos);
@@ -192,7 +195,9 @@ public class GameController {
         enableScore(p1Score[18],p1lowerTotal);
         enableScore(p1Score[19],p1grandTotal);
 
-        ScoreCard score2 = new ScoreCard(dice,p2Score);
+
+        score2 = new ScoreCard(dice, score2.getScores());
+        score2.calculateScores();
         p2Score = score2.getScores();
         enableScore(p2Score[0],p2ones);
         enableScore(p2Score[1],p2twos);
@@ -236,38 +241,38 @@ public class GameController {
     private void holdDie(ActionEvent actionEvent) {
         ToggleButton dieButton = (ToggleButton) actionEvent.getSource();
         int id = Integer.parseInt(dieButton.getId().substring("die".length())) - 1;
-        dice.diceArray[id].hold((!dice.diceArray[id].isHeld()));
+        dice.getDice()[id].hold((!dice.getDice()[id].isHeld()));
     }
 
     @FXML
     private void rollDice(ActionEvent actionEvent) { //TODO: move hold logic to Dice class?
-        for (int i = 0; i < dice.diceArray.length; i++){
-            if(!dice.diceArray[i].isHeld()){
-                dice.diceArray[i].rollDie();
+        for (int i = 0; i < dice.getDice().length; i++){
+            if(!dice.getDice()[i].isHeld()){
+                dice.getDice()[i].rollDie();
                 switch(i){
                     case 0:
-                        setDieImage(die1, dice.diceArray[i].getFace());
+                        setDieImage(die1, dice.getDice()[i].getFace());
                         break;
                     case 1:
-                        setDieImage(die2, dice.diceArray[i].getFace());
+                        setDieImage(die2, dice.getDice()[i].getFace());
                         break;
                     case 2:
-                        setDieImage(die3, dice.diceArray[i].getFace());
+                        setDieImage(die3, dice.getDice()[i].getFace());
                         break;
                     case 3:
-                        setDieImage(die4, dice.diceArray[i].getFace());
+                        setDieImage(die4, dice.getDice()[i].getFace());
                         break;
                     case 4:
-                        setDieImage(die5, dice.diceArray[i].getFace());
+                        setDieImage(die5, dice.getDice()[i].getFace());
                         break;
                     default:
                         /** should never happen */
-                        setDieImage(null, dice.diceArray[i].getFace());
+                        setDieImage(null, dice.getDice()[i].getFace());
                         break;
                 }
             }
         }
-        updateScores(dice.diceArray);
+        updateScores(dice);
     }
 
     private void setDieImage(ToggleButton die, int dieFace){
@@ -310,9 +315,15 @@ public class GameController {
     private void keepScore(){//TODO: when score is clicked, keep said score
 
     }
-    private void enableScore(int score, Label label){//TODO: highlight which scores are valid and available for keeping
-        String text = Integer.toString(score);
-        label.setText(text);
-        label.setTextFill(Color.YELLOW);
+    private void enableScore(Score score, Label label){//TODO: highlight which scores are valid and available for keeping
+        //if(score.getScore() > 0){
+            String text = Integer.toString(score.getScore());
+            label.setText(text);
+            label.setTextFill(Color.YELLOW);
+        //}
+    }
+
+    public void registerPlayers(List<Player> players) {
+        this.players = players;
     }
 }
