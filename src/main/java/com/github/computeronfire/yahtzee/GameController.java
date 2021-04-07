@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -64,6 +66,9 @@ public class GameController {
     public Label p2chance;
     public Label p2lowerTotal;
     public Label p2grandTotal;
+
+    @FXML
+    private GridPane grid;
 
     /**
      * Initiate the array of 5 dice.
