@@ -183,30 +183,28 @@ public class GameController {
 
     @FXML
     private void rollDice(ActionEvent actionEvent) { //TODO: move hold logic to Dice class?
+        dice.rollDice();
         for (int i = 0; i < dice.getDice().length; i++){
-            if(!dice.getDice()[i].isHeld()){
-                dice.getDice()[i].rollDie();
-                switch(i){
-                    case 0:
-                        setDieImage(die1, dice.getDice()[i].getFace());
-                        break;
-                    case 1:
-                        setDieImage(die2, dice.getDice()[i].getFace());
-                        break;
-                    case 2:
-                        setDieImage(die3, dice.getDice()[i].getFace());
-                        break;
-                    case 3:
-                        setDieImage(die4, dice.getDice()[i].getFace());
-                        break;
-                    case 4:
-                        setDieImage(die5, dice.getDice()[i].getFace());
-                        break;
-                    default:
-                        /** should never happen */
-                        setDieImage(null, dice.getDice()[i].getFace());
-                        break;
-                }
+            switch(i){
+                case 0:
+                    setDieImage(die1, dice.getDie(i).getFace());
+                    break;
+                case 1:
+                    setDieImage(die2, dice.getDie(i).getFace());
+                    break;
+                case 2:
+                    setDieImage(die3, dice.getDie(i).getFace());
+                    break;
+                case 3:
+                    setDieImage(die4, dice.getDie(i).getFace());
+                    break;
+                case 4:
+                    setDieImage(die5, dice.getDie(i).getFace());
+                    break;
+                default:
+                    /** should never happen */
+                    setDieImage(null, dice.getDie(i).getFace());
+                    break;
             }
         }
         updateScores(dice);
