@@ -15,6 +15,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -102,71 +103,50 @@ public class GameController {
 
     @FXML
     public void initializeBoard(){
-
+        grid.add(new Label("Name"), 0, 0);
+        grid.add(new Label("Ones"), 0, 1);
+        grid.add(new Label("Twos"), 0, 2);
+        grid.add(new Label("Threes"), 0, 3);
+        grid.add(new Label("Fours"), 0, 4);
+        grid.add(new Label("Fives"), 0, 5);
+        grid.add(new Label("Sixes"), 0, 6);
+        grid.add(new Label("Sum"), 0, 7);
+        grid.add(new Label("Bonus"), 0, 8);
+        grid.add(new Label("UpperTotal"), 0, 9);
+        grid.add(new Label("ThreeOfAKind"), 0, 10);
+        grid.add(new Label("FourOfAKind"), 0, 11);
+        grid.add(new Label("FullHouse"), 0, 12);
+        grid.add(new Label("SmallStraight"), 0, 13);
+        grid.add(new Label("LargeStraight"), 0, 14);
+        grid.add(new Label("Yahtzee!"), 0, 15);
+        grid.add(new Label("Chance"), 0, 16);
+        grid.add(new Label("Yahtzee! Bonuses"), 0, 17);
+        grid.add(new Label("Yahtzee! Bonus"), 0, 18);
+        grid.add(new Label("Lower Total"), 0, 19);
+        grid.add(new Label("Grand Total"), 0, 20);
         for(int col = 1; col < players.size() + 1; ++col){
+            StackPane pane = new StackPane();
+            grid.add(pane, col, 0);
             Label playerNameLabel = new Label();
             String playerNameText = players.get(col - 1).getName();
             ScoreCard playerScoreCard = players.get(col - 1).getScoreCard();
-            grid.add(playerNameLabel, col, 0);
-            Label nameLabel = new Label();
             playerNameLabel.setText(playerNameText);
-
-            for(int row = 0; row < players.get(col - 1).getScoreCard().getScores().length; ++row){
+            pane.getChildren().add(playerNameLabel);
+           // grid.add(playerNameLabel, col, 0);
+            for(int row = 1; row < playerScoreCard.getScores().length + 1; ++row){
+                StackPane scorePane = new StackPane();
+                grid.add(scorePane, col, row);
                 Label score = new Label();
-                //score.setText()
-                grid.add(score, col, row);
+                String text = Integer.toString(playerScoreCard.getScores()[row-1].getScore());
+                score.setText(text);
+                scorePane.getChildren().add(score);
             }
         }
     }
 
     @FXML
     private void testScoreFields(ActionEvent actionEvent) {
-        testBox.setText("This is Yahztee!");
-
-        p1name.setText("Player 1");
-        p1ones.setText("test");
-        p1twos.setText("test");
-        p1threes.setText("test");
-        p1fours.setText("test");
-        p1fives.setText("test");
-        p1sixes.setText("test");
-        p1sum.setText("test");
-        p1bonus.setText("test");
-        p1upperTotal.setText("test");
-        p1threeOfAKind.setText("test");
-        p1fourOfAKind.setText("test");
-        p1fullHouse.setText("test");
-        p1smallStraight.setText("test");
-        p1largeStraight.setText("test");
-        p1yahtzee.setText("test");
-        p1chance.setText("test");
-        p1yahtzeeBoxes.setText("test");
-        p1yahtzeeBonus.setText("test");
-        p1lowerTotal.setText("test");
-        p1grandTotal.setText("test");
-
-        p2name.setText("Player 2");
-        p2ones.setText("test");
-        p2twos.setText("test");
-        p2threes.setText("test");
-        p2fours.setText("test");
-        p2fives.setText("test");
-        p2sixes.setText("test");
-        p2sum.setText("test");
-        p2bonus.setText("test");
-        p2upperTotal.setText("test");
-        p2threeOfAKind.setText("test");
-        p2fourOfAKind.setText("test");
-        p2fullHouse.setText("test");
-        p2smallStraight.setText("test");
-        p2largeStraight.setText("test");
-        p2yahtzee.setText("test");
-        p2chance.setText("test");
-        p2yahtzeeBoxes.setText("test");
-        p2yahtzeeBonus.setText("test");
-        p2lowerTotal.setText("test");
-        p2grandTotal.setText("test");
-
+        initializeBoard();
 
     }
     @FXML
@@ -174,51 +154,51 @@ public class GameController {
         score1 = new ScoreCard(dice, score1.getScores());
         score1.calculateScores();
         p1Score = score1.getScores();
-        enableScore(p1Score[0],p1ones);
-        enableScore(p1Score[1],p1twos);
-        enableScore(p1Score[2],p1threes);
-        enableScore(p1Score[3],p1fours);
-        enableScore(p1Score[4],p1fives);
-        enableScore(p1Score[5],p1sixes);
-        enableScore(p1Score[6],p1sum);
-        enableScore(p1Score[7],p1bonus);
-        enableScore(p1Score[8],p1upperTotal);
-        enableScore(p1Score[9],p1threeOfAKind);
-        enableScore(p1Score[10],p1fourOfAKind);
-        enableScore(p1Score[11],p1fullHouse);
-        enableScore(p1Score[12],p1smallStraight);
-        enableScore(p1Score[13],p1largeStraight);
-        enableScore(p1Score[14],p1yahtzee);
-        enableScore(p1Score[15],p1chance);
-        enableScore(p1Score[16],p1yahtzeeBoxes);
-        enableScore(p1Score[17],p1yahtzeeBonus);
-        enableScore(p1Score[18],p1lowerTotal);
-        enableScore(p1Score[19],p1grandTotal);
+        enableScore(p1Score[0],1,1);
+        enableScore(p1Score[1],1,2);
+        enableScore(p1Score[2],1,3);
+        enableScore(p1Score[3],1,4);
+        enableScore(p1Score[4],1,5);
+        enableScore(p1Score[5],1,6);
+        enableScore(p1Score[6],1,7);
+        enableScore(p1Score[7],1,8);
+        enableScore(p1Score[8],1,9);
+        enableScore(p1Score[9],1,10);
+        enableScore(p1Score[10],1,11);
+        enableScore(p1Score[11],1,12);
+        enableScore(p1Score[12],1,13);
+        enableScore(p1Score[13],1,14);
+        enableScore(p1Score[14],1,15);
+        enableScore(p1Score[15],1,16);
+        enableScore(p1Score[16],1,17);
+        enableScore(p1Score[17],1,18);
+        enableScore(p1Score[18],1,19);
+        enableScore(p1Score[19],1,20);
 
 
         score2 = new ScoreCard(dice, score2.getScores());
         score2.calculateScores();
         p2Score = score2.getScores();
-        enableScore(p2Score[0],p2ones);
-        enableScore(p2Score[1],p2twos);
-        enableScore(p2Score[2],p2threes);
-        enableScore(p2Score[3],p2fours);
-        enableScore(p2Score[4],p2fives);
-        enableScore(p2Score[5],p2sixes);
-        enableScore(p2Score[6],p2sum);
-        enableScore(p2Score[7],p2bonus);
-        enableScore(p2Score[8],p2upperTotal);
-        enableScore(p2Score[9],p2threeOfAKind);
-        enableScore(p2Score[10],p2fourOfAKind);
-        enableScore(p2Score[11],p2fullHouse);
-        enableScore(p2Score[12],p2smallStraight);
-        enableScore(p2Score[13],p2largeStraight);
-        enableScore(p2Score[14],p2yahtzee);
-        enableScore(p2Score[15],p2chance);
-        enableScore(p2Score[16],p2yahtzeeBoxes);
-        enableScore(p2Score[17],p2yahtzeeBonus);
-        enableScore(p2Score[18],p2lowerTotal);
-        enableScore(p2Score[19],p2grandTotal);
+        enableScore(p1Score[0],2,1);
+        enableScore(p1Score[1],2,2);
+        enableScore(p2Score[2],2,3);
+        enableScore(p2Score[3],2,4);
+        enableScore(p2Score[4],2,5);
+        enableScore(p2Score[5],2,6);
+        enableScore(p2Score[6],2,7);
+        enableScore(p2Score[7],2,8);
+        enableScore(p2Score[8],2,9);
+        enableScore(p2Score[9],2,10);
+        enableScore(p2Score[10],2,11);
+        enableScore(p2Score[11],2,12);
+        enableScore(p2Score[12],2,13);
+        enableScore(p2Score[13],2,14);
+        enableScore(p2Score[14],2,15);
+        enableScore(p2Score[15],2,16);
+        enableScore(p2Score[16],2,17);
+        enableScore(p2Score[17],2,18);
+        enableScore(p2Score[18],2,19);
+        enableScore(p2Score[19],2,20);
     }
 
     /**
@@ -315,12 +295,22 @@ public class GameController {
     private void keepScore(){//TODO: when score is clicked, keep said score
 
     }
-    private void enableScore(Score score, Label label){//TODO: highlight which scores are valid and available for keeping
+    private void enableScore(Score score, int col, int row){//TODO: highlight which scores are valid and available for keeping
         //if(score.getScore() > 0){
             String text = Integer.toString(score.getScore());
+            StackPane pane = (StackPane) getGridNode(grid, col, row);
+            Label label = (Label) pane.getChildren().get(0);
             label.setText(text);
             label.setTextFill(Color.YELLOW);
         //}
+    }
+    private Node getGridNode(GridPane gridPane, int col, int row){//gets grid node based on column and row
+        for (Node node : gridPane.getChildren()) {
+            if(GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row){
+                return node;
+            }
+        }
+        return null; //no grid node found
     }
 
     public void registerPlayers(List<Player> players) {

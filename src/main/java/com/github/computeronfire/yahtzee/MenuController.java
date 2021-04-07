@@ -24,10 +24,12 @@ public class MenuController {
         players.add(new Player("Player 2"));
         Parent parent = fxmlLoader.load();
         GameController controller = fxmlLoader.getController();
-        controller.initializeBoard();
         controller.registerPlayers(players);
-        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        controller.initializeBoard();
+
         Scene scene = new Scene(parent, 1000, 750);
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
         primaryStage.setScene(scene);
         primaryStage.show();
     }
