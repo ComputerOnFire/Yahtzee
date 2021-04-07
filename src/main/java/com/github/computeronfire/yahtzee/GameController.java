@@ -19,6 +19,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameController {
     //TODO: make these private, annotate with @FXML, rename to camelcase
@@ -96,6 +98,24 @@ public class GameController {
      * Tests score labels on the board.
      * Temporary. Tests will be moved to the test folder and be made more formal.
      */
+
+    @FXML
+    public void initializeBoard(){
+        for(int col = 1; col < players.size() + 1; ++col){
+            Label playerNameLabel = new Label();
+            String playerNameText = players.get(col - 1).getName();
+            Score[] playerScoreCard = players.get(col - 1).getScores();
+            grid.add(playerNameLabel, col, 0);
+            Label nameLabel = new Label();
+            playerNameLabel.setText(playerNameText);
+
+            for(int row = 0; row < players.get(col - 1).getScores().length; ++row){
+                Label score = new Label();
+                //score.setText()
+                grid.add(score, col, row);
+            }
+        }
+    }
 
     @FXML
     private void testScoreFields(ActionEvent actionEvent) {
