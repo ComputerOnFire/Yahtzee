@@ -103,8 +103,8 @@ public class GameController {
 
     @FXML
     private void testScoreFields(ActionEvent actionEvent) {
+        grid.getChildren().clear();
         initializeBoard();
-
     }
     @FXML
     private void updateScores(Dice dice){ //change dice to player? use player here?
