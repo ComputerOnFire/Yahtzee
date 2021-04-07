@@ -1,11 +1,10 @@
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<GridPane fx:controller="com.github.computeronfire.yahtzee.MenuController"
-          stylesheets="/UI.css"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-    <Button text="Start Game" onAction="#startGame"/>
-
-
-</GridPane>
+<BorderPane stylesheets="@UI.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.computeronfire.yahtzee.MenuController">
+   <center>
+          <Button onAction="#startGame" prefHeight="107.0" prefWidth="163.0" text="Start Game" />
+   </center>
+</BorderPane>
