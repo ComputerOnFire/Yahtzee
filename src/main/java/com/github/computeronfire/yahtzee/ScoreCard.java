@@ -11,12 +11,12 @@ import java.util.Map;
 
 public class ScoreCard {
     private Die[] dice;
-    private int[] scores; //must be size of 20
+    private Score[] scores; //must be size of 20
 
     /**
      * Constructs an array of dice values (int 1-6) that will be used to calculate the scores.
      * */
-    public ScoreCard(Die[] dice, int[] scores){
+    public ScoreCard(Die[] dice, Score[] scores){
         this.dice = dice;
         this.scores = scores;
     }
@@ -96,89 +96,91 @@ public class ScoreCard {
         return 20;
     }
 
-    public int[] getScores(){//TODO: decide if switch should be refactored into functions
+    public Score[] getScores(){//TODO: decide if switch should be refactored into functions
         for (int i = 0; i < scores.length; ++i){
             switch (i) {//get rest of the scores
                 default: //singles scores for die faces 1-6 (case 0-5)
-                    scores[i] = faceSum(i + 1);
+                    scores[i].setScore(faceSum(i + 1));
                     break;
                 case 6:
                     //Sum of all single face scores
                     int sum = 0;
                     for (int j = 0; j < i; ++j) {
-                        sum += scores[j];
+                        sum += scores[j].getScore();
                     }
-                    scores[i] = sum;
+                    scores[i].setScore(sum);
                     break;
                 case 7:
                     //Bonus score of 35 if sum is over 63
-                    if (scores[6] >= 63) {
-                        scores[i] = 35;
+                    if (scores[6].getScore() >= 63) {
+                        scores[i].setScore(35);
                     } else {
-                        scores[i] = 0;
+                        scores[i].setScore(0);
                     }
                     break;
                 case 8:
                     //Upper Total
                     //Sum + Bonus
-                    scores[i] = scores[6] + scores[7];
+                    scores[i].setScore(scores[6].getScore() + scores[7].getScore());
                     break;
-                //start of Lower section of scores
+                    //start of Lower section of scores
                 case 9:
                     //Three of a Kind
-                    scores[i] = xOfAKind(3);
+                    scores[i].setScore(xOfAKind(3));
                     break;
                 case 10:
                     //Four of a Kind
-                    scores[i] = xOfAKind(4);
+                    scores[i].setScore(xOfAKind(4));
                     break;
                 case 11:
                     //Full house
                     if (xOfAKind(3) > 0 && xOfAKind(2) > 0) {
-                        scores[i] = xOfAKind(3) + xOfAKind(2);
+                        scores[i].setScore(xOfAKind(3) + xOfAKind(2));
                     } else {
-                        scores[i] = 0;
+                        scores[i].setScore(0);
                     }
                     break;
                 case 12:
                     //Small Straight
-                    scores[i] = smallStraight();
+                    scores[i].setScore(smallStraight());
                     break;
                 case 13:
                     //Large Straight
-                    scores[i] = largeStraight();
+                    scores[i].setScore(largeStraight());
                     break;
                 case 14:
                     //Yahtzee!
                     if (xOfAKind(5) > 0) {
-                        scores[i] = 50;
+                        scores[i].setScore(50);
                     } else {
-                        scores[i] = 0;
+                        scores[i].setScore(0);
                     }
                     break;
                 case 15:
                     //Chance (total of all 5, no conditions)
-                    scores[i] = chance();
+                    scores[i].setScore(chance());
                     break;
                 case 16://TODO: decide if yahtzee bonus should be removed
                     //Yahtzee Bonus (check count only), might remove
-                    scores[i] = 0;
+                    scores[i].releaseScore();
+                    scores[i].setScore(scores[i].getScore() + 1);
+                    scores[i].retainScore();
                     break;
                 case 17:
                     //Yahtzee Bonus (score), might remove
-                    scores[i] = 50 * scores[16];
+                    scores[i].setScore(scores[16].getScore() * 50);
                     break;
                 case 18:
                     //Lower Total
                     int lowerTotal = 0;
                     for (int k = 9; k < i; ++k) {
-                        lowerTotal += scores[k];
+                        lowerTotal += scores[k].getScore();
                     }
-                    scores[i] = lowerTotal;
+                    scores[i].setScore(lowerTotal);
                     break;
                 case 19:
                     //Grand Total
-                    scores[i] = scores[8] + scores[18];
+                    scores[i].setScore(scores[8].getScore() + scores[18].getScore());
                     break;
             }
         }
