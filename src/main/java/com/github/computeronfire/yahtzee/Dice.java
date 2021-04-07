@@ -14,4 +14,14 @@ public class Dice {
     public Die[] getDice(){
         return dice;
     }
+    public Die getDie(int index){
+        return dice[index];
+    }
+    public void rollDice(){
+        for (Die die: dice){
+            if(!die.isHeld()){
+                die.rollDie();
+            }
+        }
+    }
 }
