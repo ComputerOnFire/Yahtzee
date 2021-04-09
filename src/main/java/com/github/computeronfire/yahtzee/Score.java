@@ -9,7 +9,7 @@ public class Score {
             this.value = value;
         }
     }
-    public int getScore(){
+    public int getValue(){
         return value;
     }
     public void retainScore(){

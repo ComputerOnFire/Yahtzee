@@ -18,12 +18,9 @@ public class ScoreCard {
             this.scores[i] = new Score();
         }
     }
-    public ScoreCard(Score[] scores, Dice dice){
-        this.scores = scores;
+    public ScoreCard(ScoreCard scoreCard, Dice dice){
+        this.scores = scoreCard.scores;
         this.dice = dice;
-    }
-    public Score[] getScores(){
-        return scores;
     }
     public Score getScore(int index){
         return scores[index];
@@ -114,13 +111,13 @@ public class ScoreCard {
                     //Sum of all single face scores
                     int sum = 0;
                     for (int j = 0; j < i; ++j) {
-                        sum += scores[j].getScore();
+                        sum += scores[j].getValue();
                     }
                     scores[i].setScore(sum);
                     break;
                 case 7:
                     //Bonus score of 35 if sum is over 63
-                    if (scores[6].getScore() >= 63) {
+                    if (scores[6].getValue() >= 63) {
                         scores[i].setScore(35);
                     } else {
                         scores[i].setScore(0);
@@ -129,7 +126,7 @@ public class ScoreCard {
                 case 8:
                     //Upper Total
                     //Sum + Bonus
-                    scores[i].setScore(scores[6].getScore() + scores[7].getScore());
+                    scores[i].setScore(scores[6].getValue() + scores[7].getValue());
                     break;
                     //start of Lower section of scores
                 case 9:
@@ -171,25 +168,25 @@ public class ScoreCard {
                 case 16://TODO: decide if yahtzee bonus should be removed
                     //Yahtzee Bonus (check count only), might remove
                     //scores[i].markTotalOrBonus();
-                    if(scores[14].getScore() > 0){
-                        scores[i].setScore(scores[i].getScore() + 1);
+                    if(scores[14].getValue() > 0){
+                        scores[i].setScore(scores[i].getValue() + 1);
                     }
                     break;
                 case 17:
                     //Yahtzee Bonus (score), might remove
-                    scores[i].setScore(scores[16].getScore() * 50);
+                    scores[i].setScore(scores[16].getValue() * 50);
                     break;
                 case 18:
                     //Lower Total
                     int lowerTotal = 0;
                     for (int k = 9; k < i; ++k) {
-                        lowerTotal += scores[k].getScore();
+                        lowerTotal += scores[k].getValue();
                     }
                     scores[i].setScore(lowerTotal);
                     break;
                 case 19:
                     //Grand Total
-                    scores[i].setScore(scores[8].getScore() + scores[18].getScore());
+                    scores[i].setScore(scores[8].getValue() + scores[18].getValue());
                     break;
             }
         }

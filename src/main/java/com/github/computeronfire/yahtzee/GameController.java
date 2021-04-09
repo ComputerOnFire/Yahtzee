@@ -95,7 +95,7 @@ public class GameController {
             playerNameLabel.setText(playerNameText);
             pane.getChildren().add(playerNameLabel);
 
-            for(int row = 1; row < playerScoreCard.getScores().length + 1; ++row){
+            for(int row = 1; row <= fields; ++row){
                 Rectangle background = new Rectangle();
                 background.setWidth(grid.getColumnConstraints().get(col).getPrefWidth());
                 background.setHeight(grid.getRowConstraints().get(row).getPrefHeight());
@@ -104,7 +104,7 @@ public class GameController {
                 grid.add(scorePane, col, row);
                 scorePane.getChildren().add(background);
                 Label score = new Label();
-                String text = Integer.toString(playerScoreCard.getScores()[row-1].getScore());
+                String text = Integer.toString(playerScoreCard.getScore(row-1).getValue());
                 score.setText(text);
                 scorePane.getChildren().add(score);
             }
@@ -140,25 +140,40 @@ public class GameController {
     }
     @FXML
     private void updateScores(){ //updates the scores for the current player
-        ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex).getScoreCard().getScores(), dice);
+        ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex).getScoreCard(), dice);
         scoreCard.calculateScores();
-        Score[] scores = scoreCard.getScores();
         //for (Player player : players){//TODO: implement dynamic player count
         //update player scorecards
         //}
         for(int i = 0; i < fields; ++i){
-            enableScore(scores[i],currentPlayerIndex + 1,i+1);
+            enableScore(scoreCard.getScore(i),currentPlayerIndex + 1,i+1);
         }
     }
 
     private void endTurn() {
         //int nextPlayerIndex = (currentPlayerIndex + 1) % players.size();
         //Player nextPlayer = players.get(nextPlayerIndex);
+        finalizeScores();
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
         turnCount += 1;
         rollCounter = rolls;
         updateRollButton();
         enableCurrentPlayer();
+    }
+
+    private void finalizeScores() {
+        ScoreCard scoreCard  = players.get(currentPlayerIndex).getScoreCard();
+        for(int i = 0; i < fields; ++i){
+            clearScore(currentPlayerIndex + 1,i+1);
+        }
+    }
+
+    private void clearScore(int col, int row) {
+        StackPane scorePane = (StackPane) getGridNode(grid, col, row);
+        Rectangle background = (Rectangle) scorePane.getChildren().get(0);
+        Label label = (Label) scorePane.getChildren().get(1);
+        background.setOpacity(0);
+        label.setText("");
     }
 
     /**
@@ -272,7 +287,7 @@ public class GameController {
     }
 
     private void enableScore(Score score, int col, int row){//TODO: highlight which scores are valid and available for keeping
-        String text = Integer.toString(score.getScore());
+        String text = Integer.toString(score.getValue());
         StackPane scorePane = (StackPane) getGridNode(grid, col, row);
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         Label label = (Label) scorePane.getChildren().get(1);
