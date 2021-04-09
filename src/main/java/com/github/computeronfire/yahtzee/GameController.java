@@ -140,9 +140,9 @@ public class GameController {
     }
     @FXML
     private void updateScores(){ //updates the scores for the current player
-        ScoreCard score1 = new ScoreCard(players.get(currentPlayerIndex).getScoreCard().getScores(), dice);
-        score1.calculateScores();
-        Score[] scores = score1.getScores();
+        ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex).getScoreCard().getScores(), dice);
+        scoreCard.calculateScores();
+        Score[] scores = scoreCard.getScores();
         //for (Player player : players){//TODO: implement dynamic player count
         //update player scorecards
         //}
