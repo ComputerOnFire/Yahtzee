@@ -199,7 +199,7 @@ public class GameController {
         if(die.isDisabled()){
             die.setDisable(false);
         }
-        ImageView iview;
+        ImageView iView;
         Image face;
         switch(dieFace){
             case 1:
@@ -225,12 +225,12 @@ public class GameController {
                 face = null;
                 break;
         }
-        iview = new ImageView(face);
-        iview.setFitHeight(40.0);
-        iview.setFitWidth(40.0);
-        iview.setPreserveRatio(true);
-        iview.setPickOnBounds(true);
-        die.setGraphic(iview);
+        iView = new ImageView(face);
+        iView.setFitHeight(40.0);
+        iView.setFitWidth(40.0);
+        iView.setPreserveRatio(true);
+        iView.setPickOnBounds(true);
+        die.setGraphic(iView);
     }
     private void keepScore(MouseEvent mouseEvent){//TODO: when score is clicked, keep said score
         StackPane scorePane = (StackPane) mouseEvent.getSource();
