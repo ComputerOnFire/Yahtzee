@@ -142,6 +142,7 @@ public class GameController {
     private void updateScores(){ //updates the scores for the current player
         ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex).getScoreCard(), dice);
         scoreCard.calculateScores();
+        players.get(currentPlayerIndex).updateScoreCard(scoreCard);
         //for (Player player : players){//TODO: implement dynamic player count
         //update player scorecards
         //}
@@ -168,13 +169,18 @@ public class GameController {
         }
     }
 
-    private void clearScore(int col, int row) {
+    private void clearScore(int col, int row) {//if not a total or bonus, clear it. if it is a total or bonus, update new total/bonus with selection.
         StackPane scorePane = (StackPane) getGridNode(grid, col, row);
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         Label label = (Label) scorePane.getChildren().get(1);
         if(!players.get(currentPlayerIndex).getScoreCard().getScore(row-1).isTotalOrBonus() && !players.get(currentPlayerIndex).getScoreCard().getScore(row-1).isRetained()){
             background.setOpacity(0);
             label.setText("");
+        }
+        else{
+            players.get(currentPlayerIndex).getScoreCard().calculateScores();
+            String text = Integer.toString(players.get(currentPlayerIndex).getScoreCard().getScore(row - 1).getValue());
+            label.setText(text);
         }
     }
 

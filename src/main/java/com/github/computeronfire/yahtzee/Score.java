@@ -18,7 +18,7 @@ public class Score {
     public boolean isRetained(){
         return retained;
     }
-    public void markTotalOrBonus(){
+    public void markTotalOrBonus(){//could be refactored, see ScoreCard usages
         this.totalOrBonus = true;
     }
     public boolean isTotalOrBonus(){

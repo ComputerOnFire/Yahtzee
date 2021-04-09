@@ -13,6 +13,9 @@ public class Player {
     public ScoreCard getScoreCard(){
         return scoreCard;
     }
+    public void updateScoreCard(ScoreCard scoreCard){
+        this.scoreCard = scoreCard;
+    }
     public void keepScore(int index){
         scoreCard.getScore(index).retainScore();
     }

@@ -111,9 +111,12 @@ public class ScoreCard {
                     //Sum of all single face scores
                     int sum = 0;
                     for (int j = 0; j < i; ++j) {
-                        sum += scores[j].getValue();
+                        if(scores[j].isRetained()){
+                            sum += scores[j].getValue();
+                        }
                     }
                     scores[i].setScore(sum);
+                    scores[i].markTotalOrBonus();
                     break;
                 case 7:
                     //Bonus score of 35 if sum is over 63
@@ -183,7 +186,9 @@ public class ScoreCard {
                     //Lower Total
                     int lowerTotal = 0;
                     for (int k = 9; k < i; ++k) {
-                        lowerTotal += scores[k].getValue();
+                        if(scores[k].isRetained()){
+                            lowerTotal += scores[k].getValue();
+                        }
                     }
                     scores[i].setScore(lowerTotal);
                     scores[i].markTotalOrBonus();
