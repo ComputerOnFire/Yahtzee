@@ -165,11 +165,11 @@ public class GameController {
     private void finalizeScores() {
         ScoreCard scoreCard  = players.get(currentPlayerIndex).getScoreCard();
         for(int i = 0; i < fields; ++i){
-            clearScore(currentPlayerIndex + 1,i+1);
+            finalizeScore(currentPlayerIndex + 1,i+1);
         }
     }
 
-    private void clearScore(int col, int row) {//if not a total or bonus, clear it. if it is a total or bonus, update new total/bonus with selection.
+    private void finalizeScore(int col, int row) {//if not a total or bonus, clear it. if it is a total or bonus, update new total/bonus with selection. Keep selected scores.
         StackPane scorePane = (StackPane) getGridNode(grid, col, row);
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         Label label = (Label) scorePane.getChildren().get(1);
