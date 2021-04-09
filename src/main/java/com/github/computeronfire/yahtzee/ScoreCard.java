@@ -210,6 +210,7 @@ public class ScoreCard {
                     //Yahtzee Bonus (check count only), might remove
                     //scores[i].markTotalOrBonus();
                     scores[i].setScore(calculateYahtzeeBonus());
+                    scores[i].setYB();
                     break;
                 case 17:
                     //Yahtzee Bonus (score), might remove

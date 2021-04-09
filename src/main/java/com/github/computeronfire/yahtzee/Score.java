@@ -28,4 +28,7 @@ public class Score {
     public boolean isYB(){
         return yahtzeeBonus;
     }
+    public void setYB(){
+        this.yahtzeeBonus = true;
+    }
 }

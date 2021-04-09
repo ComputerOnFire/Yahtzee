@@ -33,7 +33,7 @@ public class GameController {
      * Constructed using the Dice class
      */
 
-    private final int rolls = 100;
+    private final int rolls = 100;//should be 3, set to 100 for testing purposes
     private final int fields = 20;
     private final String[] fieldLabels = {"Player Name", "Ones", "Twos", "Threes", "Fours","Fives", "Sixes",
             "Sum", "Bonus", "UpperTotal", "ThreeOfAKind", "FourOfAKind", "FullHouse", "SmallStraight",
@@ -301,13 +301,13 @@ public class GameController {
         die.setGraphic(iView);
     }
     private void keepScore(MouseEvent mouseEvent, int index){//TODO: when score is clicked, keep said score
-        players.get(currentPlayerIndex).keepScore(index);
         StackPane scorePane = (StackPane) mouseEvent.getSource();
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         if(players.get(currentPlayerIndex).getScoreCard().getScore(index).isYB()){
             background.setFill(Color.YELLOWGREEN);
         }
         else{
+            players.get(currentPlayerIndex).keepScore(index);
             background.setFill(Color.GREEN);
         }
         background.setOpacity(1);
