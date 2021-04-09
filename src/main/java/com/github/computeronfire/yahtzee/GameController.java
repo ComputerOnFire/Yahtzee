@@ -192,7 +192,7 @@ public class GameController {
                     break;
             }
         }
-        updateScores(dice);
+        updateScores();
     }
 
     private void setDieImage(ToggleButton die, int dieFace){
