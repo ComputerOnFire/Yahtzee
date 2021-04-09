@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -37,8 +38,12 @@ public class GameController {
 
     private Dice dice = new Dice();
     private List<Player> players = new ArrayList<>();
-    Score[] p1Score = new Score[20];
-    Score[] p2Score = new Score[20];
+    private final int fields = 20;
+    private final String[] fieldLabels = {"Player Name", "Ones", "Twos", "Threes", "Fours","Fives", "Sixes",
+            "Sum", "Bonus", "UpperTotal", "ThreeOfAKind", "FourOfAKind", "FullHouse", "SmallStraight",
+            "LargeStraight","Yahtzee!", "Chance", "Yahtzee! Bonuses", "Yahtzee! Bonus", "Lower Total", "Grand Total"};
+    Score[] p1Score = new Score[fields];
+    Score[] p2Score = new Score[fields];
     ScoreCard score1 = new ScoreCard();
     ScoreCard score2 = new ScoreCard();
 
@@ -60,28 +65,12 @@ public class GameController {
 
     @FXML
     public void initializeBoard(){
-        grid.add(new Label("Player Name"), 0, 0);
-        grid.add(new Label("Ones"), 0, 1);
-        grid.add(new Label("Twos"), 0, 2);
-        grid.add(new Label("Threes"), 0, 3);
-        grid.add(new Label("Fours"), 0, 4);
-        grid.add(new Label("Fives"), 0, 5);
-        grid.add(new Label("Sixes"), 0, 6);
-        grid.add(new Label("Sum"), 0, 7);
-        grid.add(new Label("Bonus"), 0, 8);
-        grid.add(new Label("UpperTotal"), 0, 9);
-        grid.add(new Label("ThreeOfAKind"), 0, 10);
-        grid.add(new Label("FourOfAKind"), 0, 11);
-        grid.add(new Label("FullHouse"), 0, 12);
-        grid.add(new Label("SmallStraight"), 0, 13);
-        grid.add(new Label("LargeStraight"), 0, 14);
-        grid.add(new Label("Yahtzee!"), 0, 15);
-        grid.add(new Label("Chance"), 0, 16);
-        grid.add(new Label("Yahtzee! Bonuses"), 0, 17);
-        grid.add(new Label("Yahtzee! Bonus"), 0, 18);
-        grid.add(new Label("Lower Total"), 0, 19);
-        grid.add(new Label("Grand Total"), 0, 20);
+        for (int i = 0; i <= fields; ++i){
+            grid.add(new Label(fieldLabels[i]), 0, i);
+        }
         for(int col = 1; col < players.size() + 1; ++col){
+            double width = grid.getColumnConstraints().get(col).getPrefWidth();
+            double height = grid.getRowConstraints().get(0).getPrefHeight();
             StackPane pane = new StackPane();
             grid.add(pane, col, 0);
             Label playerNameLabel = new Label();
@@ -247,17 +236,19 @@ public class GameController {
         iview.setPickOnBounds(true);
         die.setGraphic(iview);
     }
-    private void keepScore(){//TODO: when score is clicked, keep said score
-
+    private void keepScore(MouseEvent mouseEvent){//TODO: when score is clicked, keep said score
+        StackPane scorePane = (StackPane) mouseEvent.getSource();
+        Label label = (Label) scorePane.getChildren().get(0);
+        label.setStyle("--fx-background-color: green;");
     }
     private void enableScore(Score score, int col, int row){//TODO: highlight which scores are valid and available for keeping
-        //if(score.getScore() > 0){
-            String text = Integer.toString(score.getScore());
-            StackPane pane = (StackPane) getGridNode(grid, col, row);
-            Label label = (Label) pane.getChildren().get(0);
-            label.setText(text);
-            label.setTextFill(Color.YELLOW);
-        //}
+        String text = Integer.toString(score.getScore());
+        StackPane scorePane = (StackPane) getGridNode(grid, col, row);
+        Label label = (Label) scorePane.getChildren().get(0);
+        //label.setBackground((new Background(new BackgroundFill(Color.YELLOW))));
+        label.setTextFill(Color.YELLOW);
+        label.setText(text);
+        scorePane.setOnMouseClicked(mouseEvent -> keepScore(mouseEvent));
     }
     private Node getGridNode(GridPane gridPane, int col, int row){//gets grid node based on column and row
         for (Node node : gridPane.getChildren()) {
