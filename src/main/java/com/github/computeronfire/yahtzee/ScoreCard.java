@@ -122,11 +122,13 @@ public class ScoreCard {
                     } else {
                         scores[i].setScore(0);
                     }
+                    scores[i].markTotalOrBonus();
                     break;
                 case 8:
                     //Upper Total
                     //Sum + Bonus
                     scores[i].setScore(scores[6].getValue() + scores[7].getValue());
+                    scores[i].markTotalOrBonus();
                     break;
                     //start of Lower section of scores
                 case 9:
@@ -171,6 +173,7 @@ public class ScoreCard {
                     if(scores[14].getValue() > 0){
                         scores[i].setScore(scores[i].getValue() + 1);
                     }
+                    scores[i].markTotalOrBonus();
                     break;
                 case 17:
                     //Yahtzee Bonus (score), might remove
@@ -183,10 +186,12 @@ public class ScoreCard {
                         lowerTotal += scores[k].getValue();
                     }
                     scores[i].setScore(lowerTotal);
+                    scores[i].markTotalOrBonus();
                     break;
                 case 19:
                     //Grand Total
                     scores[i].setScore(scores[8].getValue() + scores[18].getValue());
+                    scores[i].markTotalOrBonus();
                     break;
             }
         }

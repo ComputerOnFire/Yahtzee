@@ -172,8 +172,10 @@ public class GameController {
         StackPane scorePane = (StackPane) getGridNode(grid, col, row);
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         Label label = (Label) scorePane.getChildren().get(1);
-        background.setOpacity(0);
-        label.setText("");
+        if(!players.get(currentPlayerIndex).getScoreCard().getScore(row-1).isTotalOrBonus() && !players.get(currentPlayerIndex).getScoreCard().getScore(row-1).isRetained()){
+            background.setOpacity(0);
+            label.setText("");
+        }
     }
 
     /**
