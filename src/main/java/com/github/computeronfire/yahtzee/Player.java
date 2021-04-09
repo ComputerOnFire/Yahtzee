@@ -13,7 +13,7 @@ public class Player {
     public ScoreCard getScoreCard(){
         return scoreCard;
     }
-    public void selectScore(int index){
+    public void keepScore(int index){
         scoreCard.getScore(index).retainScore();
     }
 }

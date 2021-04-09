@@ -134,7 +134,7 @@ public class GameController {
     private void testReset(ActionEvent actionEvent) {
         grid.getChildren().clear();
         List<Player> playersCleared = new ArrayList<>();
-        playersCleared.add(new Player(players.get(1).getName()));
+        playersCleared.add(new Player(players.get(0).getName()));
         playersCleared.add(new Player(players.get(1).getName()));
         initializeBoard(playersCleared);
     }
@@ -262,7 +262,8 @@ public class GameController {
         iView.setPickOnBounds(true);
         die.setGraphic(iView);
     }
-    private void keepScore(MouseEvent mouseEvent){//TODO: when score is clicked, keep said score
+    private void keepScore(MouseEvent mouseEvent, int index){//TODO: when score is clicked, keep said score
+        players.get(currentPlayerIndex).keepScore(index);
         StackPane scorePane = (StackPane) mouseEvent.getSource();
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         background.setOpacity(1);
@@ -275,10 +276,12 @@ public class GameController {
         StackPane scorePane = (StackPane) getGridNode(grid, col, row);
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         Label label = (Label) scorePane.getChildren().get(1);
-        background.setOpacity(1);
-        background.setFill(Color.YELLOW);
+        if (!score.isRetained() && !score.isTotalOrBonus()){
+            background.setOpacity(1);
+            background.setFill(Color.YELLOW);
+            scorePane.setOnMouseClicked(mouseEvent -> keepScore(mouseEvent, row - 1));
+        }
         label.setText(text);
-        scorePane.setOnMouseClicked(mouseEvent -> keepScore(mouseEvent));
     }
     private Node getGridNode(GridPane gridPane, int col, int row){//gets grid node based on column and row
         for (Node node : gridPane.getChildren()) {

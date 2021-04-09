@@ -21,4 +21,7 @@ public class Score {
     public void markTotalOrBonus(){
         this.totalOrBonus = true;
     }
+    public boolean isTotalOrBonus(){
+        return totalOrBonus;
+    }
 }
