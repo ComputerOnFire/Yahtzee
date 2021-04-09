@@ -67,9 +67,10 @@ public class GameController {
     @FXML
     private ToggleButton die5;
 
+
     /**
-     * Tests score labels on the board.
-     * Temporary. Tests will be moved to the test folder and be made more formal.
+     * sets up the grid to display scores for each player,
+     * first by iterating through the fields, then by iterating over the columns and rows to insert each player name and score field
      */
 
     @FXML
@@ -82,7 +83,12 @@ public class GameController {
         for(int col = 1; col < players.size() + 1; ++col){
             StackPane pane = new StackPane();
             grid.add(pane, col, 0);
-
+            Rectangle highlight = new Rectangle();
+            highlight.setOpacity(0);
+            highlight.setFill(Color.YELLOW);
+            highlight.setWidth(grid.getColumnConstraints().get(col).getPrefWidth());
+            highlight.setHeight(grid.getRowConstraints().get(0).getPrefHeight());
+            pane.getChildren().add(highlight);
             Label playerNameLabel = new Label();
             String playerNameText = players.get(col - 1).getName();
             ScoreCard playerScoreCard = players.get(col - 1).getScoreCard();
@@ -103,8 +109,23 @@ public class GameController {
                 scorePane.getChildren().add(score);
             }
         }
-        Player currentPlayer = players.get(currentPlayerIndex);//first player
+        enableCurrentPlayer();
     }
+
+    private void enableCurrentPlayer() {
+        for(int i = 0; i < players.size(); ++i){
+            int col = i + 1;
+            StackPane scorePane = (StackPane) getGridNode(grid, col, 0);
+            Rectangle background = (Rectangle) scorePane.getChildren().get(0);
+            if(i == currentPlayerIndex){
+                background.setOpacity(1);
+            }
+            else{
+                background.setOpacity(0);
+            }
+        }
+    }
+
     private void registerPlayers(List<Player> players) {
         this.players = players;
     }
@@ -145,9 +166,16 @@ public class GameController {
         enableScore(p1Score[17],1,18);
         enableScore(p1Score[18],1,19);
         enableScore(p1Score[19],1,20);
-        if(rollCounter < 1){
-            endTurn();
-        }
+    }
+
+    private void endTurn() {
+        //int nextPlayerIndex = (currentPlayerIndex + 1) % players.size();
+        //Player nextPlayer = players.get(nextPlayerIndex);
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+        turnCount += 1;
+        rollCounter = rolls;
+        updateRollButton();
+        enableCurrentPlayer();
     }
 
     /**
@@ -174,7 +202,7 @@ public class GameController {
     }
 
     @FXML
-    private void rollDice(ActionEvent actionEvent) { //TODO: move hold logic to Dice class?
+    private void rollDice() { //TODO: move hold logic to Dice class?
         dice.rollDice();
         for (int i = 0; i < dice.getDice().length; i++){
             switch(i){
@@ -200,8 +228,18 @@ public class GameController {
             }
         }
         --rollCounter;
-        rollButton.setText(String.format("Roll (%d left)", rollCounter));
+        updateRollButton();
         updateScores();
+    }
+
+    private void updateRollButton(){
+        rollButton.setText(String.format("Roll (%d left)", rollCounter));
+        if(rollCounter < 1){
+            rollButton.setDisable(true);
+        }
+        else{
+            rollButton.setDisable(false);
+        }
     }
 
     private void setDieImage(ToggleButton die, int dieFace){
@@ -247,12 +285,6 @@ public class GameController {
         background.setOpacity(1);
         background.setFill(Color.GREEN);
         endTurn();
-    }
-
-    private void endTurn() {
-        int nextPlayerIndex = (currentPlayerIndex + 1) % players.size();
-        Player nextPlayer = players.get(nextPlayerIndex);
-        turnCount += 1;
     }
 
     private void enableScore(Score score, int col, int row){//TODO: highlight which scores are valid and available for keeping
