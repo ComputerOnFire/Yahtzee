@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
@@ -26,29 +27,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
-    //TODO: make these private, annotate with @FXML, rename to camelcase
-    public Label testBox;
-
-    @FXML
-    private GridPane grid;
 
     /**
      * Initiate the array of 5 dice.
      * Constructed using the Dice class
      */
-
-    private Dice dice = new Dice();
-    private List<Player> players = new ArrayList<>();
-    private int currentPlayerIndex = 0; //track who's turn it is
-    private int turnCount = 0; //track number of turns
+    private final int rolls = 3;
     private final int fields = 20;
     private final String[] fieldLabels = {"Player Name", "Ones", "Twos", "Threes", "Fours","Fives", "Sixes",
             "Sum", "Bonus", "UpperTotal", "ThreeOfAKind", "FourOfAKind", "FullHouse", "SmallStraight",
             "LargeStraight","Yahtzee!", "Chance", "Yahtzee! Bonuses", "Yahtzee! Bonus", "Lower Total", "Grand Total"};
+    private Dice dice = new Dice();
+    private List<Player> players = new ArrayList<>();
+    private int currentPlayerIndex = 0; //track who's turn it is
+    private int turnCount = 0; //track number of turns
+    private int rollCounter = rolls;
     Score[] p1Score = new Score[fields];
     Score[] p2Score = new Score[fields];
     ScoreCard score1 = new ScoreCard();
     ScoreCard score2 = new ScoreCard();
+
+    //TODO: make these private, annotate with @FXML, rename to camelcase
+    public Label testBox;
+
+    @FXML
+    private Button rollButton;
+
+    @FXML
+    private GridPane grid;
 
     @FXML
     private ToggleButton die1;
@@ -69,6 +75,7 @@ public class GameController {
     @FXML
     public void initializeBoard(List<Player> players){
         registerPlayers(players);
+        rollButton.setText(String.format("Roll (%d left)", rollCounter));
         for (int i = 0; i <= fields; ++i){
             grid.add(new Label(fieldLabels[i]), 0, i);
         }
@@ -97,14 +104,11 @@ public class GameController {
             }
         }
         Player currentPlayer = players.get(currentPlayerIndex);//first player
-        takeTurn(currentPlayer);
     }
     private void registerPlayers(List<Player> players) {
         this.players = players;
     }
-    private void takeTurn(Player player){
 
-    }
     @FXML
     private void testReset(ActionEvent actionEvent) {
         grid.getChildren().clear();
@@ -141,6 +145,9 @@ public class GameController {
         enableScore(p1Score[17],1,18);
         enableScore(p1Score[18],1,19);
         enableScore(p1Score[19],1,20);
+        if(rollCounter < 1){
+            endTurn();
+        }
     }
 
     /**
@@ -192,6 +199,8 @@ public class GameController {
                     break;
             }
         }
+        --rollCounter;
+        rollButton.setText(String.format("Roll (%d left)", rollCounter));
         updateScores();
     }
 
