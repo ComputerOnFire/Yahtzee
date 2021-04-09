@@ -14,14 +14,13 @@ public class ScoreCard {
     private Score[] scores = new Score[20]; //must be size of 20
 
     public ScoreCard(){
-        for (int i = 0; i < scores.length; ++i){
-            scores[i] = new Score();
+        for (int i = 0; i < this.scores.length; ++i){
+            this.scores[i] = new Score();
         }
-        this.dice = new Dice();
     }
-    public ScoreCard(Dice dice, Score[] scores){
-        this.dice = dice;
+    public ScoreCard(Score[] scores, Dice dice){
         this.scores = scores;
+        this.dice = dice;
     }
     public Score[] getScores(){
         return scores;

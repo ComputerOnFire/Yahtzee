@@ -107,8 +107,8 @@ public class GameController {
         initializeBoard(playersCleared);
     }
     @FXML
-    private void updateScores(Dice dice){ //change dice to player? use player here?
-        score1 = new ScoreCard(dice, score1.getScores());
+    private void updateScores(){ //updates the scores for the current player
+        ScoreCard score1 = new ScoreCard(players.get(currentPlayerIndex).getScoreCard().getScores(), dice);
         score1.calculateScores();
         p1Score = score1.getScores();
         //for (Player player : players){//TODO: implement dynamic player count
