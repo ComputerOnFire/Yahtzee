@@ -142,30 +142,13 @@ public class GameController {
     private void updateScores(){ //updates the scores for the current player
         ScoreCard score1 = new ScoreCard(players.get(currentPlayerIndex).getScoreCard().getScores(), dice);
         score1.calculateScores();
-        p1Score = score1.getScores();
+        Score[] scores = score1.getScores();
         //for (Player player : players){//TODO: implement dynamic player count
         //update player scorecards
         //}
-        enableScore(p1Score[0],1,1);
-        enableScore(p1Score[1],1,2);
-        enableScore(p1Score[2],1,3);
-        enableScore(p1Score[3],1,4);
-        enableScore(p1Score[4],1,5);
-        enableScore(p1Score[5],1,6);
-        enableScore(p1Score[6],1,7);
-        enableScore(p1Score[7],1,8);
-        enableScore(p1Score[8],1,9);
-        enableScore(p1Score[9],1,10);
-        enableScore(p1Score[10],1,11);
-        enableScore(p1Score[11],1,12);
-        enableScore(p1Score[12],1,13);
-        enableScore(p1Score[13],1,14);
-        enableScore(p1Score[14],1,15);
-        enableScore(p1Score[15],1,16);
-        enableScore(p1Score[16],1,17);
-        enableScore(p1Score[17],1,18);
-        enableScore(p1Score[18],1,19);
-        enableScore(p1Score[19],1,20);
+        for(int i = 0; i < fields; ++i){
+            enableScore(scores[i],currentPlayerIndex + 1,i+1);
+        }
     }
 
     private void endTurn() {
@@ -305,5 +288,4 @@ public class GameController {
         }
         return null; //no grid node found
     }
-
 }
