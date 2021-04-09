@@ -33,7 +33,7 @@ public class GameController {
      * Constructed using the Dice class
      */
 
-    private final int rolls = 3;
+    private final int rolls = 100;
     private final int fields = 20;
     private final String[] fieldLabels = {"Player Name", "Ones", "Twos", "Threes", "Fours","Fives", "Sixes",
             "Sum", "Bonus", "UpperTotal", "ThreeOfAKind", "FourOfAKind", "FullHouse", "SmallStraight",
@@ -41,7 +41,7 @@ public class GameController {
     private Dice dice = new Dice();
     private List<Player> players = new ArrayList<>();
     private int currentPlayerIndex = 0; //track who's turn it is
-    private int turnCount = 0; //track number of turns
+    private int turnCount = 0; //track number of turns, i dont think this is needed
     private int rollCounter = rolls;
 
 
@@ -134,12 +134,9 @@ public class GameController {
     }
     @FXML
     private void updateScores(){ //updates the scores for the current player
-        ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex).getScoreCard(), dice);
+        ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex), dice);
         scoreCard.calculateScores();
         players.get(currentPlayerIndex).updateScoreCard(scoreCard);
-        //for (Player player : players){//TODO: implement dynamic player count
-        //update player scorecards
-        //}
         for(int i = 0; i < fields; ++i){
             enableScore(scoreCard.getScore(i),currentPlayerIndex + 1,i+1);
         }
@@ -158,16 +155,25 @@ public class GameController {
     }
 
     private void disableDice() {//refactor to be dynamic?
-        die1.setDisable(true);
+        dice.getDice()[0].hold(false);
         die1.setSelected(false);
-        die2.setDisable(true);
+        die1.setDisable(true);
+
+        dice.getDice()[1].hold(false);
         die2.setSelected(false);
-        die3.setDisable(true);
+        die2.setDisable(true);
+
+        dice.getDice()[2].hold(false);
         die3.setSelected(false);
-        die4.setDisable(true);
+        die3.setDisable(true);
+
+        dice.getDice()[3].hold(false);
         die4.setSelected(false);
-        die5.setDisable(true);
+        die4.setDisable(true);
+
+        dice.getDice()[4].hold(false);
         die5.setSelected(false);
+        die5.setDisable(true);
     }
 
     private void finalizeScores() {
@@ -298,8 +304,13 @@ public class GameController {
         players.get(currentPlayerIndex).keepScore(index);
         StackPane scorePane = (StackPane) mouseEvent.getSource();
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
+        if(players.get(currentPlayerIndex).getScoreCard().getScore(index).isYB()){
+            background.setFill(Color.YELLOWGREEN);
+        }
+        else{
+            background.setFill(Color.GREEN);
+        }
         background.setOpacity(1);
-        background.setFill(Color.GREEN);
         endTurn();
     }
 
@@ -308,7 +319,7 @@ public class GameController {
         StackPane scorePane = (StackPane) getGridNode(grid, col, row);
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         Label label = (Label) scorePane.getChildren().get(1);
-        if (!score.isRetained() && !score.isTotalOrBonus()){
+        if ((!score.isRetained() && !score.isTotalOrBonus())){
             background.setOpacity(1);
             background.setFill(Color.YELLOW);
             scorePane.setOnMouseClicked(mouseEvent -> keepScore(mouseEvent, row - 1));
