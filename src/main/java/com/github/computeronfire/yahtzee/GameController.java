@@ -32,6 +32,7 @@ public class GameController {
      * Initiate the array of 5 dice.
      * Constructed using the Dice class
      */
+
     private final int rolls = 3;
     private final int fields = 20;
     private final String[] fieldLabels = {"Player Name", "Ones", "Twos", "Threes", "Fours","Fives", "Sixes",
@@ -49,13 +50,10 @@ public class GameController {
 
     //TODO: make these private, annotate with @FXML, rename to camelcase
     public Label testBox;
-
     @FXML
     private Button rollButton;
-
     @FXML
     private GridPane grid;
-
     @FXML
     private ToggleButton die1;
     @FXML
@@ -66,7 +64,6 @@ public class GameController {
     private ToggleButton die4;
     @FXML
     private ToggleButton die5;
-
 
     /**
      * sets up the grid to display scores for each player,
