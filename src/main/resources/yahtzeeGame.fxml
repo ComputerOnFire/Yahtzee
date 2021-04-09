@@ -23,7 +23,7 @@
                         <AnchorPane prefHeight="94.0" prefWidth="202.0" BorderPane.alignment="CENTER">
                            <children>
                                      <Label fx:id="testBox" layoutX="15.0" layoutY="63.0" prefHeight="17.0" prefWidth="89.0" />
-                               <Button layoutX="14.0" layoutY="23.0" onAction="#testScoreFields" prefHeight="33.0" prefWidth="45.0" text="Test" />
+                               <Button layoutX="14.0" layoutY="23.0" onAction="#testReset" prefHeight="33.0" prefWidth="45.0" text="Test" />
                                      <Button layoutX="101.0" layoutY="22.0" onAction="#exitToMenu" prefHeight="35.0" prefWidth="85.0" text="Main Menu" />
                            </children>
                         </AnchorPane>

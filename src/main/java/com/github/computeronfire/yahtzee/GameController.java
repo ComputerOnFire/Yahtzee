@@ -99,9 +99,12 @@ public class GameController {
     }
 
     @FXML
-    private void testScoreFields(ActionEvent actionEvent) {
+    private void testReset(ActionEvent actionEvent) {
         grid.getChildren().clear();
-        initializeBoard();
+        List<Player> playersCleared = new ArrayList<>();
+        playersCleared.add(new Player(players.get(1).getName()));
+        playersCleared.add(new Player(players.get(1).getName()));
+        initializeBoard(playersCleared);
     }
     @FXML
     private void updateScores(Dice dice){ //change dice to player? use player here?
