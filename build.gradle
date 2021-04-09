@@ -1,8 +1,8 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.8'
-    id 'org.beryx.jlink' version '2.12.0'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+    id 'org.beryx.jlink' version '2.23.6'
 }
 
 repositories {
@@ -17,7 +17,49 @@ javafx {
 mainClassName = "com.github.computeronfire.yahtzee.Main"
 
 jlink {
-    launcher{
+    launcher {
         name = "yahtzee"
+    }
+    jpackage {
+        jpackageHome = 'C:/Program Files/Java/jdk-15.0.1'
+        imageOptions = ['--icon', 'src/main/resources/die1.png']
+        installerOptions = [
+                '--description', "test"
+        ]
+        installerType = project.findProperty('installerType')
+        // we will pass this from the command line (example: -PinstallerType=msi) for Windows
+        if (installerType == 'msi') {
+            imageOptions += ['--icon', 'src/main/resources/die1.png']
+            installerOptions += [
+                    '--win-per-user-install', '--win-dir-chooser',
+                    '--win-menu', '--win-shortcut'
+            ]
+        }
+        if (installerType == 'pkg') {
+            imageOptions += ['--icon', 'src/main/resources/die1.png']
+        }
+        if (installerType in ['deb', 'rpm']) {
+            imageOptions += ['--icon', 'src/main/resources/die1.png']
+            installerOptions += [
+                   '--linux-menu-group', 'Office',
+                    '--linux-shortcut'
+            ]
+        }
+        if (installerType == 'deb') {
+            installerOptions += [
+                   '--linux-deb-maintainer', 'computeronfire@protonmail.com'
+            ]
+        }
+        if (installerType == 'rpm') {
+            installerOptions += [
+                    '--linux-rpm-license-type', 'GPLv2'
+            ]
+        }
+    }
+}
+
+jpackage {
+    doFirst {
+        project.getProperty('installerType') // throws exception if its missing
     }
 }
