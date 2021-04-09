@@ -69,6 +69,9 @@ public class GameController {
         for (int i = 0; i <= fields; ++i){
             grid.add(new Label(fieldLabels[i]), 0, i);
         }
+        //for (Player player : players){//TODO: implement dynamic player count
+            //initialize player scorecards
+        //}
         for(int col = 1; col < players.size() + 1; ++col){
             double width = grid.getColumnConstraints().get(col).getPrefWidth();
             double height = grid.getRowConstraints().get(0).getPrefHeight();
@@ -101,6 +104,9 @@ public class GameController {
         score1 = new ScoreCard(dice, score1.getScores());
         score1.calculateScores();
         p1Score = score1.getScores();
+        //for (Player player : players){//TODO: implement dynamic player count
+        //update player scorecards
+        //}
         enableScore(p1Score[0],1,1);
         enableScore(p1Score[1],1,2);
         enableScore(p1Score[2],1,3);
