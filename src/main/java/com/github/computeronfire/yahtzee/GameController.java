@@ -39,6 +39,8 @@ public class GameController {
 
     private Dice dice = new Dice();
     private List<Player> players = new ArrayList<>();
+    private int currentPlayerIndex = 0; //track who's turn it is
+    private int turnCount = 0; //track number of turns
     private final int fields = 20;
     private final String[] fieldLabels = {"Player Name", "Ones", "Twos", "Threes", "Fours","Fives", "Sixes",
             "Sum", "Bonus", "UpperTotal", "ThreeOfAKind", "FourOfAKind", "FullHouse", "SmallStraight",
@@ -65,13 +67,11 @@ public class GameController {
      */
 
     @FXML
-    public void initializeBoard(){
+    public void initializeBoard(List<Player> players){
+        registerPlayers(players);
         for (int i = 0; i <= fields; ++i){
             grid.add(new Label(fieldLabels[i]), 0, i);
         }
-        //for (Player player : players){//TODO: implement dynamic player count
-            //initialize player scorecards
-        //}
         for(int col = 1; col < players.size() + 1; ++col){
             StackPane pane = new StackPane();
             grid.add(pane, col, 0);
@@ -96,8 +96,15 @@ public class GameController {
                 scorePane.getChildren().add(score);
             }
         }
+        Player currentPlayer = players.get(currentPlayerIndex);//first player
+        takeTurn(currentPlayer);
     }
+    private void registerPlayers(List<Player> players) {
+        this.players = players;
+    }
+    private void takeTurn(Player player){
 
+    }
     @FXML
     private void testReset(ActionEvent actionEvent) {
         grid.getChildren().clear();
@@ -134,30 +141,6 @@ public class GameController {
         enableScore(p1Score[17],1,18);
         enableScore(p1Score[18],1,19);
         enableScore(p1Score[19],1,20);
-
-        score2 = new ScoreCard(dice, score2.getScores());
-        score2.calculateScores();
-        p2Score = score2.getScores();
-        enableScore(p1Score[0],2,1);
-        enableScore(p1Score[1],2,2);
-        enableScore(p2Score[2],2,3);
-        enableScore(p2Score[3],2,4);
-        enableScore(p2Score[4],2,5);
-        enableScore(p2Score[5],2,6);
-        enableScore(p2Score[6],2,7);
-        enableScore(p2Score[7],2,8);
-        enableScore(p2Score[8],2,9);
-        enableScore(p2Score[9],2,10);
-        enableScore(p2Score[10],2,11);
-        enableScore(p2Score[11],2,12);
-        enableScore(p2Score[12],2,13);
-        enableScore(p2Score[13],2,14);
-        enableScore(p2Score[14],2,15);
-        enableScore(p2Score[15],2,16);
-        enableScore(p2Score[16],2,17);
-        enableScore(p2Score[17],2,18);
-        enableScore(p2Score[18],2,19);
-        enableScore(p2Score[19],2,20);
     }
 
     /**
@@ -254,7 +237,15 @@ public class GameController {
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         background.setOpacity(1);
         background.setFill(Color.GREEN);
+        endTurn();
     }
+
+    private void endTurn() {
+        int nextPlayerIndex = (currentPlayerIndex + 1) % players.size();
+        Player nextPlayer = players.get(nextPlayerIndex);
+        turnCount += 1;
+    }
+
     private void enableScore(Score score, int col, int row){//TODO: highlight which scores are valid and available for keeping
         String text = Integer.toString(score.getScore());
         StackPane scorePane = (StackPane) getGridNode(grid, col, row);
@@ -274,7 +265,4 @@ public class GameController {
         return null; //no grid node found
     }
 
-    public void registerPlayers(List<Player> players) {
-        this.players = players;
-    }
 }
