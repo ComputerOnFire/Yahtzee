@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -78,7 +79,7 @@ public class GameController {
             ScoreCard playerScoreCard = players.get(col - 1).getScoreCard();
             playerNameLabel.setText(playerNameText);
             pane.getChildren().add(playerNameLabel);
-           // grid.add(playerNameLabel, col, 0);
+
             for(int row = 1; row < playerScoreCard.getScores().length + 1; ++row){
                 StackPane scorePane = new StackPane();
                 grid.add(scorePane, col, row);
@@ -120,7 +121,6 @@ public class GameController {
         enableScore(p1Score[17],1,18);
         enableScore(p1Score[18],1,19);
         enableScore(p1Score[19],1,20);
-
 
         score2 = new ScoreCard(dice, score2.getScores());
         score2.calculateScores();
