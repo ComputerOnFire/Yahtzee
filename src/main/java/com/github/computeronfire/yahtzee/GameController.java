@@ -73,10 +73,9 @@ public class GameController {
             //initialize player scorecards
         //}
         for(int col = 1; col < players.size() + 1; ++col){
-            double width = grid.getColumnConstraints().get(col).getPrefWidth();
-            double height = grid.getRowConstraints().get(0).getPrefHeight();
             StackPane pane = new StackPane();
             grid.add(pane, col, 0);
+
             Label playerNameLabel = new Label();
             String playerNameText = players.get(col - 1).getName();
             ScoreCard playerScoreCard = players.get(col - 1).getScoreCard();
@@ -84,8 +83,13 @@ public class GameController {
             pane.getChildren().add(playerNameLabel);
 
             for(int row = 1; row < playerScoreCard.getScores().length + 1; ++row){
+                Rectangle background = new Rectangle();
+                background.setWidth(grid.getColumnConstraints().get(col).getPrefWidth());
+                background.setHeight(grid.getRowConstraints().get(row).getPrefHeight());
+                background.setOpacity(0);
                 StackPane scorePane = new StackPane();
                 grid.add(scorePane, col, row);
+                scorePane.getChildren().add(background);
                 Label score = new Label();
                 String text = Integer.toString(playerScoreCard.getScores()[row-1].getScore());
                 score.setText(text);
@@ -244,15 +248,17 @@ public class GameController {
     }
     private void keepScore(MouseEvent mouseEvent){//TODO: when score is clicked, keep said score
         StackPane scorePane = (StackPane) mouseEvent.getSource();
-        Label label = (Label) scorePane.getChildren().get(0);
-        label.setStyle("--fx-background-color: green;");
+        Rectangle background = (Rectangle) scorePane.getChildren().get(0);
+        background.setOpacity(1);
+        background.setFill(Color.GREEN);
     }
     private void enableScore(Score score, int col, int row){//TODO: highlight which scores are valid and available for keeping
         String text = Integer.toString(score.getScore());
         StackPane scorePane = (StackPane) getGridNode(grid, col, row);
-        Label label = (Label) scorePane.getChildren().get(0);
-        //label.setBackground((new Background(new BackgroundFill(Color.YELLOW))));
-        label.setTextFill(Color.YELLOW);
+        Rectangle background = (Rectangle) scorePane.getChildren().get(0);
+        Label label = (Label) scorePane.getChildren().get(1);
+        background.setOpacity(1);
+        background.setFill(Color.YELLOW);
         label.setText(text);
         scorePane.setOnMouseClicked(mouseEvent -> keepScore(mouseEvent));
     }
