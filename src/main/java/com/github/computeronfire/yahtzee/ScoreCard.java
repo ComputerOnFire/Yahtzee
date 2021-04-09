@@ -1,5 +1,6 @@
 package com.github.computeronfire.yahtzee;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -80,25 +81,53 @@ public class ScoreCard {
             return 0;
         }
     }
-
-    private int smallStraight(){//TODO: test implementation of small Straight
+    private int fullHouse(){
         Map<Integer, Integer> repetitions = repetition();
-        for(int die : repetitions.keySet()){
-            if(repetitions.get(die) > 2){
-                return 0;
+        boolean pair = false;
+
+        for (Integer die : repetitions.keySet()) {
+            if (repetitions.get(die) == 2) {
+                pair = true;
             }
         }
-        return 15;
+        if(pair && repetitions.size() == 2){
+            return 25;
+        }
+        else{
+            return 0;
+        }
     }
 
-    private int largeStraight(){//TODO: test implementation of large Straight
-        Map<Integer, Integer> repetitions = repetition();
-        for(int die : repetitions.keySet()){
-            if(repetitions.get(die) > 1){
-                return 0;
+    private int smallStraight(int nonStraight){//TODO: rewrite implementation
+        if(nonStraight < 2) {
+            return 15;
+        }
+        else{
+            return 0;
+        }
+    }
+
+    private int largeStraight(int nonStraight){//TODO: rewrite implementation
+        if(nonStraight < 1) {
+            return 20;
+        }
+        else{
+            return 0;
+        }
+    }
+    private int calculateStraight() {
+        int[] diceFaces = new int[5];
+        for (int i = 0; i < dice.getDice().length; ++i) {
+            diceFaces[i] = dice.getDice()[i].getFace();
+        }
+        Arrays.sort(diceFaces);
+        int nonStraight = 0;
+        for (int i = 0; i < diceFaces.length - 1; i++) {
+            if (diceFaces[i] + 1 != diceFaces[i + 1]) {
+                nonStraight++;
             }
         }
-        return 20;
+        return nonStraight;
     }
 
     public void calculateScores(){//TODO: decide if switch should be refactored into functions
@@ -144,19 +173,15 @@ public class ScoreCard {
                     break;
                 case 11:
                     //Full house
-                    if (xOfAKind(3) > 0 && xOfAKind(2) > 0) {
-                        scores[i].setScore(xOfAKind(3) + xOfAKind(2));
-                    } else {
-                        scores[i].setScore(0);
-                    }
+                    scores[i].setScore(fullHouse());
                     break;
                 case 12:
                     //Small Straight
-                    scores[i].setScore(smallStraight());
+                    scores[i].setScore(smallStraight(calculateStraight()));
                     break;
                 case 13:
                     //Large Straight
-                    scores[i].setScore(largeStraight());
+                    scores[i].setScore(largeStraight(calculateStraight()));
                     break;
                 case 14:
                     //Yahtzee!
@@ -200,6 +225,5 @@ public class ScoreCard {
                     break;
             }
         }
-        //return scores;
     }
 }

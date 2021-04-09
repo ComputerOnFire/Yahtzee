@@ -151,12 +151,26 @@ public class GameController {
     private void endTurn() {
         //int nextPlayerIndex = (currentPlayerIndex + 1) % players.size();
         //Player nextPlayer = players.get(nextPlayerIndex);
+        disableDice();
         finalizeScores();
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
         turnCount += 1;
         rollCounter = rolls;
         updateRollButton();
         enableCurrentPlayer();
+    }
+
+    private void disableDice() {//refactor to be dynamic?
+        die1.setDisable(true);
+        die1.setSelected(false);
+        die2.setDisable(true);
+        die2.setSelected(false);
+        die3.setDisable(true);
+        die3.setSelected(false);
+        die4.setDisable(true);
+        die4.setSelected(false);
+        die5.setDisable(true);
+        die5.setSelected(false);
     }
 
     private void finalizeScores() {
