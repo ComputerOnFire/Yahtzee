@@ -43,10 +43,7 @@ public class GameController {
     private int currentPlayerIndex = 0; //track who's turn it is
     private int turnCount = 0; //track number of turns
     private int rollCounter = rolls;
-    Score[] p1Score = new Score[fields];
-    Score[] p2Score = new Score[fields];
-    ScoreCard score1 = new ScoreCard();
-    ScoreCard score2 = new ScoreCard();
+
 
     //TODO: make these private, annotate with @FXML, rename to camelcase
     public Label testBox;
