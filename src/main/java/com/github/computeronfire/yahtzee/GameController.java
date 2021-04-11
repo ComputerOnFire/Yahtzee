@@ -33,7 +33,7 @@ public class GameController {
      * Constructed using the Dice class
      */
 
-    private final int rolls = 100;//should be 3, set to 100 for testing purposes
+    private final int rolls = 3;
     private final int fields = 20;
     private final String[] fieldLabels = {"Player Name", "Ones", "Twos", "Threes", "Fours","Fives", "Sixes",
             "Sum", "Bonus", "UpperTotal", "ThreeOfAKind", "FourOfAKind", "FullHouse", "SmallStraight",
@@ -72,7 +72,9 @@ public class GameController {
         registerPlayers(players);
         rollButton.setText(String.format("Roll (%d left)", rollCounter));
         for (int i = 0; i <= fields; ++i){
-            grid.add(new Label(fieldLabels[i]), 0, i);
+            if(i != 17 && i != 18) {
+                grid.add(new Label(fieldLabels[i]), 0, i);
+            }
         }
         for(int col = 1; col < players.size() + 1; ++col){
             StackPane pane = new StackPane();
@@ -90,17 +92,19 @@ public class GameController {
             pane.getChildren().add(playerNameLabel);
 
             for(int row = 1; row <= fields; ++row){
-                Rectangle background = new Rectangle();
-                background.setWidth(grid.getColumnConstraints().get(col).getPrefWidth());
-                background.setHeight(grid.getRowConstraints().get(row).getPrefHeight());
-                background.setOpacity(0);
-                StackPane scorePane = new StackPane();
-                grid.add(scorePane, col, row);
-                scorePane.getChildren().add(background);
-                Label score = new Label();
-                String text = Integer.toString(playerScoreCard.getScore(row-1).getValue());
-                score.setText(text);
-                scorePane.getChildren().add(score);
+                if(row != 17 && row != 18){//dont draw yahtzee bonus on board
+                    Rectangle background = new Rectangle();
+                    background.setWidth(grid.getColumnConstraints().get(col).getPrefWidth());
+                    background.setHeight(grid.getRowConstraints().get(row).getPrefHeight());
+                    background.setOpacity(0);
+                    StackPane scorePane = new StackPane();
+                    grid.add(scorePane, col, row);
+                    scorePane.getChildren().add(background);
+                    Label score = new Label();
+                    String text = Integer.toString(playerScoreCard.getScore(row-1).getValue());
+                    score.setText(text);
+                    scorePane.getChildren().add(score);
+                }
             }
         }
         enableCurrentPlayer();
@@ -138,7 +142,9 @@ public class GameController {
         scoreCard.calculateScores();
         players.get(currentPlayerIndex).updateScoreCard(scoreCard);
         for(int i = 0; i < fields; ++i){
-            enableScore(scoreCard.getScore(i),currentPlayerIndex + 1,i+1);
+            if(i != 16 && i != 17) {
+                enableScore(scoreCard.getScore(i), currentPlayerIndex + 1, i + 1);
+            }
         }
     }
 
@@ -177,7 +183,6 @@ public class GameController {
     }
 
     private void finalizeScores() {
-        ScoreCard scoreCard  = players.get(currentPlayerIndex).getScoreCard();
         for(int i = 0; i < fields; ++i){
             finalizeScore(currentPlayerIndex + 1,i+1);
         }

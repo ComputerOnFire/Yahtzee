@@ -209,13 +209,13 @@ public class ScoreCard {
                 case 16://TODO: decide if yahtzee bonus should be removed
                     //Yahtzee Bonus (check count only), might remove
                     //scores[i].markTotalOrBonus();
-                    scores[i].setScore(calculateYahtzeeBonus());
-                    scores[i].setYB();
+                    //scores[i].setScore(calculateYahtzeeBonus());
+                    //scores[i].markTotalOrBonus();
                     break;
                 case 17:
                     //Yahtzee Bonus (score), might remove
-                    scores[i].setScore(scores[16].getValue() * 50);
-                    scores[i].markTotalOrBonus();
+                    //scores[i].setScore(scores[16].getValue() * 50);
+                    //scores[i].markTotalOrBonus();
                     break;
                 case 18:
                     //Lower Total
