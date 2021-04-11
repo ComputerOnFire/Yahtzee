@@ -3,7 +3,6 @@ package com.github.computeronfire.yahtzee;
 public class Player {
     private final String name;
     private ScoreCard scoreCard;
-    private int yahtzeeBonus = 0;
     public Player(String name){
         this.name = name;
         this.scoreCard = new ScoreCard();
@@ -24,8 +23,5 @@ public class Player {
         else{
             scoreCard.getScore(index).retainScore();
         }
-    }
-    public int getYahtzeeBonus(){
-        return yahtzeeBonus;
     }
 }

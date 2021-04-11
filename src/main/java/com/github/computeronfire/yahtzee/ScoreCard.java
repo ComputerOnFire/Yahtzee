@@ -12,8 +12,7 @@ import java.util.Map;
 
 public class ScoreCard {
     private Dice dice;
-    private int yahtzeeBonus = 0; //ticker for how many times a yahztee bonus mark was scored (up to 3)
-    private Score[] scores = new Score[20]; //must be size of 20
+    private Score[] scores = new Score[18]; //must be size of 20
 
     public ScoreCard(){
         for (int i = 0; i < this.scores.length; ++i){
@@ -22,7 +21,6 @@ public class ScoreCard {
     }
     public ScoreCard(Player player, Dice dice){
         this.scores = player.getScoreCard().scores;
-        this.yahtzeeBonus = player.getYahtzeeBonus();
         this.dice = dice;
     }
     public Score getScore(int index){
@@ -131,15 +129,6 @@ public class ScoreCard {
         }
         return nonStraight;
     }
-    private int calculateYahtzeeBonus(){
-        if(scores[14].getValue() > 0 && scores[14].isRetained() && xOfAKind(5) > 0) {
-            yahtzeeBonus += 1;
-            return yahtzeeBonus;
-        }
-        else{
-            return yahtzeeBonus;
-        }
-    }
 
     public void calculateScores(){//TODO: decide if switch should be refactored into functions
         for (int i = 0; i < scores.length; ++i){
@@ -206,21 +195,10 @@ public class ScoreCard {
                     //Chance (total of all 5, no conditions)
                     scores[i].setScore(chance());
                     break;
-                case 16://TODO: decide if yahtzee bonus should be removed
-                    //Yahtzee Bonus (check count only), might remove
-                    //scores[i].markTotalOrBonus();
-                    //scores[i].setScore(calculateYahtzeeBonus());
-                    //scores[i].markTotalOrBonus();
-                    break;
-                case 17:
-                    //Yahtzee Bonus (score), might remove
-                    //scores[i].setScore(scores[16].getValue() * 50);
-                    //scores[i].markTotalOrBonus();
-                    break;
-                case 18:
+                case 16:
                     //Lower Total
                     int lowerTotal = 0;
-                    for (int k = 9; k < i-2; ++k) {
+                    for (int k = 9; k < i; ++k) {
                         if(scores[k].isRetained()){
                             lowerTotal += scores[k].getValue();
                         }
@@ -228,9 +206,9 @@ public class ScoreCard {
                     scores[i].setScore(lowerTotal);
                     scores[i].markTotalOrBonus();
                     break;
-                case 19:
+                case 17:
                     //Grand Total
-                    scores[i].setScore(scores[8].getValue() + scores[18].getValue());
+                    scores[i].setScore(scores[8].getValue() + scores[16].getValue());
                     scores[i].markTotalOrBonus();
                     break;
             }

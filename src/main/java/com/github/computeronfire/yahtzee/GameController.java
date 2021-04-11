@@ -34,14 +34,13 @@ public class GameController {
      */
 
     private final int rolls = 3;
-    private final int fields = 20;
+    private final int fields = 18;
     private final String[] fieldLabels = {"Player Name", "Ones", "Twos", "Threes", "Fours","Fives", "Sixes",
             "Sum", "Bonus", "UpperTotal", "ThreeOfAKind", "FourOfAKind", "FullHouse", "SmallStraight",
-            "LargeStraight","Yahtzee!", "Chance", "Yahtzee! Bonuses", "Yahtzee! Bonus", "Lower Total", "Grand Total"};
+            "LargeStraight","Yahtzee!", "Chance", "Lower Total", "Grand Total"};
     private Dice dice = new Dice();
     private List<Player> players = new ArrayList<>();
     private int currentPlayerIndex = 0; //track who's turn it is
-    private int turnCount = 0; //track number of turns, i dont think this is needed
     private int rollCounter = rolls;
 
 
@@ -72,9 +71,7 @@ public class GameController {
         registerPlayers(players);
         rollButton.setText(String.format("Roll (%d left)", rollCounter));
         for (int i = 0; i <= fields; ++i){
-            if(i != 17 && i != 18) {
-                grid.add(new Label(fieldLabels[i]), 0, i);
-            }
+            grid.add(new Label(fieldLabels[i]), 0, i);
         }
         for(int col = 1; col < players.size() + 1; ++col){
             StackPane pane = new StackPane();
@@ -92,19 +89,17 @@ public class GameController {
             pane.getChildren().add(playerNameLabel);
 
             for(int row = 1; row <= fields; ++row){
-                if(row != 17 && row != 18){//dont draw yahtzee bonus on board
-                    Rectangle background = new Rectangle();
-                    background.setWidth(grid.getColumnConstraints().get(col).getPrefWidth());
-                    background.setHeight(grid.getRowConstraints().get(row).getPrefHeight());
-                    background.setOpacity(0);
-                    StackPane scorePane = new StackPane();
-                    grid.add(scorePane, col, row);
-                    scorePane.getChildren().add(background);
-                    Label score = new Label();
-                    String text = Integer.toString(playerScoreCard.getScore(row-1).getValue());
-                    score.setText(text);
-                    scorePane.getChildren().add(score);
-                }
+                Rectangle background = new Rectangle();
+                background.setWidth(grid.getColumnConstraints().get(col).getPrefWidth());
+                background.setHeight(grid.getRowConstraints().get(row).getPrefHeight());
+                background.setOpacity(0);
+                StackPane scorePane = new StackPane();
+                grid.add(scorePane, col, row);
+                scorePane.getChildren().add(background);
+                Label score = new Label();
+                String text = Integer.toString(playerScoreCard.getScore(row-1).getValue());
+                score.setText(text);
+                scorePane.getChildren().add(score);
             }
         }
         enableCurrentPlayer();
@@ -142,9 +137,7 @@ public class GameController {
         scoreCard.calculateScores();
         players.get(currentPlayerIndex).updateScoreCard(scoreCard);
         for(int i = 0; i < fields; ++i){
-            if(i != 16 && i != 17) {
-                enableScore(scoreCard.getScore(i), currentPlayerIndex + 1, i + 1);
-            }
+            enableScore(scoreCard.getScore(i), currentPlayerIndex + 1, i + 1);
         }
     }
 
@@ -154,7 +147,6 @@ public class GameController {
         disableDice();
         finalizeScores();
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
-        turnCount += 1;
         rollCounter = rolls;
         updateRollButton();
         enableCurrentPlayer();
@@ -184,9 +176,7 @@ public class GameController {
 
     private void finalizeScores() {
         for(int i = 0; i < fields; ++i){
-            if(i != 16 && i != 17) {
-                finalizeScore(currentPlayerIndex + 1, i + 1);
-            }
+            finalizeScore(currentPlayerIndex + 1, i + 1);
         }
     }
 
