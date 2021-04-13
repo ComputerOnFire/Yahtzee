@@ -38,6 +38,7 @@ public class GameController {
     private final String[] fieldLabels = {"Player Name", "Ones", "Twos", "Threes", "Fours","Fives", "Sixes",
             "Sum", "Bonus", "UpperTotal", "ThreeOfAKind", "FourOfAKind", "FullHouse", "SmallStraight",
             "LargeStraight","Yahtzee!", "Chance", "Lower Total", "Grand Total"};
+    public Label winnerDisplay;
     private Dice dice = new Dice();
     private List<Player> players = new ArrayList<>();
     private int currentPlayerIndex = 0; //track who's turn it is
@@ -45,7 +46,7 @@ public class GameController {
 
 
     //TODO: make these private, annotate with @FXML, rename to camelcase
-    public Label testBox;
+    public Label resetBox;
     @FXML
     private Button rollButton;
     @FXML
@@ -104,8 +105,31 @@ public class GameController {
         }
         enableCurrentPlayer();
     }
+    private boolean gameOver(){
+        boolean completed = true;
+        for (Player player: players){
+            for (Score score: player.getScoreCard().getScores()){
+                if(!score.isRetained() && !score.isTotalOrBonus()){
+                    completed = false;
+                }
+            }
+        }
+        return completed;
+    }
 
-    private void enableCurrentPlayer() {
+    private Player winner(){//determines which player has the highest score, and returns the winnerDisplay
+        int highScore = 0;
+        Player winner = null;
+        for(Player player: players){
+            if (player.getScoreCard().getScore(fields-1).getValue() > highScore){
+                winner = player;
+                highScore = player.getScoreCard().getScore(fields-1).getValue();
+            }
+        }
+        return winner;
+    }
+
+    private void enableCurrentPlayer() {//sets the control of the board over to the player whose turn it should be
         for(int i = 0; i < players.size(); ++i){
             int col = i + 1;
             StackPane scorePane = (StackPane) getGridNode(grid, col, 0);
@@ -124,11 +148,13 @@ public class GameController {
     }
 
     @FXML
-    private void testReset(ActionEvent actionEvent) {
+    private void resetBoard() {
+        currentPlayerIndex = 0;
         grid.getChildren().clear();
         List<Player> playersCleared = new ArrayList<>();
-        playersCleared.add(new Player(players.get(0).getName()));
-        playersCleared.add(new Player(players.get(1).getName()));
+        for(Player player: players){
+            playersCleared.add(new Player(player.getName()));
+        }
         initializeBoard(playersCleared);
     }
     @FXML
@@ -146,10 +172,16 @@ public class GameController {
         //Player nextPlayer = players.get(nextPlayerIndex);
         disableDice();
         finalizeScores();
-        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
-        rollCounter = rolls;
-        updateRollButton();
-        enableCurrentPlayer();
+        if(gameOver()){
+            Player winner = winner();
+            winnerDisplay.setText(String.format("%s wins with %d points!", winner.getName(),winner.getScoreCard().getScore(fields-1).getValue()));
+        }
+        else{
+            currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+            rollCounter = rolls;
+            updateRollButton();
+            enableCurrentPlayer();
+        }
     }
 
     private void disableDice() {//refactor to be dynamic?

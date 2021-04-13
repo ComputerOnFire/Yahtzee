@@ -26,6 +26,9 @@ public class ScoreCard {
     public Score getScore(int index){
         return scores[index];
     }
+    public Score[] getScores(){
+        return scores;
+    }
 
     private int chance(){ //return sum of all dice
         int sum = 0;
