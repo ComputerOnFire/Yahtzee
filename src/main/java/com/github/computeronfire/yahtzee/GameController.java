@@ -131,6 +131,7 @@ public class GameController {
         playersCleared.add(new Player(players.get(1).getName()));
         initializeBoard(playersCleared);
     }
+
     @FXML
     private void updateScores(){ //updates the scores for the current player
         ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex), dice);
@@ -297,6 +298,7 @@ public class GameController {
         iView.setPickOnBounds(true);
         die.setGraphic(iView);
     }
+
     private void keepScore(MouseEvent mouseEvent, int index){//TODO: when score is clicked, keep said score
         StackPane scorePane = (StackPane) mouseEvent.getSource();
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
@@ -323,6 +325,7 @@ public class GameController {
         }
         label.setText(text);
     }
+
     private Node getGridNode(GridPane gridPane, int col, int row){//gets grid node based on column and row
         for (Node node : gridPane.getChildren()) {
             if(GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row){
