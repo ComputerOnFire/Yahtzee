@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -7,4 +8,27 @@
    <center>
           <Button onAction="#startGame" prefHeight="107.0" prefWidth="163.0" text="Start Game" />
    </center>
+   <bottom>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="player1">
+               <padding>
+                  <Insets top="25.0" />
+               </padding>
+            </TextField>
+             <TextField fx:id="player2">
+            </TextField >
+             <TextField fx:id="player3">
+             </TextField >
+             <TextField fx:id="player4">
+             </TextField >
+             <TextField fx:id="player5">
+             </TextField >
+             <TextField fx:id="player6">
+             </TextField >
+             <TextField fx:id="player7">
+             </TextField >
+         </children>
+      </VBox>
+   </bottom>
 </BorderPane>
