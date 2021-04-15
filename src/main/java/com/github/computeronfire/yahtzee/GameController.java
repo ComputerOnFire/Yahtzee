@@ -44,7 +44,7 @@ public class GameController {
             "Sum", "Bonus", "UpperTotal", "ThreeOfAKind", "FourOfAKind", "FullHouse", "SmallStraight",
             "LargeStraight","Yahtzee!", "Chance", "Lower Total", "Grand Total"};
     public Label winnerDisplay;
-    private Dice dice = new Dice();
+    private final Dice dice = new Dice();
     private List<Player> players = new ArrayList<>();
     private int currentPlayerIndex = 0; //track who's turn it is
     private int rollCounter = rolls;
