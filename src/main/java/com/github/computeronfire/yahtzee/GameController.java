@@ -38,11 +38,11 @@ public class GameController {
      * Constructed using the Dice class
      */
 
-    private final int rolls = 3;
-    private final int fields = 18;
-    private final String[] fieldLabels = {"Player Name", "Ones", "Twos", "Threes", "Fours","Fives", "Sixes",
-            "Sum", "Bonus", "UpperTotal", "ThreeOfAKind", "FourOfAKind", "FullHouse", "SmallStraight",
-            "LargeStraight","Yahtzee!", "Chance", "Lower Total", "Grand Total"};
+    private final int rolls = 3;//maximum number of rolls per turn
+    private final int fields = 18;//number of different score fields
+    private final String[] fieldLabels = {" ", "Ones", "Twos", "Threes", "Fours","Fives", "Sixes",
+            "Sum", "Bonus", "Upper Total", "3 of A Kind", "4 of A Kind", "Full House", "Small Straight",
+            "Large Straight","Yahtzee!", "Chance", "Lower Total", "Grand Total"};
     public Label winnerDisplay;
     private final Dice dice = new Dice();
     private List<Player> players = new ArrayList<>();
