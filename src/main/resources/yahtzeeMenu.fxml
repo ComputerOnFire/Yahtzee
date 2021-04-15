@@ -11,22 +11,22 @@
    <bottom>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="player1">
+            <TextField fx:id="player1" text="Player 1" promptText="Player 1">
                <padding>
                   <Insets top="25.0" />
                </padding>
             </TextField>
-             <TextField fx:id="player2">
+             <TextField fx:id="player2" text="Player 2" promptText="Player 2">
             </TextField >
-             <TextField fx:id="player3">
+             <TextField fx:id="player3" promptText="Player 3">
              </TextField >
-             <TextField fx:id="player4">
+             <TextField fx:id="player4" promptText="Player 4">
              </TextField >
-             <TextField fx:id="player5">
+             <TextField fx:id="player5" promptText="Player 5">
              </TextField >
-             <TextField fx:id="player6">
+             <TextField fx:id="player6" promptText="Player 6">
              </TextField >
-             <TextField fx:id="player7">
+             <TextField fx:id="player7" promptText="Player 7">
              </TextField >
          </children>
       </VBox>
