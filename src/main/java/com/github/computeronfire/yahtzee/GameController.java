@@ -254,7 +254,7 @@ public class GameController {
     private void holdDie(ActionEvent actionEvent) {
         ToggleButton dieButton = (ToggleButton) actionEvent.getSource();
         int id = Integer.parseInt(dieButton.getId().substring("die".length())) - 1;
-        dice.getDice()[id].hold((!dice.getDice()[id].isHeld()));
+        dice.getDice()[id].hold((dice.getDice()[id].isNotHeld()));
     }
 
     @FXML

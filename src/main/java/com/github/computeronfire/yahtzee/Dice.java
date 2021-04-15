@@ -30,7 +30,7 @@ public class Dice {
     }
     public void rollDice(){
         for (Die die: dice){
-            if(!die.isHeld()){
+            if(die.isNotHeld()){
                 die.rollDie();
             }
         }

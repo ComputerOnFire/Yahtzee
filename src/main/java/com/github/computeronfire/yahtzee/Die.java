@@ -28,7 +28,7 @@ public class Die {
     public int getFace(){
         return face;
     }
-    public boolean isHeld(){
-        return held;
+    public boolean isNotHeld(){
+        return !held;
     }
 }
