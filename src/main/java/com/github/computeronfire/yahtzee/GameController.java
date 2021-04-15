@@ -114,7 +114,7 @@ public class GameController {
         boolean completed = true;
         for (Player player: players){
             for (Score score: player.getScoreCard().getScores()){
-                if(!score.isRetained() && !score.isTotalOrBonus()){
+                if(!score.isRetained() && score.isNotTotalOrBonus()){
                     completed = false;
                 }
             }
@@ -223,7 +223,7 @@ public class GameController {
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         Label label = (Label) scorePane.getChildren().get(1);
         scorePane.setOnMouseClicked(null);
-        if(!players.get(currentPlayerIndex).getScoreCard().getScore(row-1).isTotalOrBonus() && !players.get(currentPlayerIndex).getScoreCard().getScore(row-1).isRetained()){
+        if(players.get(currentPlayerIndex).getScoreCard().getScore(row - 1).isNotTotalOrBonus() && !players.get(currentPlayerIndex).getScoreCard().getScore(row-1).isRetained()){
             background.setOpacity(0);
             label.setText("");
         }
@@ -355,7 +355,7 @@ public class GameController {
         StackPane scorePane = (StackPane) getGridNode(grid, col, row);
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         Label label = (Label) scorePane.getChildren().get(1);
-        if ((!score.isRetained() && !score.isTotalOrBonus())){
+        if ((!score.isRetained() && score.isNotTotalOrBonus())){
             background.setOpacity(1);
             background.setFill(Color.YELLOW);
             scorePane.setOnMouseClicked(mouseEvent -> keepScore(mouseEvent, row - 1));

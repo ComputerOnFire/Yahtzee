@@ -32,8 +32,8 @@ public class Score {
     public void markTotalOrBonus(){//could be refactored, see ScoreCard usages
         this.totalOrBonus = true;
     }
-    public boolean isTotalOrBonus(){
-        return totalOrBonus;
+    public boolean isNotTotalOrBonus(){
+        return !totalOrBonus;
     }
     public boolean isYB(){
         return yahtzeeBonus;
