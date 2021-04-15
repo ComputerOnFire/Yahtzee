@@ -12,150 +12,142 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane stylesheets="/UI.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.computeronfire.yahtzee.GameController">
-   <children>
-      <BorderPane>
-         <left>
+<AnchorPane stylesheets="/UI.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.github.computeronfire.yahtzee.GameController">
+    <BorderPane>
+        <left>
             <AnchorPane BorderPane.alignment="CENTER">
-               <children>
-                  <BorderPane>
-                     <top>
+                <BorderPane>
+                    <top>
                         <AnchorPane prefHeight="94.0" prefWidth="202.0" BorderPane.alignment="CENTER">
-                           <children>
-                                     <Label fx:id="resetBox" layoutX="15.0" layoutY="63.0" prefHeight="17.0" prefWidth="89.0" />
-                               <Button layoutX="14.0" layoutY="23.0" onAction="#resetBoard" prefHeight="33.0" prefWidth="45.0" text="Reset" />
-                                     <Button layoutX="101.0" layoutY="22.0" onAction="#exitToMenu" prefHeight="35.0" prefWidth="85.0" text="Main Menu" />
-                           </children>
+                            <Label fx:id="resetBox" layoutX="15.0" layoutY="63.0" prefHeight="17.0"
+                                   prefWidth="89.0"/>
+                            <Button layoutX="14.0" layoutY="23.0" onAction="#resetBoard" prefHeight="33.0"
+                                    prefWidth="45.0" text="Reset"/>
+                            <Button layoutX="101.0" layoutY="22.0" onAction="#exitToMenu" prefHeight="35.0"
+                                    prefWidth="85.0" text="Main Menu"/>
                         </AnchorPane>
-                     </top>
-                     <bottom>
+                    </top>
+                    <bottom>
                         <AnchorPane prefHeight="101.0" prefWidth="202.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Button fx:id="rollButton" layoutX="59.0" layoutY="9.0" onAction="#rollDice" prefHeight="51.0" prefWidth="93.0" text="Roll" />
-                           </children></AnchorPane>
-                     </bottom>
-                     <left>
+                            <Button fx:id="rollButton" layoutX="59.0" layoutY="9.0" onAction="#rollDice"
+                                    prefHeight="51.0" prefWidth="93.0" text="Roll"/>
+                        </AnchorPane>
+                    </bottom>
+                    <left>
                         <VBox prefHeight="200.0" prefWidth="202.0" spacing="10.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <AnchorPane>
-                                 <children>
-                                    <ToggleButton fx:id="die1" disable="true" mnemonicParsing="false" onAction="#holdDie">
-                                       <graphic>
-                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@die1.png" />
-                                             </image>
-                                             <effect>
-                                                <Glow />
-                                                   </effect>
-                                          </ImageView>
-                                       </graphic>
-                                    </ToggleButton>
-                                    <ToggleButton fx:id="die2" disable="true" layoutX="66.0" mnemonicParsing="false" onAction="#holdDie">
-                                       <graphic>
-                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@die2.png" />
-                                             </image>
-                                             <effect>
-                                                <Glow />
-                                             </effect>
-                                          </ImageView>
-                                       </graphic>
-                                    </ToggleButton>
-                                    <ToggleButton fx:id="die3" disable="true" layoutX="132.0" mnemonicParsing="false" onAction="#holdDie">
-                                       <graphic>
-                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@die3.png" />
-                                             </image>
-                                             <effect>
-                                                <Glow />
-                                             </effect>
-                                          </ImageView>
-                                       </graphic>
-                                    </ToggleButton>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane>
-                                 <children>
-                                    <ToggleButton fx:id="die4" disable="true" layoutX="33.0" mnemonicParsing="false" onAction="#holdDie">
-                                       <graphic>
-                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@die4.png" />
-                                             </image>
-                                             <effect>
-                                                <Glow />
-                                             </effect>
-                                          </ImageView>
-                                       </graphic>
-                                    </ToggleButton>
-                                    <ToggleButton fx:id="die5" disable="true" layoutX="99.0" mnemonicParsing="false" onAction="#holdDie">
-                                       <graphic>
-                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@die5.png" />
-                                             </image>
-                                             <effect>
-                                                <Glow />
-                                             </effect>
-                                          </ImageView>
-                                       </graphic>
-                                    </ToggleButton>
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
+                            <padding>
+                                <Insets left="10.0"/>
+                            </padding>
+                            <AnchorPane>
+                                <ToggleButton fx:id="die1" disable="true" mnemonicParsing="false"
+                                              onAction="#holdDie">
+                                    <graphic>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <effect>
+                                                <Glow/>
+                                            </effect>
+                                            <Image url="@die1.png"/>
+                                        </ImageView>
+                                    </graphic>
+                                </ToggleButton>
+                                <ToggleButton fx:id="die2" disable="true" layoutX="66.0"
+                                              mnemonicParsing="false" onAction="#holdDie">
+                                    <graphic>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <effect>
+                                                <Glow/>
+                                            </effect>
+                                            <Image url="@die2.png"/>
+                                        </ImageView>
+                                    </graphic>
+                                </ToggleButton>
+                                <ToggleButton fx:id="die3" disable="true" layoutX="132.0"
+                                              mnemonicParsing="false" onAction="#holdDie">
+                                    <graphic>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <effect>
+                                                <Glow/>
+                                            </effect>
+                                            <Image url="@die3.png"/>
+                                        </ImageView>
+                                    </graphic>
+                                </ToggleButton>
+                            </AnchorPane>
+                            <AnchorPane>
+                                <ToggleButton fx:id="die4" disable="true" layoutX="33.0"
+                                              mnemonicParsing="false" onAction="#holdDie">
+                                    <graphic>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <effect>
+                                                <Glow/>
+                                            </effect>
+                                            <Image url="@die4.png"/>
+                                        </ImageView>
+                                    </graphic>
+                                </ToggleButton>
+                                <ToggleButton fx:id="die5" disable="true" layoutX="99.0"
+                                              mnemonicParsing="false" onAction="#holdDie">
+                                    <graphic>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <effect>
+                                                <Glow/>
+                                            </effect>
+                                            <Image url="@die5.png"/>
+                                        </ImageView>
+                                    </graphic>
+                                </ToggleButton>
+                            </AnchorPane>
                         </VBox>
-                     </left>
-                  </BorderPane>
-               </children>
+                    </left>
+                </BorderPane>
             </AnchorPane>
-         </left>
-         <right>
-            <GridPane fx:id="grid" hgap="15.0" BorderPane.alignment="CENTER">
+        </left>
+        <right>
+          <GridPane fx:id="grid" hgap="15.0" BorderPane.alignment="CENTER">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="125.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0" />
-                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="125.0"/>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0"/>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0"/>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0"/>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0"/>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0"/>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0"/>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0"/>
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
               </rowConstraints>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </GridPane>
-         </right>
-         <bottom>
-            <Label fx:id="winnerDisplay" BorderPane.alignment="CENTER" />
-         </bottom>
-      </BorderPane>
-   </children>
+              <padding>
+                  <Insets left="50.0"/>
+              </padding>
+          </GridPane>
+        </right>
+        <bottom>
+          <Label fx:id="winnerDisplay" BorderPane.alignment="CENTER"/>
+        </bottom>
+    </BorderPane>
 </AnchorPane>
