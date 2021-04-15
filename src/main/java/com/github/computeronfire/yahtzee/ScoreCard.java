@@ -54,15 +54,9 @@ public class ScoreCard {
     }
 
     private Map<Integer, Integer> repetition() {//constructs a Key, Value map for how many times each die repeats
-        Map<Integer, Integer> repetitions = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> repetitions = new HashMap<>();
         for (Die die : dice.getDice()){
-            Integer repetition = repetitions.get(die.getFace());
-            if(repetition == null){
-                repetitions.put(die.getFace(), 1);
-            }
-            else{
-                repetitions.put(die.getFace(), repetition + 1);
-            }
+            repetitions.merge(die.getFace(), 1, Integer::sum);
         }
         return repetitions;
     }
