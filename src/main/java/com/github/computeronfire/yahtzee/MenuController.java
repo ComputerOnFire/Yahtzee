@@ -58,5 +58,6 @@ public class MenuController {
 
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setResizable(false);
     }
 }

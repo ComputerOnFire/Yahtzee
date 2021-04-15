@@ -2,7 +2,8 @@
     -fx-background-color: #FAF2EB;
 }
 .label {
-    -fx-font-size: 16;
+    -fx-font-size: 14;
+    -fx-font-family: 'Lucida Console', monospace;
 }
 .title{
     -fx-font-size: 64;

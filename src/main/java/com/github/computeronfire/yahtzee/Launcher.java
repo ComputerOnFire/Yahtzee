@@ -23,6 +23,7 @@ public class Launcher extends Application {
         primaryStage.setTitle("Yahtzee!");
         primaryStage.setScene(new Scene(root, 250, 500));
         primaryStage.show();
+        primaryStage.setResizable(false);
     }
     public static void main(String[] args) {
         launch(args);
