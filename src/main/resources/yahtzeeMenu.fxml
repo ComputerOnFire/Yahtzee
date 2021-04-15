@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<!--
+   Yahtzee Main Menu UI xml, contains fields for inputting player names.
+   First two player names are filled by default.
+   Created with Scene Builder, then tweaked and modified.
+   Requirements: UI
+-->
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <BorderPane stylesheets="@UI.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.computeronfire.yahtzee.MenuController">
    <center>
-          <Button onAction="#startGame" prefHeight="107.0" prefWidth="163.0" text="Start Game" />
+          <Button onAction="#startGame" prefHeight="40.0" prefWidth="90.0" text="Start Game" />
    </center>
    <bottom>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="player1" text="Player 1" promptText="Player 1">
-               <padding>
-                  <Insets top="25.0" />
-               </padding>
+            <TextField fx:id="player1" promptText="Player 1" text="Player 1" />
+             <TextField fx:id="player2" promptText="Player 2" text="Player 2">
             </TextField>
-             <TextField fx:id="player2" text="Player 2" promptText="Player 2">
-            </TextField >
              <TextField fx:id="player3" promptText="Player 3">
-             </TextField >
+             </TextField>
              <TextField fx:id="player4" promptText="Player 4">
-             </TextField >
+             </TextField>
              <TextField fx:id="player5" promptText="Player 5">
-             </TextField >
+             </TextField>
              <TextField fx:id="player6" promptText="Player 6">
-             </TextField >
+             </TextField>
              <TextField fx:id="player7" promptText="Player 7">
-             </TextField >
+             </TextField>
          </children>
       </VBox>
    </bottom>
