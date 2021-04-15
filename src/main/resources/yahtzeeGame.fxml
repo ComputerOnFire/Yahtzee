@@ -20,8 +20,8 @@
                     <top>
                         <AnchorPane prefHeight="94.0" prefWidth="202.0" BorderPane.alignment="CENTER">
                             <Label fx:id="resetBox" layoutX="15.0" layoutY="63.0" prefHeight="17.0" prefWidth="89.0" />
-                            <Button layoutX="143.0" layoutY="25.0" onAction="#resetBoard" prefHeight="33.0" prefWidth="45.0" text="Reset" />
-                            <Button layoutX="17.0" layoutY="24.0" onAction="#exitToMenu" prefHeight="35.0" prefWidth="85.0" text="Main Menu" />
+                            <Button layoutX="138.0" layoutY="25.0" onAction="#resetBoard" prefHeight="35.0" prefWidth="50.0" text="Reset" />
+                            <Button layoutX="15.0" layoutY="25.0" onAction="#exitToMenu" prefHeight="35.0" prefWidth="90.0" text="Main Menu" />
                      <padding>
                         <Insets bottom="50.0" />
                      </padding>
