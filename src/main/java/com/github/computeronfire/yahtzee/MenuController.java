@@ -45,6 +45,10 @@ public class MenuController {
                 players.add(new Player(player.getText()));
             }
         }
+        if(players.isEmpty()){
+            players.add(new Player("Player 1"));
+            //players.add(new Player("Player 2"));
+        }
         Parent parent = fxmlLoader.load();
         GameController controller = fxmlLoader.getController();
         controller.initializeBoard(players);
