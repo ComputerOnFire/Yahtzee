@@ -11,15 +11,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane stylesheets="@UI.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.computeronfire.yahtzee.MenuController" prefHeight="250.0" prefWidth="300.0">
+<BorderPane stylesheets="@UI.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.github.computeronfire.yahtzee.MenuController" prefHeight="250.0" prefWidth="300.0">
    <center>
           <Button onAction="#startGame" prefHeight="50.0" prefWidth="150.0" text="Start Game" />
    </center>
    <bottom>
       <VBox alignment="TOP_CENTER" spacing="10.0" BorderPane.alignment="CENTER_RIGHT">
          <children>
-            <TextField fx:id="player1" maxWidth="100.0" prefHeight="25.0" prefWidth="100.0" promptText="Player 1" text="Player 1" />
-             <TextField fx:id="player2" maxWidth="100.0" prefHeight="25.0" prefWidth="100.0" promptText="Player 2" text="Player 2">
+            <TextField fx:id="player1" maxWidth="100.0" prefHeight="25.0" prefWidth="100.0"
+                       promptText="Player 1" text="Player 1" />
+             <TextField fx:id="player2" maxWidth="100.0" prefHeight="25.0" prefWidth="100.0"
+                        promptText="Player 2" text="Player 2">
             </TextField>
              <TextField fx:id="player3" maxWidth="100.0" prefHeight="25.0" prefWidth="100.0" promptText="Player 3">
              </TextField>

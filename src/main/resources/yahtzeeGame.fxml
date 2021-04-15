@@ -154,7 +154,7 @@
             </GridPane>
          </right>
          <bottom>
-            <Label text="" fx:id="winnerDisplay" BorderPane.alignment="CENTER" />
+            <Label fx:id="winnerDisplay" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
    </children>
