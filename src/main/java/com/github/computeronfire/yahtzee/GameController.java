@@ -347,6 +347,7 @@ public class GameController {
     private void enableScore(Score score, int col, int row){//TODO: highlight which scores are valid and available for keeping
         String text = Integer.toString(score.getValue());
         StackPane scorePane = (StackPane) getGridNode(grid, col, row);
+        assert scorePane != null;
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         Label label = (Label) scorePane.getChildren().get(1);
         if ((!score.isRetained() && score.isNotTotalOrBonus())){
