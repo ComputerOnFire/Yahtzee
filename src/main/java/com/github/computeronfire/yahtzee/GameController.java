@@ -292,12 +292,7 @@ public class GameController {
 
     private void updateRollButton(){
         rollButton.setText(String.format("Roll (%d left)", rollCounter));
-        if(rollCounter < 1){
-            rollButton.setDisable(true);
-        }
-        else{
-            rollButton.setDisable(false);
-        }
+        rollButton.setDisable(rollCounter < 1);
     }
 
     private void setDieImage(ToggleButton die, int dieFace){
