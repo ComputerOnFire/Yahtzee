@@ -16,7 +16,7 @@ public class Dice {
      * Constructs an array of 5 dice.
      * Represents each die on the board.
      */
-    private Die[] dice = new Die[5];
+    private final Die[] dice = new Die[5];
     public Dice() {
         for (int i = 0; i < dice.length; ++i) {
             this.dice[i] = new Die();
