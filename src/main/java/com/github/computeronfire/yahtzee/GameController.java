@@ -138,6 +138,7 @@ public class GameController {
         for(int i = 0; i < players.size(); ++i){
             int col = i + 1;
             StackPane scorePane = (StackPane) getGridNode(grid, col, 0);
+            assert scorePane != null;
             Rectangle background = (Rectangle) scorePane.getChildren().get(0);
             if(i == currentPlayerIndex){
                 background.setOpacity(1);
@@ -220,6 +221,7 @@ public class GameController {
 
     private void finalizeScore(int col, int row) {//if not a total or bonus, clear it. if it is a total or bonus, update new total/bonus with selection. Keep selected scores.
         StackPane scorePane = (StackPane) getGridNode(grid, col, row);
+        assert scorePane != null;
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         Label label = (Label) scorePane.getChildren().get(1);
         scorePane.setOnMouseClicked(null);
