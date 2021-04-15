@@ -53,7 +53,7 @@ public class MenuController {
         GameController controller = fxmlLoader.getController();
         controller.initializeBoard(players);
 
-        Scene scene = new Scene(parent, 1000, 750);
+        Scene scene = new Scene(parent, 1000, 600);
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
         primaryStage.setScene(scene);
