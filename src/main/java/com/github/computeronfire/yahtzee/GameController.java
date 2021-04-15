@@ -189,26 +189,13 @@ public class GameController {
         }
     }
 
-    private void disableDice() {//refactor to be dynamic?
-        dice.getDice()[0].hold(false);
-        die1.setSelected(false);
-        die1.setDisable(true);
-
-        dice.getDice()[1].hold(false);
-        die2.setSelected(false);
-        die2.setDisable(true);
-
-        dice.getDice()[2].hold(false);
-        die3.setSelected(false);
-        die3.setDisable(true);
-
-        dice.getDice()[3].hold(false);
-        die4.setSelected(false);
-        die4.setDisable(true);
-
-        dice.getDice()[4].hold(false);
-        die5.setSelected(false);
-        die5.setDisable(true);
+    private void disableDice() {//disables the dice buttons so that they cannot be held before a roll
+        ToggleButton[] diceButtons = new ToggleButton[]{die1,die2,die3,die4,die5};
+        for(int i = 0; i < diceButtons.length; ++i){
+            dice.getDice()[i].hold(false);
+            diceButtons[i].setSelected(false);
+            diceButtons[i].setDisable(true);
+        }
     }
 
     private void finalizeScores() {
