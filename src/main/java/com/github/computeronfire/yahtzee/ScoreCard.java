@@ -5,8 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * TODO: requirements should match requirements and include document index number
+ *
+ * ScoreCard.java
+ * Object that each Player holds, representing their scores.
  * Handles logic and calculations for the game, such as scores.
- * Contains an array of int to represent the dice face values.
+ * Contains an array of int to represent the dice face values to run calculations on.
+ *
  * Requirements: Game Functionality, Tally Scores, Follow Yahtzee Rules
  */
 

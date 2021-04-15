@@ -1,7 +1,3 @@
-/**
- * Controls the Main Menu, contains function for construction of game board scene
- * Requirement: UI
- */
 package com.github.computeronfire.yahtzee;
 
 import javafx.event.ActionEvent;
@@ -16,6 +12,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * MenuController.java
+ * Controls the Main Menu, contains function for construction of game board scene, as well as fields for player names.
+ * Requirements: UI
+ */
 
 public class MenuController {
 

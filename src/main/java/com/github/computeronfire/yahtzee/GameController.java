@@ -1,7 +1,3 @@
-/**
- * Controlls the Yahtzee game board UI, contains functions for interacting with the game
- * Requirement: UI
- */
 package com.github.computeronfire.yahtzee;
 
 import javafx.event.ActionEvent;
@@ -25,6 +21,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * GameController.java
+ * Controls the Yahtzee game board UI and displays scores.
+ * Contains functions for interacting with the game via the UI,
+ * as well as turn logic and winner calculation.
+ *
+ * Requirement: UI
+ */
 
 public class GameController {
 

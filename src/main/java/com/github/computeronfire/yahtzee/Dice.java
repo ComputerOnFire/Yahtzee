@@ -1,5 +1,16 @@
 package com.github.computeronfire.yahtzee;
 
+/**
+ * TODO: requirements should match requirements and include document index number
+ *
+ * Dice.java
+ * Contains an array representing a set of 5 Dice
+ * Roll function rolls each die that is not held.
+ *
+ * Requirements: Game Functionality, Object Oriented
+ *
+ */
+
 public class Dice {
     /**
      * Constructs an array of 5 dice.

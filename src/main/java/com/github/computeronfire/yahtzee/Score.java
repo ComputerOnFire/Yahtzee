@@ -1,5 +1,15 @@
 package com.github.computeronfire.yahtzee;
 
+/**
+ * TODO: requirements should match requirements and include document index number
+ *
+ * Score.java
+ * Class representing a single score field. Contains an integer value and various flags
+ * for the different categories of scores.
+ *
+ * Requirements: Game Functionality, Object Oriented
+ */
+
 public class Score {
     private int value = 0;
     private boolean yahtzeeBonus = false;

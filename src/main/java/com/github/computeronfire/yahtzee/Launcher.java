@@ -6,16 +6,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
- /**
-  * TODO:
-  * requirements should match requirements and include document index number
-  *
-  */
+import java.util.Objects;
+
+/**
+ * TODO: requirements should match requirements and include document index number
+ * Launcher.java
+ * Launches the main menu UI, starting the Yahtzee application.
+ *
+ * Requirement: UI, game functionality
+ */
 
 public class Launcher extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/yahtzeeMenu.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/yahtzeeMenu.fxml")));
         primaryStage.setTitle("Yahtzee!");
         primaryStage.setScene(new Scene(root, 250, 350));
         primaryStage.show();
