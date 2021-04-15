@@ -12,7 +12,6 @@ package com.github.computeronfire.yahtzee;
 
 public class Score {
     private int value = 0;
-    private boolean yahtzeeBonus = false;
     private boolean retained = false;
     private boolean totalOrBonus = false;
     public void setScore(int value){
@@ -34,11 +33,5 @@ public class Score {
     }
     public boolean isNotTotalOrBonus(){
         return !totalOrBonus;
-    }
-    public boolean isYB(){
-        return yahtzeeBonus;
-    }
-    public void setYB(){
-        this.yahtzeeBonus = true;
     }
 }

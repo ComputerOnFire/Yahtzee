@@ -339,13 +339,8 @@ public class GameController {
     private void keepScore(MouseEvent mouseEvent, int index){//TODO: when score is clicked, keep said score
         StackPane scorePane = (StackPane) mouseEvent.getSource();
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
-        if(players.get(currentPlayerIndex).getScoreCard().getScore(index).isYB()){
-            background.setFill(Color.YELLOWGREEN);
-        }
-        else{
-            players.get(currentPlayerIndex).keepScore(index);
-            background.setFill(Color.GREEN);
-        }
+        players.get(currentPlayerIndex).keepScore(index);
+        background.setFill(Color.GREEN);
         background.setOpacity(1);
         endTurn();
     }
