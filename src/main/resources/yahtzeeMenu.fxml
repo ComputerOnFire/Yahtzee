@@ -11,7 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="250.0" prefWidth="300.0" stylesheets="@UI.css" xmlns="http://javafx.com/javafx/1.8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.computeronfire.yahtzee.MenuController">
+<BorderPane prefHeight="250.0" prefWidth="300.0" stylesheets="@UI.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.computeronfire.yahtzee.MenuController">
    <center>
           <Button onAction="#startGame" prefHeight="50.0" prefWidth="150.0" text="Start Game" />
    </center>

@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    //id 'org.openjfx.javafxplugin' version '0.0.9' //needed for Java 11 and later
+    id 'org.openjfx.javafxplugin' version '0.0.9' //needed for Java 11 and later
     // id 'org.beryx.jlink' version '2.23.6'
     id 'org.beryx.runtime' version '1.12.4'
 }
@@ -10,10 +10,10 @@ repositories {
     mavenCentral()
 }
 
-//javafx { //needed for Java 11 and later
-    //version = "11.0.2"
-    //modules = [ 'javafx.controls', 'javafx.fxml' ]
-//}
+javafx { //needed for Java 11 and later
+    version = "11"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
 
 mainClassName = "com.github.computeronfire.yahtzee.Launcher"
 
