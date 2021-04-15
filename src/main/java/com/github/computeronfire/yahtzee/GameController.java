@@ -121,7 +121,6 @@ public class GameController {
     private void exitToMenu(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/yahtzeeMenu.fxml"));
         Parent parent  = fxmlLoader.load();
-        //MenuController controller = fxmlLoader.getController();
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(parent, 500, 500);
         primaryStage.setScene(scene);
@@ -130,6 +129,7 @@ public class GameController {
 
     @FXML
     private void resetBoard() {//clears the board and starts a new game with the current players
+        endTurn();
         currentPlayerIndex = 0;
         grid.getChildren().clear();
         List<Player> playersCleared = new ArrayList<>();
