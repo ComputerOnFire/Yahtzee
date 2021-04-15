@@ -25,11 +25,6 @@ public class Player {
         this.scoreCard = scoreCard;
     }
     public void keepScore(int index){
-        if(scoreCard.getScore(index).isYB()){
-            scoreCard.getScore(index).setScore(scoreCard.getScore(index).getValue() + 1);
-        }
-        else{
-            scoreCard.getScore(index).retainScore();
-        }
+        scoreCard.getScore(index).retainScore();
     }
 }
