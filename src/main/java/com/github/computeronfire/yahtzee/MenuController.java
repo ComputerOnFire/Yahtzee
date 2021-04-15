@@ -36,10 +36,8 @@ public class MenuController {
     @FXML
     private TextField player7;
 
-    private TextField[] playerFields;
-
     public void startGame(ActionEvent actionEvent) throws IOException {
-        playerFields = new TextField[]{player1,player2,player3,player4,player5,player6,player7};
+        TextField[] playerFields = new TextField[]{player1, player2, player3, player4, player5, player6, player7};
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/yahtzeeGame.fxml"));
         List<Player> players = new ArrayList<>();
         for (TextField player : playerFields){
