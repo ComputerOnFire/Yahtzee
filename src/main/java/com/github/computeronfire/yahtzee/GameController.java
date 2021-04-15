@@ -175,8 +175,6 @@ public class GameController {
     }
 
     private void endTurn() {
-        //int nextPlayerIndex = (currentPlayerIndex + 1) % players.size();
-        //Player nextPlayer = players.get(nextPlayerIndex);
         disableDice();
         finalizeScores();
         if(gameOver()){
