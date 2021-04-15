@@ -21,7 +21,7 @@ public class Launcher extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/yahtzeeMenu.fxml")));
         primaryStage.setTitle("Yahtzee!");
-        primaryStage.setScene(new Scene(root, 250, 350));
+        primaryStage.setScene(new Scene(root, 250, 500));
         primaryStage.show();
     }
     public static void main(String[] args) {

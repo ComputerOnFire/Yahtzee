@@ -1,8 +1,12 @@
 .root {
-    -fx-background-color: rgb(150, 100, 250);
+    -fx-background-color: #FAF2EB;
 }
 .label {
     -fx-font-size: 16;
+}
+.title{
+    -fx-font-size: 64;
+    -fx-font-family: 'Brush Script MT', cursive;
 }
 .score {
     -fx-font-size: 14;
