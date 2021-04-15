@@ -128,51 +128,8 @@ public class GameController {
         primaryStage.show();
     }
 
-    private boolean gameOver(){
-        boolean completed = true;
-        for (Player player: players){
-            for (Score score: player.getScoreCard().getScores()){
-                if(!score.isRetained() && score.isNotTotalOrBonus()){
-                    completed = false;
-                }
-            }
-        }
-        return completed;
-    }
-
-    private Player winner(){//determines which player has the highest score, and returns the winnerDisplay
-        int highScore = 0;
-        Player winner = null;
-        for(Player player: players){
-            if (player.getScoreCard().getScore(fields-1).getValue() > highScore){
-                winner = player;
-                highScore = player.getScoreCard().getScore(fields-1).getValue();
-            }
-        }
-        return winner;
-    }
-
-    private void enableCurrentPlayer() {//sets the control of the board over to the player whose turn it should be
-        for(int i = 0; i < players.size(); ++i){
-            int col = i + 1;
-            StackPane scorePane = (StackPane) getGridNode(grid, col, 0);
-            assert scorePane != null;
-            Rectangle background = (Rectangle) scorePane.getChildren().get(0);
-            if(i == currentPlayerIndex){
-                background.setOpacity(1);
-            }
-            else{
-                background.setOpacity(0);
-            }
-        }
-    }
-
-    private void registerPlayers(List<Player> players) {
-        this.players = players;
-    }
-
     @FXML
-    private void resetBoard() {
+    private void resetBoard() {//clears the board and starts a new game with the current players
         currentPlayerIndex = 0;
         grid.getChildren().clear();
         List<Player> playersCleared = new ArrayList<>();
@@ -181,65 +138,6 @@ public class GameController {
         }
         initializeBoard(playersCleared);
     }
-
-    @FXML
-    private void updateScores(){ //updates the scores for the current player
-        ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex), dice);
-        scoreCard.calculateScores();
-        players.get(currentPlayerIndex).updateScoreCard(scoreCard);
-        for(int i = 0; i < fields; ++i){
-            enableScore(scoreCard.getScore(i), currentPlayerIndex + 1, i + 1);
-        }
-    }
-
-    private void endTurn() {
-        disableDice();
-        finalizeScores();
-        if(gameOver()){
-            Player winner = winner();
-            winnerDisplay.setText(String.format("%s wins with %d points!", winner.getName(),winner.getScoreCard().getScore(fields-1).getValue()));
-        }
-        else{
-            currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
-            rollCounter = rolls;
-            updateRollButton();
-            enableCurrentPlayer();
-        }
-    }
-
-    private void disableDice() {//disables the dice buttons so that they cannot be held before a roll
-        ToggleButton[] diceButtons = new ToggleButton[]{die1,die2,die3,die4,die5};
-        for(int i = 0; i < diceButtons.length; ++i){
-            dice.getDice()[i].hold(false);
-            diceButtons[i].setSelected(false);
-            diceButtons[i].setDisable(true);
-        }
-    }
-
-    private void finalizeScores() {//for each field, finalize the score
-        for(int i = 0; i < fields; ++i){
-            finalizeScore(currentPlayerIndex + 1, i + 1);
-        }
-    }
-
-    private void finalizeScore(int col, int row) {//if not a total or bonus, clear it. if it is a total or bonus, update new total/bonus with selection. Keep selected scores.
-        StackPane scorePane = (StackPane) getGridNode(grid, col, row);
-        assert scorePane != null;
-        Rectangle background = (Rectangle) scorePane.getChildren().get(0);
-        Label label = (Label) scorePane.getChildren().get(1);
-        scorePane.setOnMouseClicked(null);
-        if(players.get(currentPlayerIndex).getScoreCard().getScore(row - 1).isNotTotalOrBonus() && !players.get(currentPlayerIndex).getScoreCard().getScore(row-1).isRetained()){
-            background.setOpacity(0);
-            label.setText("");
-        }
-        else{
-            players.get(currentPlayerIndex).getScoreCard().calculateScores();
-            String text = Integer.toString(players.get(currentPlayerIndex).getScoreCard().getScore(row - 1).getValue());
-            label.setText(text);
-        }
-    }
-
-
 
     @FXML
     private void holdDie(ActionEvent actionEvent) {
@@ -281,12 +179,144 @@ public class GameController {
         updateScores();
     }
 
+    @FXML
+    private void updateScores(){ //updates the scores for the current player
+        ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex), dice);
+        scoreCard.calculateScores();
+        players.get(currentPlayerIndex).updateScoreCard(scoreCard);
+        for(int i = 0; i < fields; ++i){
+            enableScore(scoreCard.getScore(i), currentPlayerIndex + 1, i + 1);
+        }
+    }
+
+    private void enableScore(Score score, int col, int row){//highlights which scores are valid and available for keeping
+        String text = Integer.toString(score.getValue());
+        StackPane scorePane = (StackPane) getGridNode(grid, col, row);
+        assert scorePane != null;
+        Rectangle background = (Rectangle) scorePane.getChildren().get(0);
+        Label label = (Label) scorePane.getChildren().get(1);
+        if ((!score.isRetained() && score.isNotTotalOrBonus())){
+            background.setOpacity(1);
+            background.setFill(Color.YELLOW);
+            scorePane.setOnMouseClicked(mouseEvent -> keepScore(mouseEvent, row - 1));
+        }
+        label.setText(text);
+    }
+
+    private void keepScore(MouseEvent mouseEvent, int index){//when score is clicked, keep said score
+        StackPane scorePane = (StackPane) mouseEvent.getSource();
+        Rectangle background = (Rectangle) scorePane.getChildren().get(0);
+        players.get(currentPlayerIndex).keepScore(index);
+        background.setFill(Color.GREEN);
+        background.setOpacity(1);
+        endTurn();
+    }
+
+    private void registerPlayers(List<Player> players) {//used to set up the list of players input from the main menu
+        this.players = players;
+    }
+
+    private boolean gameOver(){//checks if all score cells are filled, if so, it returns true
+        boolean completed = true;
+        for (Player player: players){
+            for (Score score: player.getScoreCard().getScores()){
+                if(!score.isRetained() && score.isNotTotalOrBonus()){
+                    completed = false;
+                }
+            }
+        }
+        return completed;
+    }
+
+    private Player winner(){//determines which player has the highest score, and returns the winnerDisplay
+        int highScore = 0;
+        Player winner = null;
+        for(Player player: players){
+            if (player.getScoreCard().getScore(fields-1).getValue() > highScore){
+                winner = player;
+                highScore = player.getScoreCard().getScore(fields-1).getValue();
+            }
+        }
+        return winner;
+    }
+
+    private void endTurn() {
+        disableDice();
+        finalizeScores();
+        if(gameOver()){
+            Player winner = winner();
+            winnerDisplay.setText(String.format("%s wins with %d points!", winner.getName(),winner.getScoreCard().getScore(fields-1).getValue()));
+        }
+        else{
+            currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+            rollCounter = rolls;
+            updateRollButton();
+            enableCurrentPlayer();
+        }
+    }
+
     private void updateRollButton(){
         rollButton.setText(String.format("Roll (%d left)", rollCounter));
         rollButton.setDisable(rollCounter < 1);
     }
 
-    private void setDieImage(ToggleButton die, int dieFace){
+    private void enableCurrentPlayer() {//sets the control of the board over to the player whose turn it should be
+        for(int i = 0; i < players.size(); ++i){
+            int col = i + 1;
+            StackPane scorePane = (StackPane) getGridNode(grid, col, 0);
+            assert scorePane != null;
+            Rectangle background = (Rectangle) scorePane.getChildren().get(0);
+            if(i == currentPlayerIndex){
+                background.setOpacity(1);
+            }
+            else{
+                background.setOpacity(0);
+            }
+        }
+    }
+
+    private void disableDice() {//disables the dice buttons so that they cannot be held before a roll
+        ToggleButton[] diceButtons = new ToggleButton[]{die1,die2,die3,die4,die5};
+        for(int i = 0; i < diceButtons.length; ++i){
+            dice.getDice()[i].hold(false);
+            diceButtons[i].setSelected(false);
+            diceButtons[i].setDisable(true);
+        }
+    }
+
+    private void finalizeScores() {//for each field, finalize the score
+        for(int i = 0; i < fields; ++i){
+            finalizeScore(currentPlayerIndex + 1, i + 1);
+        }
+    }
+
+    private void finalizeScore(int col, int row) {//if not a total or bonus, clear it. if it is a total or bonus, update new total/bonus with selection. Keep selected scores.
+        StackPane scorePane = (StackPane) getGridNode(grid, col, row);
+        assert scorePane != null;
+        Rectangle background = (Rectangle) scorePane.getChildren().get(0);
+        Label label = (Label) scorePane.getChildren().get(1);
+        scorePane.setOnMouseClicked(null);
+        if(players.get(currentPlayerIndex).getScoreCard().getScore(row - 1).isNotTotalOrBonus() && !players.get(currentPlayerIndex).getScoreCard().getScore(row-1).isRetained()){
+            background.setOpacity(0);
+            label.setText("");
+        }
+        else{
+            players.get(currentPlayerIndex).getScoreCard().calculateScores();
+            String text = Integer.toString(players.get(currentPlayerIndex).getScoreCard().getScore(row - 1).getValue());
+            label.setText(text);
+        }
+    }
+
+    private Node getGridNode(GridPane gridPane, int col, int row){//gets grid node based on column and row
+        for (Node node : gridPane.getChildren()) {
+            if(GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row){
+                return node;
+            }
+        }
+        return null; //no grid node found
+    }
+
+    private void setDieImage(ToggleButton die, int dieFace){//sets the image on the die button used to represent the face
         if(die.isDisabled()){
             die.setDisable(false);
         }
@@ -324,37 +354,5 @@ public class GameController {
         iView.setPreserveRatio(true);
         iView.setPickOnBounds(true);
         die.setGraphic(iView);
-    }
-
-    private void keepScore(MouseEvent mouseEvent, int index){//TODO: when score is clicked, keep said score
-        StackPane scorePane = (StackPane) mouseEvent.getSource();
-        Rectangle background = (Rectangle) scorePane.getChildren().get(0);
-        players.get(currentPlayerIndex).keepScore(index);
-        background.setFill(Color.GREEN);
-        background.setOpacity(1);
-        endTurn();
-    }
-
-    private void enableScore(Score score, int col, int row){//TODO: highlight which scores are valid and available for keeping
-        String text = Integer.toString(score.getValue());
-        StackPane scorePane = (StackPane) getGridNode(grid, col, row);
-        assert scorePane != null;
-        Rectangle background = (Rectangle) scorePane.getChildren().get(0);
-        Label label = (Label) scorePane.getChildren().get(1);
-        if ((!score.isRetained() && score.isNotTotalOrBonus())){
-            background.setOpacity(1);
-            background.setFill(Color.YELLOW);
-            scorePane.setOnMouseClicked(mouseEvent -> keepScore(mouseEvent, row - 1));
-        }
-        label.setText(text);
-    }
-
-    private Node getGridNode(GridPane gridPane, int col, int row){//gets grid node based on column and row
-        for (Node node : gridPane.getChildren()) {
-            if(GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row){
-                return node;
-            }
-        }
-        return null; //no grid node found
     }
 }
