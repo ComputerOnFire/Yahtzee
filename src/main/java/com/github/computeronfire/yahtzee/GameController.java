@@ -70,6 +70,7 @@ public class GameController {
     /**
      * sets up the grid to display scores for each player,
      * first by iterating through the fields, then by iterating over the columns and rows to insert each player name and score field
+     *
      */
 
     @FXML
@@ -110,6 +111,23 @@ public class GameController {
         }
         enableCurrentPlayer();
     }
+
+    /**
+     * Returns to the Start Menu when the "Main Menu" button is pressed.
+     * Will end the current game. This may be changed to prompt the user to save the game.
+     */
+
+    @FXML
+    private void exitToMenu(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/yahtzeeMenu.fxml"));
+        Parent parent  = fxmlLoader.load();
+        //MenuController controller = fxmlLoader.getController();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(parent, 500, 500);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
     private boolean gameOver(){
         boolean completed = true;
         for (Player player: players){
@@ -198,7 +216,7 @@ public class GameController {
         }
     }
 
-    private void finalizeScores() {
+    private void finalizeScores() {//for each field, finalize the score
         for(int i = 0; i < fields; ++i){
             finalizeScore(currentPlayerIndex + 1, i + 1);
         }
@@ -221,21 +239,7 @@ public class GameController {
         }
     }
 
-    /**
-     * Returns to the Start Menu when the "Main Menu" button is pressed.
-     * Will end the current game. This may be changed to prompt the user to save the game.
-     */
 
-    @FXML
-    private void exitToMenu(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/yahtzeeMenu.fxml"));
-        Parent parent  = fxmlLoader.load();
-        //MenuController controller = fxmlLoader.getController();
-        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(parent, 500, 500);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
 
     @FXML
     private void holdDie(ActionEvent actionEvent) {
