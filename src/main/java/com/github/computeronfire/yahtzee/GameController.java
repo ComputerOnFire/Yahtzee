@@ -278,9 +278,11 @@ public class GameController {
                     setDieImage(die5, dice.getDie(i).getFace());
                     break;
                 default:
-                    /** should never happen */
-                    setDieImage(null, dice.getDie(i).getFace());
+                    /*
+                        should never happen
+                    */
                     break;
+
             }
         }
         --rollCounter;
@@ -319,7 +321,9 @@ public class GameController {
                 face = new Image("/die6.png");
                 break;
             default:
-                /** should never happen */
+                /*
+                    should never happen
+                */
                 face = null;
                 break;
         }
