@@ -49,9 +49,8 @@ public class GameController {
     private int currentPlayerIndex = 0; //track who's turn it is
     private int rollCounter = rolls; //initialize the roll counter as the maximum bumber of rolls
 
-
-    //TODO: make these private, annotate with @FXML, rename to camelcase
-    public Label resetBox;//button to reset the state of the game
+    @FXML
+    private Label resetBox;//button to reset the state of the game
     @FXML
     private Button rollButton;//button to roll the dice
     @FXML
