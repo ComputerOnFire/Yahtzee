@@ -12,26 +12,26 @@ import java.util.Map;
  * Handles logic and calculations for the game, such as scores.
  * Contains an array of int to represent the dice face values to run calculations on.
  *
- * Requirements: Game Functionality, Tally Scores, Follow Yahtzee Rules
+ * Requirements: Game Functionality, Follow Yahtzee Rules
  */
 
 public class ScoreCard {
-    private Dice dice;
+    private Dice dice;//represents the dice, which will be passed from the game board
     private Score[] scores = new Score[18]; //must be size of 20
 
-    public ScoreCard(){
+    public ScoreCard(){//construct the array of score objects
         for (int i = 0; i < this.scores.length; ++i){
             this.scores[i] = new Score();
         }
     }
-    public ScoreCard(Player player, Dice dice){
+    public ScoreCard(Player player, Dice dice){//updates the scores and dice
         this.scores = player.getScoreCard().scores;
         this.dice = dice;
     }
-    public Score getScore(int index){
+    public Score getScore(int index){//returns the score at a given position
         return scores[index];
     }
-    public Score[] getScores(){
+    public Score[] getScores(){//returns the full array of scores
         return scores;
     }
 
@@ -83,7 +83,7 @@ public class ScoreCard {
             return 0;
         }
     }
-    private int fullHouse(){
+    private int fullHouse(){//checks for a full house (3 of a kind + 2 of a kind), then returns the score of 25
         Map<Integer, Integer> repetitions = repetition();
         boolean pair = false;
 
@@ -100,7 +100,7 @@ public class ScoreCard {
         }
     }
 
-    private int smallStraight(int nonStraight){//TODO: rewrite implementation
+    private int smallStraight(int nonStraight){//returns a score of 15 if 4 dice make a sequence (ie, 1 2 3 4 1)
         if(nonStraight < 2) {
             return 15;
         }
@@ -109,7 +109,7 @@ public class ScoreCard {
         }
     }
 
-    private int largeStraight(int nonStraight){//TODO: rewrite implementation
+    private int largeStraight(int nonStraight){//returns a score of 20 if 5 dice make a sequence (ie, 1 2 3 4 6)
         if(nonStraight < 1) {
             return 20;
         }
@@ -117,12 +117,12 @@ public class ScoreCard {
             return 0;
         }
     }
-    private int calculateStraight() {
+    private int calculateStraight() {//calculates how many dice are not in a sequence
         int[] diceFaces = new int[5];
         for (int i = 0; i < dice.getDice().length; ++i) {
             diceFaces[i] = dice.getDice()[i].getFace();
         }
-        Arrays.sort(diceFaces);
+        Arrays.sort(diceFaces);//sorts the dice by face value for counting
         int nonStraight = 0;
         for (int i = 0; i < diceFaces.length - 1; i++) {
             if (diceFaces[i] + 1 != diceFaces[i + 1]) {
@@ -132,8 +132,8 @@ public class ScoreCard {
         return nonStraight;
     }
 
-    public void calculateScores(){//TODO: decide if switch should be refactored into functions
-        for (int i = 0; i < scores.length; ++i){
+    public void calculateScores(){//updates the value of each score in the array of scores with it's unique score calculation
+        for (int i = 0; i < scores.length; ++i){//each function is implemented from logic based on the official Yahtzee rule set
             switch (i) {//get rest of the scores
                 default: //singles scores for die faces 1-6 (case 0-5)
                     scores[i].setScore(faceSum(i + 1));

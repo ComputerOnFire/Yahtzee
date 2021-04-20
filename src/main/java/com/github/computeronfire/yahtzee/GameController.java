@@ -43,21 +43,21 @@ public class GameController {
     private final String[] fieldLabels = {" ", "Ones", "Twos", "Threes", "Fours","Fives", "Sixes",
             "Sum", "Bonus", "Upper Total", "3 of A Kind", "4 of A Kind", "Full House", "Small Straight",
             "Large Straight","Yahtzee!", "Chance", "Lower Total", "Grand Total"};
-    public Label winnerDisplay;
+
     private final Dice dice = new Dice();
     private List<Player> players = new ArrayList<>();
     private int currentPlayerIndex = 0; //track who's turn it is
-    private int rollCounter = rolls;
+    private int rollCounter = rolls; //initialize the roll counter as the maximum bumber of rolls
 
 
     //TODO: make these private, annotate with @FXML, rename to camelcase
-    public Label resetBox;
+    public Label resetBox;//button to reset the state of the game
     @FXML
-    private Button rollButton;
+    private Button rollButton;//button to roll the dice
     @FXML
-    private GridPane grid;
+    private GridPane grid;//game board is set on a grid for dynamic displays
     @FXML
-    private ToggleButton die1;
+    private ToggleButton die1;//toggle buttons to represent each die, user can toggle to hold the die
     @FXML
     private ToggleButton die2;
     @FXML
@@ -66,6 +66,8 @@ public class GameController {
     private ToggleButton die4;
     @FXML
     private ToggleButton die5;
+    @FXML
+    public Label winnerDisplay;//displays the name of the winner
 
     /**
      * sets up the grid to display scores for each player,
@@ -74,19 +76,19 @@ public class GameController {
      */
 
     @FXML
-    public void initializeBoard(List<Player> players){
-        registerPlayers(players);
-        rollButton.setText(String.format("Roll (%d left)", rollCounter));
-        for (int i = 0; i <= fields; ++i){
+    public void initializeBoard(List<Player> players){//initializes the game state and draws the board
+        registerPlayers(players);//players are taken from the main menu
+        rollButton.setText(String.format("Roll (%d left)", rollCounter));//set the text on the roll button
+        for (int i = 0; i <= fields; ++i){//add a label for each score type
             grid.add(new Label(fieldLabels[i]), 0, i);
         }
-        for(int col = 1; col < players.size() + 1; ++col){
+        for(int col = 1; col < players.size() + 1; ++col){//populate the grid with each player
             StackPane pane = new StackPane();
             grid.add(pane, col, 0);
             Rectangle highlight = new Rectangle();
             highlight.setOpacity(0);
             highlight.setFill(Color.YELLOW);
-            highlight.setWidth(grid.getColumnConstraints().get(col).getPrefWidth());
+            highlight.setWidth(grid.getColumnConstraints().get(col).getPrefWidth());//sets the size of each grid cell
             highlight.setHeight(grid.getRowConstraints().get(0).getPrefHeight());
             pane.getChildren().add(highlight);
             Label playerNameLabel = new Label();
@@ -95,7 +97,7 @@ public class GameController {
             playerNameLabel.setText(playerNameText);
             pane.getChildren().add(playerNameLabel);
 
-            for(int row = 1; row <= fields; ++row){
+            for(int row = 1; row <= fields; ++row){//populates each player's grid column with score labels
                 Rectangle background = new Rectangle();
                 background.setWidth(grid.getColumnConstraints().get(col).getPrefWidth());
                 background.setHeight(grid.getRowConstraints().get(row).getPrefHeight());
@@ -109,16 +111,16 @@ public class GameController {
                 scorePane.getChildren().add(score);
             }
         }
-        enableCurrentPlayer();
+        enableCurrentPlayer();//start the game
     }
 
     /**
      * Returns to the Start Menu when the "Main Menu" button is pressed.
-     * Will end the current game. This may be changed to prompt the user to save the game.
+     * Will end the current game.
      */
 
     @FXML
-    private void exitToMenu(ActionEvent actionEvent) throws IOException {
+    private void exitToMenu(ActionEvent actionEvent) throws IOException {//changes the scene back to the main menu
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/yahtzeeMenu.fxml"));
         Parent parent  = fxmlLoader.load();
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -147,7 +149,7 @@ public class GameController {
     }
 
     @FXML
-    private void rollDice() { //TODO: move hold logic to Dice class?
+    private void rollDice() { //rolls the dice and updates each die image accordingly
         dice.rollDice();
         for (int i = 0; i < dice.getDice().length; i++){
             switch(i){
@@ -203,17 +205,13 @@ public class GameController {
         label.setText(text);
     }
 
-    private void keepScore(MouseEvent mouseEvent, int index){//when score is clicked, keep said score
+    private void keepScore(MouseEvent mouseEvent, int index){//when score is clicked, keep said score and end the player's turn
         StackPane scorePane = (StackPane) mouseEvent.getSource();
         Rectangle background = (Rectangle) scorePane.getChildren().get(0);
         players.get(currentPlayerIndex).keepScore(index);
-        background.setFill(Color.GREEN);
+        background.setFill(Color.GREEN);//highlight the score with green
         background.setOpacity(1);
-        endTurn();
-    }
-
-    private void registerPlayers(List<Player> players) {//used to set up the list of players input from the main menu
-        this.players = players;
+        endTurn();//end the player's turn
     }
 
     private boolean gameOver(){//checks if all score cells are filled, if so, it returns true
@@ -240,7 +238,7 @@ public class GameController {
         return winner;
     }
 
-    private void endTurn() {
+    private void endTurn() {//ends the turn of the current player when a score is selected
         disableDice();
         finalizeScores();
         if(gameOver()){
@@ -255,7 +253,7 @@ public class GameController {
         }
     }
 
-    private void updateRollButton(){
+    private void updateRollButton(){//updates the text on the roll button to reflect how many rolls are left
         rollButton.setText(String.format("Roll (%d left)", rollCounter));
         rollButton.setDisable(rollCounter < 1);
     }
@@ -313,7 +311,7 @@ public class GameController {
                 return node;
             }
         }
-        return null; //no grid node found
+        return null; //no grid node found, shouldn't happen
     }
 
     private void setDieImage(ToggleButton die, int dieFace){//sets the image on the die button used to represent the face
@@ -322,7 +320,7 @@ public class GameController {
         }
         ImageView iView;
         Image face;
-        switch(dieFace){
+        switch(dieFace){//different images for different face values
             case 1:
                 face = new Image("/die1.png");
                 break;
@@ -354,5 +352,8 @@ public class GameController {
         iView.setPreserveRatio(true);
         iView.setPickOnBounds(true);
         die.setGraphic(iView);
+    }
+    private void registerPlayers(List<Player> players) {//used to set up the list of players input from the main menu
+        this.players = players;
     }
 }

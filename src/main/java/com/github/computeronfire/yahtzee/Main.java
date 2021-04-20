@@ -11,6 +11,6 @@ package com.github.computeronfire.yahtzee;
 
 public class Main {
     public static void main(String[] args){
-        Launcher.main(args);
+        Launcher.main(args);//call the main function of the launcher to launch the application
     }
 }

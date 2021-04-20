@@ -18,15 +18,15 @@ import java.util.Objects;
 
 public class Launcher extends Application {
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/yahtzeeMenu.fxml")));
-        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/yahtzee.png"))));
+    public void start(Stage primaryStage) throws Exception{//starts the application
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/yahtzeeMenu.fxml"))); //loads the fxml file outlining the UI
+        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/yahtzee.png"))));//loads the icon graphic
         primaryStage.setTitle("Yahtzee!");
         primaryStage.setScene(new Scene(root, 250, 500));
         primaryStage.show();
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(false);//user cannot resize the window
     }
     public static void main(String[] args) {
-        launch(args);
+        launch(args);//launch the application
     }
 }

@@ -7,7 +7,7 @@ package com.github.computeronfire.yahtzee;
  * Contains an array representing a set of 5 Dice
  * Roll function rolls each die that is not held.
  *
- * Requirements: Game Functionality, Object Oriented
+ * Requirements: Game Functionality
  *
  */
 
@@ -16,19 +16,19 @@ public class Dice {
      * Constructs an array of 5 dice.
      * Represents each die on the board.
      */
-    private final Die[] dice = new Die[5];
+    private final Die[] dice = new Die[5];//array of 5 dice
     public Dice() {
         for (int i = 0; i < dice.length; ++i) {
-            this.dice[i] = new Die();
+            this.dice[i] = new Die();//fills the array with die objects
         }
     }
-    public Die[] getDice(){
+    public Die[] getDice(){//returns the dice array
         return dice;
     }
-    public Die getDie(int index){
+    public Die getDie(int index){//gets a die at a given index
         return dice[index];
     }
-    public void rollDice(){
+    public void rollDice(){//rolls each die, if it is not held
         for (Die die: dice){
             if(die.isNotHeld()){
                 die.rollDie();

@@ -11,24 +11,24 @@ import java.util.Random;
  * Roll function generates a new face value using the java Random library.
  * Contains a boolean flag for if the die is "held" or kept.
  *
- * Requirements: Game Functionality, Object Oriented
+ * Requirements: Game Functionality
  *
  */
 
 public class Die {
-    private int face;
-    private boolean held = false;
+    private int face;//represents the face value of the die
+    private boolean held = false;//user can hold die to prevent the face value from being re-rolled
 
-    public void rollDie(){
+    public void rollDie(){//sets the face value to a random number between 1 and 6
         this.face = new Random().nextInt(6) + 1;
     }
-    public void hold(boolean held){
+    public void hold(boolean held){//changes the state of the hold value
         this.held = held;
     }
-    public int getFace(){
+    public int getFace(){//returns the face value
         return face;
     }
-    public boolean isNotHeld(){
+    public boolean isNotHeld(){//returns the inverse of the held state
         return !held;
     }
 }
