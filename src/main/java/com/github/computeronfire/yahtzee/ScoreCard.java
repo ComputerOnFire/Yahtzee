@@ -101,7 +101,7 @@ public class ScoreCard {
     }
 
     private int smallStraight(int nonStraight){//returns a score of 15 if 4 dice make a sequence (ie, 1 2 3 4 1)
-        if(nonStraight < 1) {
+        if(nonStraight == 1) {
             return 15;
         }
         else{
@@ -110,7 +110,7 @@ public class ScoreCard {
     }
 
     private int largeStraight(int nonStraight){//returns a score of 20 if 5 dice make a sequence (ie, 1 2 3 4 6)
-        if(nonStraight < 0) {
+        if(nonStraight == 0) {
             return 20;
         }
         else{
