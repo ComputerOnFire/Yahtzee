@@ -22,9 +22,9 @@ public class Launcher extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/yahtzeeMenu.fxml"))); //loads the fxml file outlining the UI
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/yahtzee.png"))));//loads the icon graphic
         primaryStage.setTitle("Yahtzee!");
-        primaryStage.setScene(new Scene(root, 250, 500));
+        primaryStage.setScene(new Scene(root, 280, 500));
         primaryStage.show();
-        primaryStage.setResizable(false);//user cannot resize the window
+        //primaryStage.setResizable(false);//user cannot resize the window
     }
     public static void main(String[] args) {
         launch(args);//launch the application
