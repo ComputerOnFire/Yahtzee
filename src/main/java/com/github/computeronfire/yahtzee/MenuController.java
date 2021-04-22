@@ -59,6 +59,6 @@ public class MenuController {
 
         primaryStage.setScene(scene);//set the scene with the game board
         primaryStage.show();//show the game board
-        primaryStage.setResizable(false);//make the game board not resizable by the user
+        //primaryStage.setResizable(false);//make the game board not resizable by the user
     }
 }
