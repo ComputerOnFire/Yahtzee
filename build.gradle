@@ -15,6 +15,14 @@ javafx { //needed for Java 11 and later
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
+dependencies {//needed for automated test cases
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+}
+test {
+    useJUnitPlatform()
+}
+
 mainClassName = "com.github.computeronfire.yahtzee.Launcher"
 
 //packaging code below
