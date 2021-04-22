@@ -14,20 +14,20 @@ public class DieTest {
     }
 
     @Test
-    public void initNotHeldTest() {
+    public void initNotHeldTest() {//tests if the die is initialized without the held state
         Die die = new Die();
         assertEquals(true, die.isNotHeld());
     }
 
     @Test
-    public void holdTest(){
+    public void holdTest(){//tests if the die's held state can be modified
         Die die = new Die();
         die.hold(true);
         assertEquals(false,die.isNotHeld());
     }
 
     @Test
-    public void rollTest() {
+    public void rollTest() {//tests the die roll function
         Die die = new Die();
         die.rollDie();
         assertNotEquals(0,die.getFace());
