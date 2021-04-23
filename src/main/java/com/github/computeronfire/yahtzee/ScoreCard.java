@@ -23,6 +23,7 @@ public class ScoreCard {
         for (int i = 0; i < this.scores.length; ++i){
             this.scores[i] = new Score();
         }
+        this.dice = new Dice();
     }
     public ScoreCard(Player player, Dice dice){//updates the scores and dice
         this.scores = player.getScoreCard().scores;
