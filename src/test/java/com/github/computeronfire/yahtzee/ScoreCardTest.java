@@ -21,16 +21,21 @@ public class ScoreCardTest {
     }
 
     @Test
-    public void smallStraightTest(){
-        Dice dice = new Dice();
+    public void smallStraightTest(){//tests if smallStraight returns the correct values given the dice array
+        Die[] dice = new Die[]{new Die(1),new Die(2), new Die(3), new Die(4),new Die(4)};
         Player testPlayer = new Player("Test");
-
-        while(!(dice.getDie(1).getFace() == 1 && dice.getDie(2).getFace() == 2 && dice.getDie(3).getFace() == 3 && dice.getDie(4).getFace() == 4)){
-            dice.rollDice();
-        }
-        ScoreCard sCard = new ScoreCard(testPlayer, dice.getDice());
+        ScoreCard sCard = new ScoreCard(testPlayer, dice);
         sCard.calculateScores();
         assertEquals(15, sCard.getScore(12).getValue());
+        assertEquals(0, sCard.getScore(13).getValue());
+    }
+    @Test
+    public void notSmallStraightTest(){
+        Die[] dice = new Die[]{new Die(1),new Die(2), new Die(3), new Die(3),new Die(3)};
+        Player testPlayer = new Player("Test");
+        ScoreCard sCard = new ScoreCard(testPlayer, dice);
+        sCard.calculateScores();
+        assertEquals(0, sCard.getScore(12).getValue());
         assertEquals(0, sCard.getScore(13).getValue());
     }
 
