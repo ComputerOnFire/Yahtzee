@@ -28,10 +28,10 @@ public class ScoreCardTest {
         while(!(dice.getDie(0).getFace() == 1 && dice.getDie(1).getFace() == 2 && dice.getDie(2).getFace() == 3 && dice.getDie(3).getFace() == 4 && dice.getDie(4).getFace() == 5)){
             dice.rollDice();
         }
-        ScoreCard scard = new ScoreCard(testPlayer, dice.getDice());
-        scard.calculateScores();
-        assertEquals(15, scard.getScore(12).getValue());
-        assertEquals(20, scard.getScore(13).getValue());
+        ScoreCard sCard = new ScoreCard(testPlayer, dice.getDice());
+        sCard.calculateScores();
+        assertEquals(15, sCard.getScore(12).getValue());
+        assertEquals(20, sCard.getScore(13).getValue());
     }
 
     @Test
@@ -42,9 +42,9 @@ public class ScoreCardTest {
         while(!(dice.getDie(0).getFace() == 2 && dice.getDie(1).getFace() == 3 && dice.getDie(2).getFace() == 4 && dice.getDie(3).getFace() == 5 && dice.getDie(4).getFace() == 6)){
             dice.rollDice();
         }
-        ScoreCard scard = new ScoreCard(testPlayer, dice.getDice());
-        scard.calculateScores();
-        assertEquals(15, scard.getScore(12).getValue());
-        assertEquals(20, scard.getScore(13).getValue());
+        ScoreCard sCard = new ScoreCard(testPlayer, dice.getDice());
+        sCard.calculateScores();
+        assertEquals(15, sCard.getScore(12).getValue());
+        assertEquals(20, sCard.getScore(13).getValue());
     }
 }
