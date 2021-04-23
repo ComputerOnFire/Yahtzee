@@ -14,10 +14,10 @@ public class ScoreCardTest {
         while(!(dice.getDie(1).getFace() == 1 && dice.getDie(2).getFace() == 2 && dice.getDie(3).getFace() == 3 && dice.getDie(4).getFace() == 4)){
             dice.rollDice();
         }
-        ScoreCard scard = new ScoreCard(testPlayer, dice.getDice());
-        scard.calculateScores();
-        assertEquals(15, scard.getScore(12).getValue());
-        assertEquals(0, scard.getScore(13).getValue());
+        ScoreCard sCard = new ScoreCard(testPlayer, dice.getDice());
+        sCard.calculateScores();
+        assertEquals(15, sCard.getScore(12).getValue());
+        assertEquals(0, sCard.getScore(13).getValue());
     }
 
     @Test
