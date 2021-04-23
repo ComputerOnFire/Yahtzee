@@ -100,8 +100,8 @@ public class ScoreCard {
         }
     }
 
-    private int smallStraight(int nonStraight){//returns a score of 15 if 4 dice make a sequence (ie, 1 2 3 4 1)
-        if(nonStraight == 1) {
+    private int smallStraight(int straight){//returns a score of 15 if 4 dice make a sequence (ie, 1 2 3 4 1)
+        if(straight > 3) {
             return 15;
         }
         else{
@@ -109,8 +109,8 @@ public class ScoreCard {
         }
     }
 
-    private int largeStraight(int nonStraight){//returns a score of 20 if 5 dice make a sequence (ie, 1 2 3 4 6)
-        if(nonStraight == 0) {
+    private int largeStraight(int straight){//returns a score of 20 if 5 dice make a sequence (ie, 1 2 3 4 6)
+        if(straight > 4) {
             return 20;
         }
         else{
@@ -123,13 +123,13 @@ public class ScoreCard {
             diceFaces[i] = dice.getDice()[i].getFace();
         }
         Arrays.sort(diceFaces);//sorts the dice by face value for counting
-        int nonStraight = 0;
+        int straight = 1;
         for (int i = 0; i < diceFaces.length - 1; i++) {
-            if (diceFaces[i] + 1 != diceFaces[i + 1]) {
-                nonStraight++;
+            if (diceFaces[i] + 1 == diceFaces[i + 1]) {
+                straight++;
             }
         }
-        return nonStraight;
+        return straight;
     }
 
     public void calculateScores(){//updates the value of each score in the array of scores with it's unique score calculation
