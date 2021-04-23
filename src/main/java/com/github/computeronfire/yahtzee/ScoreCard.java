@@ -150,7 +150,7 @@ public class ScoreCard {
                     scores[i].markTotalOrBonus();
                     break;
                 case 7:
-                    //Bonus score of 35 if sum is over 63
+                    //Bonus score of 35 if sum is over or equal to 63
                     if (scores[6].getValue() >= 63) {
                         scores[i].setScore(35);
                     } else {
