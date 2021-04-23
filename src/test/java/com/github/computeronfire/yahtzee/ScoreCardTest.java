@@ -10,11 +10,11 @@ public class ScoreCardTest {
     public void smallStraightTest(){
         Dice dice = new Dice();
         Player testPlayer = new Player("Test");
-        dice.rollDice();
+
         while(!(dice.getDie(1).getFace() == 1 && dice.getDie(2).getFace() == 2 && dice.getDie(3).getFace() == 3 && dice.getDie(4).getFace() == 4)){
             dice.rollDice();
         }
-        ScoreCard scard = new ScoreCard(testPlayer, dice);
+        ScoreCard scard = new ScoreCard(testPlayer, dice.getDice());
         scard.calculateScores();
         assertEquals(15, scard.getScore(12).getValue());
         assertEquals(0, scard.getScore(13).getValue());
@@ -28,7 +28,7 @@ public class ScoreCardTest {
         while(!(dice.getDie(0).getFace() == 1 && dice.getDie(1).getFace() == 2 && dice.getDie(2).getFace() == 3 && dice.getDie(3).getFace() == 4 && dice.getDie(4).getFace() == 5)){
             dice.rollDice();
         }
-        ScoreCard scard = new ScoreCard(testPlayer, dice);
+        ScoreCard scard = new ScoreCard(testPlayer, dice.getDice());
         scard.calculateScores();
         assertEquals(15, scard.getScore(12).getValue());
         assertEquals(20, scard.getScore(13).getValue());
@@ -42,7 +42,7 @@ public class ScoreCardTest {
         while(!(dice.getDie(0).getFace() == 2 && dice.getDie(1).getFace() == 3 && dice.getDie(2).getFace() == 4 && dice.getDie(3).getFace() == 5 && dice.getDie(4).getFace() == 6)){
             dice.rollDice();
         }
-        ScoreCard scard = new ScoreCard(testPlayer, dice);
+        ScoreCard scard = new ScoreCard(testPlayer, dice.getDice());
         scard.calculateScores();
         assertEquals(15, scard.getScore(12).getValue());
         assertEquals(20, scard.getScore(13).getValue());
