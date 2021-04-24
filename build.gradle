@@ -24,7 +24,10 @@ test {
 }
 
 mainClassName = "com.github.computeronfire.yahtzee.Launcher"
-
+application{
+    mainClassName = "com.github.computeronfire.yahtzee.Launcher"
+    applicationName = "Yahztee!"
+}
 //packaging code below
 runtime {
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
