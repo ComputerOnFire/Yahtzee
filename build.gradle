@@ -17,13 +17,16 @@ javafx { //needed for Java 11 and later
     version = "11"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
+
 dependencies {//needed for automated test cases
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
+
 test {
     useJUnitPlatform()
 }
+
 jar {
     manifest {
         attributes(
@@ -37,6 +40,7 @@ application{
     mainModule = "Yahtzee"
     applicationName = "Yahztee!"
 }
+
 //packaging code below
 jlink {
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
@@ -67,7 +71,9 @@ jlink {
     jpackage {
         // Uncomment and adjust the following line if your runtime task is configured to generate images for multiple platforms
         // targetPlatformName = "mac"
-        jpackageHome = 'C:/Users/John/.jdks/openjdk-16' //jpackage is included in Java 15 and later, this needs to be configured to point towards JDK15 or later to build an installer
+        jpackageHome = 'C:/Program Files/Java/jdk-16.0.1' //jpackage is included in Java 15 and later, this needs to be configured to point towards JDK15 or later to build an installer
+        //using JDK16 due to an issue compiling from terminal with JDK15
+
         def currentOs = org.gradle.internal.os.OperatingSystem.current()
         def imgType = currentOs.windows ? 'ico' : currentOs.macOsX ? 'icns' : 'png'
         imageOptions += ['--icon', "src/main/resources/yahtzee.$imgType"]
