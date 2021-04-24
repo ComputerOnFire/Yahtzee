@@ -71,7 +71,9 @@ jlink {
     jpackage {
         // Uncomment and adjust the following line if your runtime task is configured to generate images for multiple platforms
         // targetPlatformName = "mac"
+
         jpackageHome = 'C:/Program Files/Java/jdk-16.0.1' //jpackage is included in Java 15 and later, this needs to be configured to point towards JDK15 or later to build an installer
+
         //using JDK16 due to an issue compiling from terminal with JDK15
 
         def currentOs = org.gradle.internal.os.OperatingSystem.current()
