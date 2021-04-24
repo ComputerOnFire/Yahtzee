@@ -13,7 +13,7 @@ import java.util.Objects;
  * Launcher.java
  * Launches the main menu UI, starting the Yahtzee application.
  *
- * Requirement: UI, game functionality
+ * Requirement: UI, Game Functionality
  */
 
 public class Launcher extends Application {
