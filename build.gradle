@@ -32,10 +32,9 @@ jar {
     }
 }
 mainClassName = "com.github.computeronfire.yahtzee.Main"
-//mainModule = "com.github.computeronfire.yahtzee"
 application{
     mainClassName = "com.github.computeronfire.yahtzee.Main"
-    mainModule = "com.github.computeronfire.yahtzee"
+    mainModule = "Yahtzee"
     applicationName = "Yahztee!"
 }
 //packaging code below
@@ -61,7 +60,6 @@ jlink {
         jdkHome = jdkDownload("https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15.0.2%2B7/OpenJDK15U-jdk_x64_windows_hotspot_15.0.2_7.zip")
     }
 */
-
     launcher {
         noConsole = true
         name = "Yahtzee!"
@@ -69,8 +67,7 @@ jlink {
     jpackage {
         // Uncomment and adjust the following line if your runtime task is configured to generate images for multiple platforms
         // targetPlatformName = "mac"
-
-        jpackageHome = 'C:/Program Files/Java/jdk-15.0.1' //jpackage is included in Java 15 and later, this needs to be configured to point towards JDK15 or later to build an installer
+        jpackageHome = 'C:/Users/John/.jdks/openjdk-16' //jpackage is included in Java 15 and later, this needs to be configured to point towards JDK15 or later to build an installer
         def currentOs = org.gradle.internal.os.OperatingSystem.current()
         def imgType = currentOs.windows ? 'ico' : currentOs.macOsX ? 'icns' : 'png'
         imageOptions += ['--icon', "src/main/resources/yahtzee.$imgType"]
