@@ -56,7 +56,7 @@ runtime {
         // Uncomment and adjust the following line if your runtime task is configured to generate images for multiple platforms
         // targetPlatformName = "mac"
 
-        jpackageHome = 'C:/Program Files/Java/jdk-15.0.1' //jpackage is included in Java 15 and later, this needs to point towards JDK15 or later to build an installer
+        jpackageHome = 'C:/Program Files/Java/jdk-15.0.1' //jpackage is included in Java 15 and later, this needs to be configured to point towards JDK15 or later to build an installer
         def currentOs = org.gradle.internal.os.OperatingSystem.current()
         def imgType = currentOs.windows ? 'ico' : currentOs.macOsX ? 'icns' : 'png'
         imageOptions += ['--icon', "src/main/resources/yahtzee.$imgType"]
