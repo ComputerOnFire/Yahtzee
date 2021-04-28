@@ -14,6 +14,11 @@ public class Score {
     private int value = 0;//number value of the score
     private boolean retained = false;//flag representing of the score is kept by the player
     private boolean totalOrBonus = false;//flag representing if the score represents a total or bonus score
+    public Score(){
+    }
+    public Score(int value){
+        this.value = value;
+    }
     public void setScore(int value){//sets the value of the score if it is not already retained by the player
         if(!retained){
             this.value = value;

@@ -60,8 +60,6 @@ public class GameController {
     private File saveFile = new File("last_save.txt");
 
     @FXML
-    private Label resetBox;//button to reset the state of the game
-    @FXML
     private Button loadButton;//button to load last save
     @FXML
     private Button saveButton;//button to save current state
@@ -263,7 +261,7 @@ public class GameController {
                 fw.write("{ ");
                 
                 // Pull each subscore from the current scorecard
-                for (int j = 0; j < currPlayer.getScoreCard().getSize(); j++)
+                for (int j = 0; j < currPlayer.getScoreCard().getScores().length; j++)
                 {
                     Score score = currPlayer.getScoreCard().getScore(j);
                     fw.write((score.isRetained() || !score.isNotTotalOrBonus() ? score.getValue() : "X") + " ");

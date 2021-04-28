@@ -12,16 +12,17 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane stylesheets="@UI.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.computeronfire.yahtzee.GameController">
+<AnchorPane stylesheets="@UI.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.computeronfire.yahtzee.GameController">
     <BorderPane>
         <left>
             <AnchorPane BorderPane.alignment="CENTER">
                 <BorderPane>
                     <top>
                         <AnchorPane prefHeight="94.0" prefWidth="202.0" BorderPane.alignment="CENTER">
-                            <Label fx:id="resetBox" layoutX="15.0" layoutY="63.0" prefHeight="17.0" prefWidth="89.0" />
-                            <Button layoutX="14.0" layoutY="13.0" onAction="#exitToMenu" prefHeight="25.0" prefWidth="77.0" text="Main Menu" />
-                            <Button layoutX="104.0" layoutY="13.0" onAction="#resetBoard" prefHeight="25.0" prefWidth="45.0" text="Reset" />
+                            <Button layoutX="63.0" layoutY="14.0" onAction="#exitToMenu" prefHeight="25.0" prefWidth="77.0" text="Main Menu" />
+                            <Button layoutX="18.0" layoutY="53.0" onAction="#resetBoard" prefHeight="25.0" prefWidth="45.0" text="Reset" />
+                            <Button fx:id="loadButton" layoutX="140.0" layoutY="53.0" onAction="#loadLastSave" prefHeight="25.0" prefWidth="45.0" text="Load" />
+                            <Button fx:id="saveButton" layoutX="79.0" layoutY="53.0" onAction="#saveToDisk" prefHeight="25.0" prefWidth="45.0" text="Save" />
                      <padding>
                         <Insets bottom="50.0" />
                      </padding>
@@ -135,7 +136,7 @@
           </GridPane>
         </right>
         <bottom>
-          <Label fx:id="winnerDisplay" BorderPane.alignment="CENTER" />
+          <Label fx:id="messageDisplay" BorderPane.alignment="CENTER" />
         </bottom>
     </BorderPane>
 </AnchorPane>

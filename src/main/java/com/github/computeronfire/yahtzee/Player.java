@@ -15,6 +15,10 @@ public class Player {
         this.name = name;
         this.scoreCard = new ScoreCard();
     }
+    public Player(String name, ScoreCard sCard){
+        this.name = name;
+        this.scoreCard = sCard;
+    }
     public String getName(){//returns the name of the player
         return name;
     }

@@ -24,6 +24,9 @@ public class ScoreCard {
             this.scores[i] = new Score();
         }
     }
+    public ScoreCard(Score[] scores){//updates the scores, used to fix loading code
+        this.scores = scores;
+    }
     public ScoreCard(Player player, Dice dice){//updates the scores and dice
         this.scores = player.getScoreCard().scores;
         this.dice = dice;
