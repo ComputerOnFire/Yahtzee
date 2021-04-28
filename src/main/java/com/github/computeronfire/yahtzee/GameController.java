@@ -165,7 +165,6 @@ public class GameController {
             
             ArrayList<Player> players = new ArrayList<>(); // clear player list
 
-            
             while(in.hasNext()){ // read file line by line
                 String next = in.nextLine(), trim = next.trim(); // remove all the "fat" (leading/trailing whitespace)
                 
@@ -220,7 +219,7 @@ public class GameController {
                     }
                 }
             }
-            
+
             in.close();
             initializeBoard(players);
             for (int i = 0; i < players.size(); i++){
