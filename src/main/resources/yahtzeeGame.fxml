@@ -12,7 +12,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane stylesheets="@UI.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.computeronfire.yahtzee.GameController">
+<AnchorPane stylesheets="@UI.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.computeronfire.yahtzee.GameController">
     <BorderPane>
         <left>
             <AnchorPane BorderPane.alignment="CENTER">
