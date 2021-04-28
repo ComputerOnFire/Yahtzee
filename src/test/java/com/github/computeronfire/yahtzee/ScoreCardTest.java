@@ -85,11 +85,21 @@ public class ScoreCardTest {
     @Test
     public void threeOfAKindTest(){
         ScoreCard sCard = scoreSetup(1,1,1,4,4);
+        assertEquals(3, sCard.getScore(9).getValue());
+    }
+    @Test
+    public void notThreeOfAKindTest(){
+        ScoreCard sCard = scoreSetup(1,2,1,4,4);
         assertEquals(0, sCard.getScore(9).getValue());
     }
     @Test
     public void fourOfAKindTest(){
         ScoreCard sCard = scoreSetup(1,1,1,1,4);
+        assertEquals(4, sCard.getScore(10).getValue());
+    }
+    @Test
+    public void notFourOfAKindTest(){
+        ScoreCard sCard = scoreSetup(1,2,1,1,4);
         assertEquals(0, sCard.getScore(10).getValue());
     }
     @Test
