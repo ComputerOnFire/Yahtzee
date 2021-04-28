@@ -135,7 +135,7 @@ public class ScoreCardTest {
         Player testPlayer = new Player("Test");
         ScoreCard sCard = new ScoreCard(testPlayer, dice);
         sCard.calculateScores();
-        assertEquals(15, sCard.getScore(12).getValue());
+        assertEquals(30, sCard.getScore(12).getValue());
         assertEquals(0, sCard.getScore(13).getValue());
     }
     @Test
@@ -154,8 +154,8 @@ public class ScoreCardTest {
         Player testPlayer = new Player("Test");
         ScoreCard sCard = new ScoreCard(testPlayer, dice);
         sCard.calculateScores();
-        assertEquals(15, sCard.getScore(12).getValue());
-        assertEquals(20, sCard.getScore(13).getValue());
+        assertEquals(30, sCard.getScore(12).getValue());
+        assertEquals(40, sCard.getScore(13).getValue());
     }
     @Test
     public void notLargeStraightTest(){
