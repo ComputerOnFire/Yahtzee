@@ -127,4 +127,19 @@ public class ScoreCardTest {
         ScoreCard sCard = scoreSetup(1,2,3,4,4);
         assertEquals(0, sCard.getScore(13).getValue());
     }
+    @Test
+    public void yahtzeeTest(){
+        ScoreCard sCard = scoreSetup(5,5,5,5,5);
+        assertEquals(50, sCard.getScore(14).getValue());
+    }
+    @Test
+    public void notYahtzeeTest(){
+        ScoreCard sCard = scoreSetup(1,5,5,5,5);
+        assertEquals(0, sCard.getScore(14).getValue());
+    }
+    @Test
+    public void chanceTest(){//sum of all dice faces
+        ScoreCard sCard = scoreSetup(1,1,1,1,1);
+        assertEquals(5, sCard.getScore(15).getValue());
+    }
 }
