@@ -1,14 +1,17 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.9' //needed for Java 11 and later
-    // id 'org.beryx.jlink' version '2.23.6' //jlink for modules, runtime for standalone packages
-    id 'org.beryx.runtime' version '1.12.4'
+    //id 'org.openjfx.javafxplugin' version '0.0.9' //needed for Java 11 and later
+    id 'com.dua3.javafxgradle7plugin' version '0.0.9' //fork of the above plugin which works on gradle 7.0+
+    id 'org.beryx.jlink' version '2.23.6' //jlink for modules, runtime for standalone packages
+    //id 'org.beryx.runtime' version '1.12.4'
 }
 
 repositories {
     mavenCentral()
 }
+sourceCompatibility = "11"
+targetCompatibility = "11"
 
 javafx { //needed for Java 11 and later
     version = "11"
@@ -19,14 +22,27 @@ dependencies {//needed for automated test cases
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
+
 test {
     useJUnitPlatform()
 }
 
-mainClassName = "com.github.computeronfire.yahtzee.Launcher"
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.github.computeronfire.yahtzee.Main'
+        )
+    }
+}
+mainClassName = "com.github.computeronfire.yahtzee.Main"
+application{
+    mainClassName = "com.github.computeronfire.yahtzee.Main"
+    mainModule = "Yahtzee"
+    applicationName = "Yahztee!"
+}
 
 //packaging code below
-runtime {
+jlink {
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
 
 // Uncomment and adjust the code below if you want to generate images for multiple platforms.
@@ -48,15 +64,18 @@ runtime {
         jdkHome = jdkDownload("https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15.0.2%2B7/OpenJDK15U-jdk_x64_windows_hotspot_15.0.2_7.zip")
     }
 */
-
     launcher {
         noConsole = true
+        name = "Yahtzee!"
     }
     jpackage {
         // Uncomment and adjust the following line if your runtime task is configured to generate images for multiple platforms
         // targetPlatformName = "mac"
 
-        jpackageHome = 'C:/Program Files/Java/jdk-15.0.1' //jpackage is included in Java 15 and later, this needs to point towards JDK15 or later to build an installer
+        jpackageHome = 'C:/Program Files/Java/jdk-16.0.1' //jpackage is included in Java 15 and later, this needs to be configured to point towards JDK15 or later to build an installer
+
+        //using JDK16 due to an issue compiling from terminal with JDK15
+
         def currentOs = org.gradle.internal.os.OperatingSystem.current()
         def imgType = currentOs.windows ? 'ico' : currentOs.macOsX ? 'icns' : 'png'
         imageOptions += ['--icon', "src/main/resources/yahtzee.$imgType"]

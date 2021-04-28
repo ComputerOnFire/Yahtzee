@@ -18,9 +18,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 
 /**
  * GameController.java
@@ -47,10 +54,14 @@ public class GameController {
     private final Dice dice = new Dice();
     private List<Player> players = new ArrayList<>();
     private int currentPlayerIndex = 0; //track who's turn it is
-    private int rollCounter = rolls; //initialize the roll counter as the maximum bumber of rolls
+    private int rollCounter = rolls; //initialize the roll counter as the maximum number of rolls
+    
+    private final File saveFile = new File("last_save.txt");
 
     @FXML
-    private Label resetBox;//button to reset the state of the game
+    private Button loadButton;//button to load last save
+    @FXML
+    private Button saveButton;//button to save current state
     @FXML
     private Button rollButton;//button to roll the dice
     @FXML
@@ -66,7 +77,7 @@ public class GameController {
     @FXML
     private ToggleButton die5;
     @FXML
-    public Label winnerDisplay;//displays the name of the winner
+    public Label messageDisplay;//displays the name of the winner
 
     /**
      * sets up the grid to display scores for each player,
@@ -77,6 +88,8 @@ public class GameController {
     @FXML
     public void initializeBoard(List<Player> players){//initializes the game state and draws the board
         registerPlayers(players);//players are taken from the main menu
+        loadButton.setDisable(!saveFile.exists());//disable load button if save file does not exist
+        saveButton.setDisable(true);//disable save button until user begins playing
         rollButton.setText(String.format("Roll (%d left)", rollCounter));//set the text on the roll button
         for (int i = 0; i <= fields; ++i){//add a label for each score type
             grid.add(new Label(fieldLabels[i]), 0, i);
@@ -138,6 +151,127 @@ public class GameController {
             playersCleared.add(new Player(player.getName()));
         }
         initializeBoard(playersCleared);
+        messageDisplay.setText("");
+    }
+    
+    @FXML
+    private void loadLastSave() throws FileNotFoundException {// loads data from the last created savefile
+        try {
+            // Timestamp
+            DateTimeFormatter d = DateTimeFormatter.ofPattern("HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            
+            Scanner in = new Scanner(saveFile);
+            
+            ArrayList<Player> players = new ArrayList<>(); // clear player list
+
+            
+            while(in.hasNext()){ // read file line by line
+                String next = in.nextLine(), trim = next.trim(); // remove all the "fat" (leading/trailing whitespace)
+                
+                if (trim.contains("="))
+                {
+                    String[] split = trim.split("="); // get key/value for each line with "="
+                    String key = split[0].trim(),
+                           value = split[1].trim();
+                    
+                    // Read player information
+                    if (key.startsWith("[") && key.endsWith("]"))
+                    {
+                        ScoreCard scoreCard;
+                        
+                        String name = key.substring(1, key.length() - 1);
+                        
+                        // Get value by trimming off braces and splitting by whitespace
+                        String[] strScores = value.substring(1, value.length() - 1).trim().split(" ");
+                        Score[] scores = new Score[fields];
+                        
+                        for (int i = 0; i < strScores.length; i++)
+                        {
+                            if (!strScores[i].equals(""))
+                                {
+                                if (strScores[i].equalsIgnoreCase("X"))
+                                    scores[i] = new Score(0);
+                                else
+                                {
+                                    scores[i] = new Score(Integer.parseInt(strScores[i]));
+                                    scores[i].retainScore();
+                                }
+                            }
+                        }
+                        
+                        scoreCard = new ScoreCard(scores);
+                        Player p = new Player(name, scoreCard);
+                        players.add(p);
+                        
+                        grid.getChildren().clear();
+                        initializeBoard(players);
+                    }
+                    else
+                    {
+                        if (key.toUpperCase().startsWith("P"))
+                        {
+                            currentPlayerIndex = Integer.parseInt(value);
+                        }
+                        else if (key.toUpperCase().startsWith("R"))
+                        {
+                            rollCounter = Integer.parseInt(value);
+                        }
+                    }
+                }
+            }
+            
+            in.close();
+            
+            enableCurrentPlayer();
+            updateRollButton();
+            
+            messageDisplay.setText("Gamesave loaded at " + d.format(now));
+        } catch (Exception ex) {
+            messageDisplay.setText("An error occurred loading the game: " + ex.getLocalizedMessage());
+            throw(ex);
+        }
+    }
+    
+    @FXML
+    private void saveToDisk() throws IOException {// saves data for this game to a text file for later
+        try {
+            // Timestamp
+            DateTimeFormatter d = DateTimeFormatter.ofPattern("HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            
+            FileWriter fw = new FileWriter(saveFile);
+            
+            // Write rolls remaining
+            fw.write("R=" + rollCounter + "\n");
+            
+            // Write current player index
+            fw.write("P=" + currentPlayerIndex + "\n");
+            
+            // Write subscores for each player
+            for (Player currPlayer : players) {
+                fw.write("[" + currPlayer.getName() + "]="); // player name
+                fw.write("{ ");
+
+                // Pull each subscore from the current scorecard
+                for (int j = 0; j < currPlayer.getScoreCard().getScores().length; j++) {
+                    Score score = currPlayer.getScoreCard().getScore(j);
+                    fw.write((score.isRetained() || !score.isNotTotalOrBonus() ? score.getValue() : "X") + " ");
+                }
+
+                fw.write("}\n");
+            }
+            
+            fw.close();
+            
+            loadButton.setDisable(!saveFile.exists());
+            
+            messageDisplay.setText("Game progress saved at " + d.format(now));
+        }
+        catch (Exception ex) {
+            messageDisplay.setText("An error occurred saving the game: " + ex.getLocalizedMessage());
+            throw(ex);
+        }
     }
 
     @FXML
@@ -178,6 +312,7 @@ public class GameController {
         --rollCounter;
         updateRollButton();
         updateScores();
+        saveButton.setDisable(false);
     }
 
     @FXML
@@ -225,7 +360,7 @@ public class GameController {
         return completed;
     }
 
-    private Player winner(){//determines which player has the highest score, and returns the winnerDisplay
+    private Player winner(){//determines which player has the highest score, and returns the messageDisplay
         int highScore = 0;
         Player winner = null;
         for(Player player: players){
@@ -242,7 +377,7 @@ public class GameController {
         finalizeScores();
         if(gameOver()){
             Player winner = winner();
-            winnerDisplay.setText(String.format("%s wins with %d points!", winner.getName(),winner.getScoreCard().getScore(fields-1).getValue()));
+            messageDisplay.setText(String.format("%s wins with %d points!", winner.getName(),winner.getScoreCard().getScore(fields-1).getValue()));
         }
         else{
             currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
