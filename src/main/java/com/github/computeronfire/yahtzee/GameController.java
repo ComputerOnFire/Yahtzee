@@ -24,10 +24,8 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 
 /**
@@ -165,8 +163,7 @@ public class GameController {
             Scanner in = new Scanner(saveFile);
             
             players = new ArrayList(); // clear player list
-            
-            StackPane scorePane;
+
             
             for (int col = 0; in.hasNext(); col++) // read file line by line
             {
