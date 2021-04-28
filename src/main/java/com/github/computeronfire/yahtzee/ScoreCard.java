@@ -16,7 +16,7 @@ import java.util.Map;
  */
 
 public class ScoreCard {
-    private Dice dice;//represents the dice, which will be passed from the game board
+    private Die[] dice;//represents the dice, which will be passed from the game board
     private Score[] scores = new Score[18]; //must be size of 20
 
     public ScoreCard(){//construct the array of score objects
@@ -27,7 +27,7 @@ public class ScoreCard {
     public ScoreCard(Score[] scores){//updates the scores, used to fix loading code
         this.scores = scores;
     }
-    public ScoreCard(Player player, Dice dice){//updates the scores and dice
+    public ScoreCard(Player player, Die[] dice){//updates the scores and dice
         this.scores = player.getScoreCard().scores;
         this.dice = dice;
     }
@@ -40,7 +40,7 @@ public class ScoreCard {
 
     private int chance(){ //return sum of all dice
         int sum = 0;
-        for (Die die : dice.getDice()){
+        for (Die die : dice){
             sum += die.getFace();
         }
         return sum;
@@ -48,7 +48,7 @@ public class ScoreCard {
 
     private int faceSum(int value){//return sum of a all dice with certain face value
         int sum = 0;
-        for (Die die : dice.getDice()){
+        for (Die die : dice){
             if (die.getFace() == value){
                 sum += die.getFace();
             }
@@ -58,7 +58,7 @@ public class ScoreCard {
 
     private Map<Integer, Integer> repetition() {//constructs a Key, Value map for how many times each die repeats
         Map<Integer, Integer> repetitions = new HashMap<>();
-        for (Die die : dice.getDice()){
+        for (Die die : dice){
             repetitions.merge(die.getFace(), 1, Integer::sum);
         }
         return repetitions;
@@ -123,8 +123,8 @@ public class ScoreCard {
     private boolean calculateStraight(int minimum) {//calculates if dice are in a sequence of minimum (4 for smallStraight or 5 for largeStraight)
         int[] diceFaces = new int[5];
         boolean straight = false;
-        for (int i = 0; i < dice.getDice().length; ++i) {
-            diceFaces[i] = dice.getDice()[i].getFace();
+        for (int i = 0; i < dice.length; ++i) {
+            diceFaces[i] = dice[i].getFace();
         }
         Arrays.sort(diceFaces);//sorts the dice by face value for counting
         int counter = 1;
