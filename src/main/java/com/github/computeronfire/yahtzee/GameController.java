@@ -19,6 +19,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -55,7 +56,7 @@ public class GameController {
     private int currentPlayerIndex = 0; //track who's turn it is
     private int rollCounter = rolls; //initialize the roll counter as the maximum number of rolls
     
-    private File saveFile = new File("last_save.txt");
+    private final File saveFile = new File("last_save.txt");
 
     @FXML
     private Button loadButton;//button to load last save
@@ -154,7 +155,7 @@ public class GameController {
     }
     
     @FXML
-    private void loadLastSave() {// loads data from the last created savefile
+    private void loadLastSave() throws FileNotFoundException {// loads data from the last created savefile
         try {
             // Timestamp
             DateTimeFormatter d = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -162,13 +163,11 @@ public class GameController {
             
             Scanner in = new Scanner(saveFile);
             
-            players = new ArrayList(); // clear player list
+            ArrayList<Player> players = new ArrayList<>(); // clear player list
 
             
-            for (int col = 0; in.hasNext(); col++) // read file line by line
-            {
-                String next = in.nextLine(),
-                       trim = next.trim(); // remove all the "fat" (leading/trailing whitespace)
+            while(in.hasNext()){ // read file line by line
+                String next = in.nextLine(), trim = next.trim(); // remove all the "fat" (leading/trailing whitespace)
                 
                 if (trim.contains("="))
                 {
@@ -191,7 +190,7 @@ public class GameController {
                         {
                             if (!strScores[i].equals(""))
                                 {
-                                if (strScores[i].toUpperCase().equals("X"))
+                                if (strScores[i].equalsIgnoreCase("X"))
                                     scores[i] = new Score(0);
                                 else
                                 {
@@ -230,12 +229,12 @@ public class GameController {
             messageDisplay.setText("Gamesave loaded at " + d.format(now));
         } catch (Exception ex) {
             messageDisplay.setText("An error occurred loading the game: " + ex.getLocalizedMessage());
-            System.out.print(ex);
+            throw(ex);
         }
     }
     
     @FXML
-    private void saveToDisk() {// saves data for this game to a text file for later
+    private void saveToDisk() throws IOException {// saves data for this game to a text file for later
         try {
             // Timestamp
             DateTimeFormatter d = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -250,20 +249,16 @@ public class GameController {
             fw.write("P=" + currentPlayerIndex + "\n");
             
             // Write subscores for each player
-            for (int i = 0; i < players.size(); i++)
-            {
-                Player currPlayer = players.get(i);
-                
+            for (Player currPlayer : players) {
                 fw.write("[" + currPlayer.getName() + "]="); // player name
                 fw.write("{ ");
-                
+
                 // Pull each subscore from the current scorecard
-                for (int j = 0; j < currPlayer.getScoreCard().getScores().length; j++)
-                {
+                for (int j = 0; j < currPlayer.getScoreCard().getScores().length; j++) {
                     Score score = currPlayer.getScoreCard().getScore(j);
                     fw.write((score.isRetained() || !score.isNotTotalOrBonus() ? score.getValue() : "X") + " ");
                 }
-                
+
                 fw.write("}\n");
             }
             
@@ -275,7 +270,7 @@ public class GameController {
         }
         catch (Exception ex) {
             messageDisplay.setText("An error occurred saving the game: " + ex.getLocalizedMessage());
-            System.out.print(ex);
+            throw(ex);
         }
     }
 
