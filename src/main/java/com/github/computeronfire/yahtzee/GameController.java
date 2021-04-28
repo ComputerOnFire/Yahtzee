@@ -199,13 +199,13 @@ public class GameController {
                                 }
                             }
                         }
-                        
-                        scoreCard = new ScoreCard(scores);
+                        scoreCard = new ScoreCard(scores,dice.getDice());
+                        scoreCard.calculateScores();
                         Player p = new Player(name, scoreCard);
                         players.add(p);
                         
                         grid.getChildren().clear();
-                        initializeBoard(players);
+
                     }
                     else
                     {
@@ -222,6 +222,18 @@ public class GameController {
             }
             
             in.close();
+            initializeBoard(players);
+            for (int i = 0; i < players.size(); i++){
+                for (int j = 0; j < players.get(i).getScoreCard().getScores().length; j++){
+                    if((players.get(i).getScoreCard().getScores()[j].isRetained()) && (players.get(i).getScoreCard().getScores()[j].isNotTotalOrBonus())){
+                        StackPane scorePane = (StackPane) getGridNode(grid,i+1,j+1);
+                        Rectangle background = (Rectangle) scorePane.getChildren().get(0);
+                        players.get(i).keepScore(j);
+                        background.setFill(Color.GREEN);//highlight the score with green
+                        background.setOpacity(1);
+                    }
+                }
+            }
             
             enableCurrentPlayer();
             updateRollButton();
