@@ -24,6 +24,9 @@ public class ScoreCard {
             this.scores[i] = new Score();
         }
     }
+    public ScoreCard(Score[] scores){//updates the scores, used to fix loading code
+        this.scores = scores;
+    }
     public ScoreCard(Player player, Dice dice){//updates the scores and dice
         this.scores = player.getScoreCard().scores;
         this.dice = dice;
@@ -100,18 +103,18 @@ public class ScoreCard {
         }
     }
 
-    private int smallStraight(){//returns a score of 15 if 4 dice make a sequence (ie, 1 2 3 4 1)
+    private int smallStraight(){//returns a score of 30 if 4 dice make a sequence (ie, 1 2 3 4 1)
         if(calculateStraight(4)) {
-            return 15;
+            return 30;
         }
         else{
             return 0;
         }
     }
 
-    private int largeStraight(){//returns a score of 20 if 5 dice make a sequence (ie, 1 2 3 4 5)
+    private int largeStraight(){//returns a score of 40 if 5 dice make a sequence (ie, 1 2 3 4 5)
         if(calculateStraight(5)) {
-            return 20;
+            return 40;
         }
         else{
             return 0;
