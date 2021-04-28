@@ -200,7 +200,7 @@ public class GameController {
                             }
                         }
                         scoreCard = new ScoreCard(scores,dice.getDice());
-                        scoreCard.calculateScores();
+                        scoreCard.calculateScores();//used mostly to mark retained scores when loading, sometimes previews scores of next player, but does not impact gameplay
                         Player p = new Player(name, scoreCard);
                         players.add(p);
                         
