@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<package>
+    <job id="postImage">
+        <WixVariable Id="WixUIBannerBmp" Value="Yahtzee!.bmp" />
+       <WixVariable Id="WixUIDialogBmp" Value="Yahtzee!.bmp"/>
+    </job>
+</package>
