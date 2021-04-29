@@ -78,7 +78,7 @@ jlink {
 
         def currentOs = org.gradle.internal.os.OperatingSystem.current()
         def imgType = currentOs.windows ? 'ico' : currentOs.macOsX ? 'icns' : 'png'
-        imageOptions += ['--icon', "src/main/resources/yahtzee.$imgType"]
+        imageOptions += ['--icon', "src/main/resources/Yahtzee!.$imgType"]
         installerOptions += ['--resource-dir', "src/main/resources"]
         installerOptions += ['--vendor', 'Group #17']
 
@@ -86,10 +86,10 @@ jlink {
             installerOptions += ['--win-per-user-install', '--win-dir-chooser', '--win-menu', '--win-shortcut']
         }
         else if (currentOs.linux) {
-            installerOptions += ['--linux-package-name', 'yahtzee','--linux-shortcut']
+            installerOptions += ['--linux-package-name', 'Yahtzee!','--linux-shortcut']
         }
         else if (currentOs.macOsX) {
-            installerOptions += ['--mac-package-name', 'yahtzee']
+            installerOptions += ['--mac-package-name', 'Yahtzee!']
         }
     }
 }
