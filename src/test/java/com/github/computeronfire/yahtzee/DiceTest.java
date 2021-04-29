@@ -21,7 +21,7 @@ public class DiceTest {
         }
     }
     @Test
-    public void holdTest(){//tests if the die's held state can be modified
+    public void holdTest(){//tests if the dice held state can be modified
         Dice dice = new Dice();
         dice.getDie(1).hold(true);
         assertEquals(false,dice.getDie(1).isNotHeld());
@@ -35,7 +35,7 @@ public class DiceTest {
         }
     }
     @Test
-    public void rollHeldTest(){//tests if the dice values have been changed
+    public void rollHeldTest(){//tests if the dice values have been not changed if they are held
         Dice dice = new Dice();
         dice.getDie(0).hold(true);
         dice.rollDice();

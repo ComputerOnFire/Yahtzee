@@ -328,7 +328,7 @@ public class GameController {
 
     @FXML
     private void updateScores(){ //updates the scores for the current player
-        ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex), dice.getDice());
+        ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex).getScoreCard().getScores(), dice.getDice());//creates a new scorecard with the current players scorecard and the dice on board
         scoreCard.calculateScores();
         players.get(currentPlayerIndex).updateScoreCard(scoreCard);
         for(int i = 0; i < fields; ++i){

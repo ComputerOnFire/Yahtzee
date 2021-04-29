@@ -28,10 +28,6 @@ public class ScoreCard {
         this.scores = scores;
         this.dice = dice;
     }
-    public ScoreCard(Player player, Die[] dice){//updates the scores and dice
-        this.scores = player.getScoreCard().scores;
-        this.dice = dice;
-    }
     public Score getScore(int index){//returns the score at a given position
         return scores[index];
     }
