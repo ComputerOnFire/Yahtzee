@@ -165,7 +165,6 @@ public class GameController {
             
             ArrayList<Player> players = new ArrayList<>(); // clear player list
 
-            
             while(in.hasNext()){ // read file line by line
                 String next = in.nextLine(), trim = next.trim(); // remove all the "fat" (leading/trailing whitespace)
                 
@@ -199,13 +198,13 @@ public class GameController {
                                 }
                             }
                         }
-                        
-                        scoreCard = new ScoreCard(scores);
+                        scoreCard = new ScoreCard(scores,dice.getDice());
+                        scoreCard.calculateScores();//used mostly to mark retained scores when loading, sometimes previews scores of next player, but does not impact gameplay
                         Player p = new Player(name, scoreCard);
                         players.add(p);
                         
                         grid.getChildren().clear();
-                        initializeBoard(players);
+
                     }
                     else
                     {
@@ -220,8 +219,20 @@ public class GameController {
                     }
                 }
             }
-            
+
             in.close();
+            initializeBoard(players);
+            for (int i = 0; i < players.size(); i++){
+                for (int j = 0; j < players.get(i).getScoreCard().getScores().length; j++){
+                    if((players.get(i).getScoreCard().getScores()[j].isRetained()) && (players.get(i).getScoreCard().getScores()[j].isNotTotalOrBonus())){
+                        StackPane scorePane = (StackPane) getGridNode(grid,i+1,j+1);
+                        Rectangle background = (Rectangle) scorePane.getChildren().get(0);
+                        players.get(i).keepScore(j);
+                        background.setFill(Color.GREEN);//highlight the score with green
+                        background.setOpacity(1);
+                    }
+                }
+            }
             
             enableCurrentPlayer();
             updateRollButton();
@@ -317,7 +328,7 @@ public class GameController {
 
     @FXML
     private void updateScores(){ //updates the scores for the current player
-        ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex), dice);
+        ScoreCard scoreCard = new ScoreCard(players.get(currentPlayerIndex).getScoreCard().getScores(), dice.getDice());//creates a new scorecard with the current players scorecard and the dice on board
         scoreCard.calculateScores();
         players.get(currentPlayerIndex).updateScoreCard(scoreCard);
         for(int i = 0; i < fields; ++i){

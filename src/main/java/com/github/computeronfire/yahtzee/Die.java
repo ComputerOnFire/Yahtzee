@@ -18,7 +18,11 @@ import java.util.Random;
 public class Die {
     private int face;//represents the face value of the die
     private boolean held = false;//user can hold die to prevent the face value from being re-rolled
-
+    public Die(){
+    }
+    public Die(int value){
+        this.face = value;
+    }
     public void rollDie(){//sets the face value to a random number between 1 and 6
         this.face = new Random().nextInt(6) + 1;
     }
