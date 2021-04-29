@@ -15,7 +15,7 @@ public class ScoreCardTest {
     }
 
     @Test
-    public void onesTest(){
+    public void onesTest(){//tests the score calculation for each of the Sum of Face score categories
         ScoreCard sCard = scoreSetup(1,2,1,4,6);
         assertEquals(2, sCard.getScore(0).getValue());
     }
@@ -83,12 +83,12 @@ public class ScoreCardTest {
         assertEquals(0, sCard.getScore(5).getValue());
     }
     @Test
-    public void threeOfAKindTest(){
+    public void threeOfAKindTest(){//tests the scores for xOfAKind calculations, 3 of a kind and 4 of a kind
         ScoreCard sCard = scoreSetup(1,1,1,4,4);
         assertEquals(3, sCard.getScore(9).getValue());
     }
     @Test
-    public void notThreeOfAKindTest(){
+    public void notThreeOfAKindTest(){//tests if the right score is given for the incorrect combination
         ScoreCard sCard = scoreSetup(1,2,1,4,4);
         assertEquals(0, sCard.getScore(9).getValue());
     }
@@ -138,7 +138,7 @@ public class ScoreCardTest {
         assertEquals(0, sCard.getScore(13).getValue());
     }
     @Test
-    public void yahtzeeTest(){
+    public void yahtzeeTest(){//tests the score calculation for Yahtzees (5 of a kind)
         ScoreCard sCard = scoreSetup(5,5,5,5,5);
         assertEquals(50, sCard.getScore(14).getValue());
     }
@@ -148,8 +148,8 @@ public class ScoreCardTest {
         assertEquals(0, sCard.getScore(14).getValue());
     }
     @Test
-    public void chanceTest(){//sum of all dice faces
-        ScoreCard sCard = scoreSetup(1,1,1,1,1);
-        assertEquals(5, sCard.getScore(15).getValue());
+    public void chanceTest(){//tests the score calculation for the sum of all dice faces
+        ScoreCard sCard = scoreSetup(1,2,3,4,5);
+        assertEquals(15, sCard.getScore(15).getValue());
     }
 }
