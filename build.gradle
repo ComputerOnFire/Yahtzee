@@ -3,8 +3,7 @@ plugins {
     id 'application'
     //id 'org.openjfx.javafxplugin' version '0.0.9' //needed for Java 11 and later
     id 'com.dua3.javafxgradle7plugin' version '0.0.9' //fork of the above plugin which works on gradle 7.0+
-    id 'org.beryx.jlink' version '2.23.6' //jlink for modules, runtime for standalone packages
-    //id 'org.beryx.runtime' version '1.12.4'
+    id 'org.beryx.jlink' version '2.23.6' //jlink for modules
 }
 
 repositories {
@@ -45,6 +44,7 @@ application{
 jlink {
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
 
+// the below code is for downloading the JDK required for cross platform compiling.
 // Uncomment and adjust the code below if you want to generate images for multiple platforms.
 // (You need to also uncomment the line 'targetPlatformName = ...' in the jpackage block.)
 /**
@@ -73,7 +73,7 @@ jlink {
         // targetPlatformName = "mac"
 
         jpackageHome = 'C:/Program Files/Java/jdk-16.0.1' //jpackage is included in Java 15 and later, this needs to be configured to point towards JDK15 or later to build an installer
-
+        //if targeting Mac OSX or Linux, uncomment the code block for downloading the JDK above
         //using JDK16 due to an issue compiling from terminal with JDK15
 
         def currentOs = org.gradle.internal.os.OperatingSystem.current()
