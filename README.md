@@ -37,7 +37,7 @@ To run the program with gradle, make sure your IntelliJ configuration looks like
 ![](https://i.imgur.com/M1SPfKj.png) 
 
 ### How to build without gradle:
-If you do not wish to compile with gradle and want to compile the program directly, you will need to obtain the JavaFX sdk on your own from this page. https://gluonhq.com/products/javafx/ Please scroll down to version 11.0.2, download, and extract the archive to a permanent location, "C:\Program Files\Java\javafx-sdk-11.0.2\" For example.
+If you do not wish to compile with gradle and want to compile the program directly, you will need to obtain the JavaFX sdk on your own from this page. https://gluonhq.com/products/javafx/ Please scroll down to version 11.0.2, download, and extract the archive to a permanent location, `C:\Program Files\Java\javafx-sdk-11.0.2\` For example.
 
 Then you can modify the VM settings of your IDE with 
 ~~~~
