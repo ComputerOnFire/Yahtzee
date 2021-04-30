@@ -11,6 +11,11 @@ gradlew run
 ```
 can be executed in the project folder to build and launch the application.
 
+## How to build in IntelliJ:
+
+To run the program with gradle, make sure your IntelliJ configuration looks like this. The important thing being the 'run' inside the tasks field.
+![](https://i.imgur.com/M1SPfKj.png) 
+
 
 
 ## How to test:
