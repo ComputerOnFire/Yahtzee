@@ -81,7 +81,7 @@ jlink {
         imageOptions += ['--icon', "src/main/resources/Yahtzee!.$imgType"]
         installerOptions += ['--resource-dir', "src/main/resources"]
         installerOptions += ['--vendor', 'Group #17']
-        installerOptions += ['--app-version', '1.0.3']
+        installerOptions += ['--app-version', '1.2.1']
 
         if(currentOs.windows) {
             installerOptions += ['--win-per-user-install', '--win-dir-chooser', '--win-menu', '--win-shortcut']
