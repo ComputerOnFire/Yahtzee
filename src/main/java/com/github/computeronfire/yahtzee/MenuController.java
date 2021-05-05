@@ -20,6 +20,8 @@ import java.util.List;
  */
 
 public class MenuController {
+    private final int width = 1000;
+    private final int height = 600;
 
     @FXML
     private TextField player1;//text field for the user to input the name of each player
@@ -54,7 +56,7 @@ public class MenuController {
 
         controller.initializeBoard(players);//call the initializeBoard() function from the loaded game controller, passing the input players
 
-        Scene scene = new Scene(parent, 1000, 600);
+        Scene scene = new Scene(parent, width, height);
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();//take properties from the parent window, (icon and background color)
 
         primaryStage.setScene(scene);//set the scene with the game board

@@ -40,6 +40,9 @@ import java.util.Scanner;
 
 public class GameController {
 
+    private final int width = 280;
+    private final int height = 500;
+
     /**
      * Initiate the array of 5 dice.
      * Constructed using the Dice class
@@ -136,7 +139,7 @@ public class GameController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/yahtzeeMenu.fxml"));
         Parent parent  = fxmlLoader.load();
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(parent, 280, 500);
+        Scene scene = new Scene(parent, width, height);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
