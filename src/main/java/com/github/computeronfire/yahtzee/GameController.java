@@ -377,10 +377,13 @@ public class GameController {
     private Player winner(){//determines which player has the highest score, and returns the messageDisplay
         int highScore = 0;
         Player winner = null;
-        for(Player player: players){
-            if (player.getScoreCard().getScore(fields-1).getValue() > highScore){
+        for(Player player: players) {
+            if (player.getScoreCard().getScore(fields - 1).getValue() > highScore) {
                 winner = player;
-                highScore = player.getScoreCard().getScore(fields-1).getValue();
+                highScore = player.getScoreCard().getScore(fields - 1).getValue();
+            }
+            else if(player.getScoreCard().getScore(fields-1).getValue() == highScore && !winner.getName().equals(player.getName())){
+                winner = new Player("Neither");//draw condition
             }
         }
         return winner;
