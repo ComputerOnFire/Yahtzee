@@ -382,7 +382,7 @@ public class GameController {
                 winner = player;
                 highScore = player.getScoreCard().getScore(fields - 1).getValue();
             }
-            else if(player.getScoreCard().getScore(fields-1).getValue() == highScore && !winner.getName().equals(player.getName())){
+            else if(player.getScoreCard().getScore(fields-1).getValue() == highScore && !winner.getName().equals(player.getName())){//calculates if there is more than one highscore holder (draw)
                 winner = new Player("Neither");//draw condition
             }
         }
