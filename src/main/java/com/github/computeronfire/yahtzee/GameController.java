@@ -35,7 +35,7 @@ import java.util.Scanner;
  * Contains functions for interacting with the game via the UI,
  * as well as turn logic and winner calculation.
  *
- * Requirement: UI
+ * Requirements: 1.0.0, 2.0.0, 2.0.1, 3.0.0, 4.0.0
  */
 
 public class GameController {

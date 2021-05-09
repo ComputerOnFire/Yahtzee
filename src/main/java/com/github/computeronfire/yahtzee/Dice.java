@@ -7,7 +7,7 @@ package com.github.computeronfire.yahtzee;
  * Contains an array representing a set of 5 Dice
  * Roll function rolls each die that is not held.
  *
- * Requirements: Game Functionality
+ * Requirements: 1.0.0, 1.0.1
  *
  */
 

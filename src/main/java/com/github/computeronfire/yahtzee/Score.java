@@ -7,7 +7,7 @@ package com.github.computeronfire.yahtzee;
  * Class representing a single score field. Contains an integer value and various flags
  * for the different categories of scores.
  *
- * Requirements: Game Functionality
+ * Requirements: 1.0.0, 1.0.2
  */
 
 public class Score {

@@ -11,7 +11,7 @@ import java.util.Random;
  * Roll function generates a new face value using the java Random library.
  * Contains a boolean flag for if the die is "held" or kept.
  *
- * Requirements: Game Functionality
+ * Requirements: 1.0.0, 1.0.1
  *
  */
 

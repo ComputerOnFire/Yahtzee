@@ -12,7 +12,7 @@ import java.util.Map;
  * Handles logic and calculations for the game, such as scores.
  * Contains an array of int to represent the dice face values to run calculations on.
  *
- * Requirements: Game Functionality, Follow Yahtzee Rules
+ * Requirements: 1.0.0, 1.0.2
  */
 
 public class ScoreCard {

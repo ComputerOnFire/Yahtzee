@@ -5,7 +5,7 @@ package com.github.computeronfire.yahtzee;
  * Player.java
  * Class representing the Player object, contains a Name and ScoreCard.
  *
- * Requirements: Game Functionality
+ * Requirements: 1.0.0
  */
 
 public class Player {

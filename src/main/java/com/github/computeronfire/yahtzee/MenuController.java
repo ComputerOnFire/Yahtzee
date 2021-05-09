@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * MenuController.java
  * Controls the Main Menu, contains function for construction of game board scene, as well as fields for player names.
- * Requirements: UI
+ * Requirements: 2.0.0, 4.0.0
  */
 
 public class MenuController {
