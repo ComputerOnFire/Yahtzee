@@ -3,7 +3,7 @@ Implementation of the board game Yahtzee in Java and JavaFX
 
 <img align="top" width="60%" height="60%" src="https://user-images.githubusercontent.com/3631329/116506089-1830d380-a882-11eb-9b80-b16c9d44956a.png">
 
-## How to build:
+## How to build and run:
 
 If you would like to compile and run Yahtzee, the command
 ```
